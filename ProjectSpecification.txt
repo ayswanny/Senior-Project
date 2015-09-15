@@ -1,0 +1,34 @@
+﻿Rowan Prep Lessons Software
+
+
+Group Members:
+        Austen Swanson
+        Paul Kohler
+        Adam Jasper
+Project summary
+
+
+        This program will need to provide organized data to schedule lessons and prompt for upcoming/past due payments for services. The database should include student information, teacher information, and lesson scheduling. Using this information, this software should provide ease of use methods for querying the database for scheduling and payments. It will provide a much more suitable medium for managing lessons at Rowan Prep.
+Project goals
+
+
+        The goal of the project is to streamline and organize the data collected by Rowan Prep. It will allow for easier accessibility and manageability of student and teacher information. This will greatly reduce the amount of time needed to manage and maintain the Rowan Prep program. 
+Product features
+* Reports will allow the user to be able to see/print useful information.
+   * Invoices for families
+   * Timesheets for teachers (1-3/ semester)
+   * Lessons by teacher, day, instrument
+   * Enrollment history per student, per class
+   * Contact info for each student/teacher 
+* Teacher pay information will be generated based on rate, number of students, lessons etc.
+* Administrative forms to update previously entered data.
+* Administrative forms will also allow manual entry of paper forms (as needed).
+        
+Limitations 
+        
+        There are a few limitations which are apparent at this moment, but there will most likely be more to come. 
+* Many individuals taking lessons at Rowan Prep have no credentials with Rowan making it impossible for login user-entry. This leaves record entry relatively public. 
+* The students that are senior citizens may not have access to a computer which makes paper forms and manual data entry mandatory in some cases.
+* Payment is a limiting factor. Credit card transactions must be filed via paper-form hindering the capability to consolidate student forms into one method of entry.
+* Pre-existing web code uses Adobe Contribute which doesn’t support custom HTML5 code to modify the page. 
+* All database information is personal and sensitive information which cannot be directly accessed by developers. This could cause formatting errors when extracting the pre-existing Excel worksheets.
