@@ -18,7 +18,7 @@ if(empty($_POST) == false) {
 		}
 		else {
 			$id_array = mysqli_fetch_assoc($login);
-			$_SESSION['id'] = $id_array['id'];
+			$_SESSION['id'] = $id_array['user_key'];
 			header('Location: ../../index.php');
 			//
 		}

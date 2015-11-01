@@ -1,7 +1,7 @@
 <?php
 
     include 'templates/header.php';
-    include 'templates/navbar.php';
+    include 'templates/navbar-logged-in.php';
     include 'templates/admin-content.php';
 
 ?>

@@ -11,7 +11,9 @@
 		include 'templates/navbar-logged-in.php';
 		include 'templates/index-content-logged-in.php';
 	}
+
 ?>
+
 
 	<script src="scripts/js/jquery.js"></script>
 	<script src="scripts/yjs/bootstrap.min.js"></script>

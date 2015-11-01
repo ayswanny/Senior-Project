@@ -15,10 +15,10 @@
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav navbar-right">
                     <li>
-                        <a href="about.php">Reports</a>
+                        <a href="reports.php">Reports</a>
                     </li>
                     <li>
-                        <a href="contact.php">Admin</a>
+                        <a href="admin.php">Admin</a>
                     </li>
                     <li>
                         <a href="core/database/logout.php">Logout</a>
