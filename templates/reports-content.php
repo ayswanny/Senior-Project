@@ -1,6 +1,5 @@
-  
-<div style="margin-top:50px;" class="mainbox col-md-12">   
-  
+<div style="margin-top:50px;" class="mainbox col-md-12">
+
   <div class="row">
 
     <!-- Simple jQuery calls to switch out divs-->
@@ -19,7 +18,7 @@
             echo "Database Error";
           }
           else {
-            // table headers 
+            // table headers
                   echo '<thead><tr>';
                   echo '<th></th>
                         <th>Last Name</th>
@@ -49,8 +48,8 @@
                         ';
                   echo '</tr></thead>';
                   echo '<tbody>';
-                 //fill in rows with data 
-                 while($row = $results->fetch_assoc()) {  
+                 //fill in rows with data
+                 while($row = $results->fetch_assoc()) {
                     echo '<tr>
                          <td><a href="edit-student-form.php?student=', $row['student_key'], '">
                          <img src="../rowanprep/res/image/edit.png"></a></td>
@@ -98,15 +97,17 @@
             echo "Database Error";
           }
           else {
-            // table headers 
+            // table headers
                   echo '<thead><tr>';
-                  echo '<th>Last Name</th>
+                  echo '<th></th>
+                        <th>Last Name</th>
                         <th>First Name</th>
                         <th>Banner ID</th>
                         <th>Faculty Status</th>
                         <th>Instrument</th>
                         <th>Backround Check</th>
                         <th>Home Phone</th>
+                        <th>Mobile Phone</th>
                         <th>Email</th>
                         <th>Alternate Email</th>
                         <th>Street Address</th>
@@ -116,10 +117,13 @@
                         ';
                   echo '</tr></thead>';
                   echo '<tbody>';
-                 //fill in rows with data 
-                 while($row = $results->fetch_assoc()) {  
+                 //fill in rows with data
+                 while($row = $results->fetch_assoc()) {
 
-                    echo '<tr><td>', $row['last_name'],'</td>
+                    echo '<tr>
+                         <td><a href="edit-teacher-form.php?teacher=', $row['teacher_key'], '">
+                         <img src="../rowanprep/res/image/edit.png"></a></td>
+                         <td>', $row['last_name'],'</td>
                          <td>', $row['first_name'],'</td>
                          <td>', $row['banner_id'],'</td>
                          <td>', $row['faculty_status'],'</td>
@@ -142,4 +146,4 @@
     </div>
   </div>
 
-</div>  
+</div>

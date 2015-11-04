@@ -31,7 +31,7 @@
         </div>
 
         <hr class="featurette-divider">
-       
+
         <div class="featurette" id="contact">
             <img class="featurette-image img-circle img-responsive pull-right" src="http://placehold.it/500x500">
             <h2 class="featurette-heading">Some other thing
