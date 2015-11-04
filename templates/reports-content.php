@@ -1,7 +1,9 @@
   
-<div style="margin-top:50px;" class="mainbox col-md-12 col-md-offset-1 col-md-offset-1">   
+<div style="margin-top:50px;" class="mainbox col-md-12">   
   
   <div class="row">
+
+    <!-- Simple jQuery calls to switch out divs-->
     <a href="#" onClick="$('#teacher').hide(); $('#student').show()">Student</a>
     <a href="#" onClick="$('#student').hide(); $('#teacher').show()">Teacher</a>
   </div>
@@ -10,6 +12,8 @@
     <div class="col-md-3">
       <table class="table table-striped">
         <?php
+
+          //output student table.
           $results = get_student_list();
           if(!$results) {
             echo "Database Error";
@@ -17,7 +21,8 @@
           else {
             // table headers 
                   echo '<thead><tr>';
-                  echo '<th>Last Name</th>
+                  echo '<th></th>
+                        <th>Last Name</th>
                         <th>First Name</th>
                         <th>Parent</th>
                         <th>Date of Birth</th>
@@ -46,8 +51,10 @@
                   echo '<tbody>';
                  //fill in rows with data 
                  while($row = $results->fetch_assoc()) {  
-
-                    echo '<tr><td>', $row['last_name'],'</td>
+                    echo '<tr>
+                         <td><a href="edit-student-form.php?student=', $row['student_key'], '">
+                         <img src="../rowanprep/res/image/edit.png"></a></td>
+                         <td>', $row['last_name'],'</td>
                          <td>', $row['first_name'],'</td>
                          <td>', $row['parent'],'</td>
                          <td>', $row['dob'],'</td>
@@ -84,6 +91,8 @@
     <div class="col-md-3">
       <table class="table table-striped">
         <?php
+
+          //out teachers table
           $results = get_teacher_list();
           if(!$results) {
             echo "Database Error";
