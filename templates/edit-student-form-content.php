@@ -21,10 +21,13 @@
 <fieldset>
 
 	<!-- Form Name -->
-	<legend><?php echo (($addnew)?"Add":"Edit"); ?> Student</legend>
+	<legend><?php echo (($addnew)?"Add":"Edit"); ?> Student
+	<input type="submit" class="btn btn-primary" value="Save" />
+	<input type="button" class="btn btn-primary" onclick="history.back();" value="Back">
+	</legend>
 
-	<input type="submit" class="btn btn-lg btn-primary" value="Save" />
-	<input type="button" class="btn btn-lg btn-primary" onclick="history.back();" value="Back">
+	
+	
 
 	<!-- Text input-->
 	<div class="form-group">

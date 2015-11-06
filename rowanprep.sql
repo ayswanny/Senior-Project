@@ -41,7 +41,7 @@ CREATE TABLE IF NOT EXISTS `students` (
   `street_address` varchar(50) NOT NULL,
   `city` varchar(20) NOT NULL,
   `state` varchar(2) NOT NULL,
-  `zip_code` varchar(5) NOT NULL,
+  `zip_code` char(5) NOT NULL,
   `home_phone` varchar(10) NOT NULL,
   `mobile_phone` varchar(10) NOT NULL,
   `work_phone` varchar(10) NOT NULL,
@@ -83,7 +83,7 @@ CREATE TABLE IF NOT EXISTS `teachers` (
   `street_address` varchar(30) NOT NULL,
   `city` varchar(20) NOT NULL,
   `state` varchar(2) NOT NULL,
-  `zip` int(5) NOT NULL,
+  `zip_code` char(5) NOT NULL,
   `teacher_key` int(11) NOT NULL
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 

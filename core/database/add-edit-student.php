@@ -14,6 +14,9 @@
 		}
 	}
 
+	$required_fields = array("first_name","last_name","teacher");
+
+
 	$first_name = ($_POST["first_name"]);
 	$last_name = ($_POST["last_name"]);
 	$street_address = ($_POST["street_address"]);
@@ -30,6 +33,7 @@
 	$progress_report_date = ($_POST["progress_report_date"]);
 
 
+
 	$photo_release = ($_POST["photo_release"]);
 	$home_phone = store_phone($_POST["home_phone"]);
 	$mobile_phone = store_phone($_POST["mobile_phone"]);
@@ -40,6 +44,15 @@
 	$date_of_birth = $_POST["date_of_birth"];
 	$enrolled = $_POST["enrolled"];
 	$notes = $_POST["notes"];
+
+
+	foreach ($required_fields as $varname) {
+		if (empty(${$varname})) {
+			echo "Missing $varname";
+			echo '<input type="button" class="btn btn-primary" onclick="history.back();" value="Back">';
+		}
+		# code...
+	}
 
 
 	/* Prepared statement, stage 1: prepare */
