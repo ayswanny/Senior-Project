@@ -31,6 +31,21 @@
 			return $user_key;
 	}
 
+	function store_phone($data) {
+		return str_replace("-", "", $data);
+	}
+
+	function display_phone($data) {
+		return preg_replace('~.*(\d{3})[^\d]{0,7}(\d{3})[^\d]{0,7}(\d{4}).*~', '($1) $2-$3', $data);
+		// if(  preg_match( '/^\+\d(\d{3})(\d{3})(\d{4})$/', $data,  $matches ) )
+		// {
+		//     $result = $matches[1] . '-' .$matches[2] . '-' . $matches[3];
+		//     return $result;
+		// }
+		// // if we couldn't format it, fallback to the actual data.
+		// return $data;
+	}
+
 	function clean_up($data) {
 		return mysql_real_escape_string($data);
 	}

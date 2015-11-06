@@ -3,11 +3,12 @@
   <div class="row">
 
     <!-- Simple jQuery calls to switch out divs-->
-    <a href="#" onClick="$('#teacher').hide(); $('#student').show()">Student</a>
-    <a href="#" onClick="$('#student').hide(); $('#teacher').show()">Teacher</a>
+    <a type="button" class="btn btn-primary" href="#" onClick="$('#teacher').hide(); $('#student').show()">Student</a>
+    <a type="button" class="btn btn-primary" href="#" onClick="$('#student').hide(); $('#teacher').show()">Teacher</a>
   </div>
 
   <div id="student" class="table-responsive">
+    <h3>Students</h3>
     <div class="col-md-3">
       <table class="table table-striped">
         <?php
@@ -68,8 +69,8 @@
                          <td>', $row['city'],'</td>
                          <td>', $row['state'],'</td>
                          <td>', $row['zip_code'],'</td>
-                         <td>', $row['home_phone'],'</td>
-                         <td>', $row['mobile_phone'],'</td>
+                         <td>', display_phone($row['home_phone']),'</td>
+                         <td>', display_phone($row['mobile_phone']),'</td>
                          <td>', $row['work_phone'],'</td>
                          <td>', $row['preferred_phone'],'</td>
                          <td>', $row['parent_email'],'</td>
@@ -87,6 +88,7 @@
   </div>
 
   <div id="teacher" style="display:none";class="table-responsive">
+    <h3>Teachers</h3>
     <div class="col-md-3">
       <table class="table table-striped">
         <?php

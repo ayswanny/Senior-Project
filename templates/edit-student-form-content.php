@@ -174,15 +174,15 @@
 	  </div>
 	</div>
 
-	<!-- starting date -->
-
 	<div class="form-group">
 	  <label class="col-md-4 control-label" for="textinput">Preferred Phone</label>
 	  <div class="col-md-5">
-	  <input id="textinput" name="preferred_phone" type="text" placeholder="<?php echo $row['preferred_phone']?>" class="form-control input-md" required="">
+	  <input id="textinput" name="date_of_birth" type="text" placeholder="<?php echo $row['preferred_phone']?>" class="form-control input-md" required="">
 
 	  </div>
 	</div>
+
+	<!-- starting date -->
 
 	<div class="form-group">
 	  <label class="col-md-4 control-label" for="textinput">Enrolled</label>
@@ -202,5 +202,3 @@
 
 	</fieldset>
 	</form>
-
-?>
