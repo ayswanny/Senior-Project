@@ -1,3 +1,9 @@
+<style type="text/css">
+  table td {
+    white-space: nowrap;
+  }
+</style>
+
 <div style="margin-top:50px;" class="mainbox col-md-12">
 
   <div class="row">
@@ -53,7 +59,7 @@
                  while($row = $results->fetch_assoc()) {
                     echo '<tr>
                          <td><a href="edit-student-form.php?student=', $row['student_key'], '">
-                         <img src="../rowanprep/res/image/edit.png"></a></td>
+                         <img src="./res/image/edit.png"></a></td>
                          <td>', $row['last_name'],'</td>
                          <td>', $row['first_name'],'</td>
                          <td>', $row['parent'],'</td>
@@ -71,8 +77,8 @@
                          <td>', $row['zip_code'],'</td>
                          <td>', display_phone($row['home_phone']),'</td>
                          <td>', display_phone($row['mobile_phone']),'</td>
-                         <td>', $row['work_phone'],'</td>
-                         <td>', $row['preferred_phone'],'</td>
+                         <td>', display_phone($row['work_phone']),'</td>
+                         <td>', display_phone($row['preferred_phone']),'</td>
                          <td>', $row['parent_email'],'</td>
                          <td>', $row['student_email'],'</td>
                          <td>', $row['starting_date'],'</td>
@@ -124,15 +130,15 @@
 
                     echo '<tr>
                          <td><a href="edit-teacher-form.php?teacher=', $row['teacher_key'], '">
-                         <img src="../rowanprep/res/image/edit.png"></a></td>
+                         <img src="./res/image/edit.png"></a></td>
                          <td>', $row['last_name'],'</td>
                          <td>', $row['first_name'],'</td>
                          <td>', $row['banner_id'],'</td>
                          <td>', $row['faculty_status'],'</td>
                          <td>', $row['instrument'],'</td>
                          <td>', $row['background_check'],'</td>
-                         <td>', $row['home_phone'],'</td>
-                         <td>', $row['mobile_phone'],'</td>
+                         <td>', display_phone($row['home_phone']),'</td>
+                         <td>', display_phone($row['mobile_phone']),'</td>
                          <td>', $row['email'],'</td>
                          <td>', $row['alternate_email'],'</td>
                          <td>', $row['street_address'],'</td>
