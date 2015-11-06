@@ -27,7 +27,8 @@
           else {
             // table headers
                   echo '<thead><tr>';
-                  echo '<th></th>
+                  echo '<th><a href="edit-student-form.php?student=\"new\"">
+                         <img class="table-icon" src="./res/image/plus.png"></a></th>
                         <th>Last Name</th>
                         <th>First Name</th>
                         <th>Parent</th>
@@ -107,7 +108,8 @@
           else {
             // table headers
                   echo '<thead><tr>';
-                  echo '<th></th>
+                  echo '<th><a href="edit-teacher-form.php?teacher=','new','">
+                         <img class="table-icon" src="./res/image/plus.png"></a></th>
                         <th>Last Name</th>
                         <th>First Name</th>
                         <th>Banner ID</th>
