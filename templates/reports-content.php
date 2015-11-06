@@ -58,7 +58,7 @@
                  //fill in rows with data
                  while($row = $results->fetch_assoc()) {
                     echo '<tr>
-                         <td><a href="edit-student-form.php?student=', $row['student_key'], '">
+                         <td><a href="edit-student-form.php?student=', $row['user_key'], '">
                          <img src="./res/image/edit.png"></a></td>
                          <td>', $row['last_name'],'</td>
                          <td>', $row['first_name'],'</td>
