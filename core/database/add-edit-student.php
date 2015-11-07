@@ -24,16 +24,12 @@
 	$state = ($_POST["state"]);
 	$zip_code = ($_POST["zip_code"]);
 	$student_email = ($_POST["student_email"]);
-
 	$parent = ($_POST["parent"]);
 	$teacher = ($_POST["teacher"]);
 	$classes = ($_POST["classes"]);
 	$ensembles = ($_POST["ensembles"]);
 	$events = ($_POST["events"]);
 	$progress_report_date = ($_POST["progress_report_date"]);
-
-
-
 	$photo_release = ($_POST["photo_release"]);
 	$home_phone = store_phone($_POST["home_phone"]);
 	$mobile_phone = store_phone($_POST["mobile_phone"]);
@@ -57,7 +53,11 @@
 
 	/* Prepared statement, stage 1: prepare */
 	if ($addnew) {
-		$sql = "INSERT INTO `students` (last_name, first_name, parent, teacher, classes, ensembles, events, progress_report_date, home_phone, mobile_phone, work_phone, preferred_phone, student_email, parent_email, street_address, city, state, zip_code, photo_release, dob, enrolled, instrument, notes) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+		$sql = "INSERT INTO `students` (last_name, first_name, parent, teacher, classes, ensembles, 
+										events, progress_report_date, home_phone, mobile_phone, work_phone, 
+										preferred_phone, student_email, parent_email, street_address, city, 
+										state, zip_code, photo_release, dob, enrolled, instrument, notes) 
+										VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 	} else {
 		// $sql = "UPDATE `students` SET last_name=?, first_name=?, parent=?, teacher=?, classes=?, ensembles=?, events=?, home_phone=?, mobile_phone=?, work_phone=?, preferred_phone=?, student_email=?, parent_email=?, street_address=?, city=?, state=?, zip_code=?, photo_release=?, dob=?, enrolled=?, instrument=?, notes=? WHERE student_key = $student";
 		$sql = "UPDATE `students` SET last_name=?, first_name=?, parent=?, teacher=?, classes=?, ensembles=?, events=?, progress_report_date=?, home_phone=?, mobile_phone=?, work_phone=?, preferred_phone=?, student_email=?, parent_email=?, street_address=?, city=?, state=?, zip_code=?, photo_release=?, dob=?, enrolled=?, instrument=?, notes=? WHERE user_key = $student";

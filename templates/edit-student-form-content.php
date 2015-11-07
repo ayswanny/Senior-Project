@@ -6,7 +6,7 @@
 
 	}
 
-	if($result = $db->query("SELECT * FROM `students` WHERE `user_key` LIKE '$student'")) {
+	if($result = $db->query("SELECT * FROM `students` WHERE `student_key` LIKE '$student'")) {
 		$row = $result->fetch_assoc();
 		if ($result->num_rows === 0) {
 			$addnew = true;
@@ -17,7 +17,7 @@
 
 ?>
 
-<form action="core/database/add-edit-student.php?student=<?php echo $student ?>" class="form-horizontal" method="post">
+<form action="core/database/add-edit-student.php?student=<?php echo $row['student_key']?>" class="form-horizontal" method="post">
 <fieldset>
 
 	<!-- Form Name -->
