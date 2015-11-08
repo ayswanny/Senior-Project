@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Nov 07, 2015 at 04:07 PM
+-- Generation Time: Nov 08, 2015 at 03:22 PM
 -- Server version: 5.6.24
 -- PHP Version: 5.5.20
 
@@ -35,6 +35,9 @@ CREATE TABLE IF NOT EXISTS `lessons` (
   `semester` varchar(6) NOT NULL,
   `year` int(4) NOT NULL,
   `instrument` varchar(30) NOT NULL,
+  `tuition_due` decimal(7,2) NOT NULL,
+  `tuition_paid` decimal(7,2) NOT NULL,
+  `tuition_owed` decimal(7,2) NOT NULL,
   `lesson_key` int(11) NOT NULL
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 
@@ -42,8 +45,8 @@ CREATE TABLE IF NOT EXISTS `lessons` (
 -- Dumping data for table `lessons`
 --
 
-INSERT INTO `lessons` (`student`, `teacher`, `teacher_type`, `duration`, `day`, `semester`, `year`, `instrument`, `lesson_key`) VALUES
-(1, 1, 'Rowan Prep', 60, 'Wednesday', 'Fall', 2015, 'Piano', 1);
+INSERT INTO `lessons` (`student`, `teacher`, `teacher_type`, `duration`, `day`, `semester`, `year`, `instrument`, `tuition_due`, `tuition_paid`, `tuition_owed`, `lesson_key`) VALUES
+(1, 1, 'Rowan Prep', 60, 'Wednesday', 'Fall', 2015, 'Piano', '0.00', '0.00', '0.00', 1);
 
 -- --------------------------------------------------------
 
@@ -59,9 +62,9 @@ CREATE TABLE IF NOT EXISTS `orchestra` (
   `check_number` varchar(44) NOT NULL,
   `paid_card` varchar(1) NOT NULL,
   `payment_date` varchar(40) NOT NULL,
-  `tuition_due` int(11) NOT NULL,
-  `tuition_paid` int(11) NOT NULL,
-  `tuition_owed` int(11) NOT NULL,
+  `tuition_due` decimal(7,2) NOT NULL,
+  `tuition_paid` decimal(7,2) NOT NULL,
+  `tuition_owed` decimal(7,2) NOT NULL,
   `notes` varchar(250) NOT NULL,
   `registration_key` int(11) NOT NULL
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
@@ -71,7 +74,7 @@ CREATE TABLE IF NOT EXISTS `orchestra` (
 --
 
 INSERT INTO `orchestra` (`student`, `Instrument`, `ryo_form`, `paid_check`, `check_number`, `paid_card`, `payment_date`, `tuition_due`, `tuition_paid`, `tuition_owed`, `notes`, `registration_key`) VALUES
-(1, 'ukelele', 'Y', 'Y', '123456789', '', '2015-03-03', 500, 500, 0, 'blah blah blah, bleh bleh bleh.', 1);
+(1, 'ukelele', 'Y', 'Y', '123456789', '', '2015-03-03', '500.00', '500.00', '0.00', 'blah blah blah, bleh bleh bleh.', 1);
 
 -- --------------------------------------------------------
 

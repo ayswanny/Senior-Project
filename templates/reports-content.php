@@ -109,9 +109,9 @@
     </div>
   </div>
 
-  <div id="teacher" style="display:none";class="table-responsive">
+  <div id="teacher" style="display:none"; class="table-responsive">
     <h3>Teachers</h3>
-    <div class="col-md-3">
+    <div class="col-md-3 offset-md-3">
       <table class="table table-striped">
         <?php
 
@@ -185,7 +185,7 @@
           else {
             // table headers
                   echo '<thead><tr>';
-                  echo '<th><a href="edit-lesson-form.php?lessons=','new','">
+                  echo '<th><a href="edit-lesson-form.php?lesson=','new','">
                          <img class="table-icon" src="./res/image/plus.png"></a></th>
                         <th>Student Last Name</th>
                         <th>Student First Name</th>
@@ -197,6 +197,9 @@
                         <th>Semester</th>
                         <th>Year</th>
                         <th>Instrument</th>
+                        <th>Tuition Due</th>
+                        <th>Tuition Paid</th>
+                        <th>Tuition Owed</th>
                         ';
                   echo '</tr></thead>';
                   echo '<tbody>';
@@ -209,7 +212,7 @@
                     $teacher_name = $tmp_teacher_name->fetch_assoc();
                     
                     echo '<tr>
-                         <td><a href="edit-teacher-form.php?teacher=', $row['lesson_key'], '">
+                         <td><a href="edit-lessons-form.php?lesson=', $row['lesson_key'], '">
                          <img src="./res/image/edit.png"></a></td>
                          <td>', $student_name['last_name'],'</td>
                          <td>', $student_name['first_name'],'</td>
@@ -220,7 +223,10 @@
                          <td>', $row['day'],'</td>
                          <td>', $row['semester'],'</td>
                          <td>', $row['year'],'</td>
-                         <td>', $row['instrument'],'</td>'
+                         <td>', $row['instrument'],'</td>
+                         <td>', $row['tuition_due'],'</td>
+                         <td>', $row['tuition_paid'],'</td>
+                         <td>', $row['tuition_owed'],'</td>'
                           ;
                   }
                    echo '</tbody>';
@@ -244,7 +250,7 @@
           else {
             // table headers
                   echo '<thead><tr>';
-                  echo '<th><a href="edit-teacher-form.php?orchestra=','new','">
+                  echo '<th><a href="edit-orchestra-form-form.php?orchestra=','new','">
                          <img class="table-icon" src="./res/image/plus.png"></a></th>
                         <th>Student Last Name</th>
                         <th>Student First Name</th>
@@ -268,9 +274,9 @@
 
                   $tmp_student_info = get_student_info($row['student']); // call to get student names  
                   $student_info = $tmp_student_info->fetch_assoc();
-
+                  
                     echo '<tr>
-                         <td><a href="edit-teacher-form.php?teacher=', $row['orchestra_key'], '">
+                         <td><a href="edit-orchestra-form.php?orchestra=', $row['orchestra_key'], '">
                          <img src="./res/image/edit.png"></a></td>
                          <td>', $student_info['last_name'],'</td>
                          <td>', $student_info['first_name'],'</td>
@@ -279,6 +285,7 @@
                          <td>', $student_info['parent_email'],'</td>
                          <td>', $row['ryo_form'],'</td>
                          <td>', $row['paid_check'],'</td>
+                         <td>', $row['check_number'],'</td>
                          <td>', $row['paid_card'],'</td>
                          <td>', $row['payment_date'],'</td>
                          <td>', $row['tuition_due'],'</td>
