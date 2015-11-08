@@ -1,18 +1,20 @@
-Finish these forms:
+Create add/edit lesson form:
 
-Edit teacher/student forms.
-   - Add button to sumbit w/ POST input to database/edit-<something>.php
-   - Add date of birth to student form   
+       - Last name / first name of teacher and student should be restrictive
+       	 so lessons with incorrect names should not be input into the system.
+	 Create a function in which on POST the strings, last name/first name
+	 of both, student and teacher, are searched for and their student key
+	 and teacher key, respectively, are returned for input into the lessons
+	 table. Have a look at the database structure.
+       - All other fields can have a simple textfield input without lookups.
+       - All money inputs are in the form XXXXX.XX, please denote this with a help
+       	  or placeholder value.
 
+Create add/edit orchestra form
 
-Add teacher/student forms:
-   - Copy and paste Edit forms, remove placeholders with default text.
-   - add date of birth to student form
-   - Modify to POST form to send data to /database/add-teacher.php
-   - Create /database/add-teacher.php with Update.
-
-
-
-Extra Stuff:
-
-Make Index pages and About pages pretty. 
+       - Similar to the lessons forms, create a function in which on POST the
+       	 database is queried for a only student last name, first name to check
+	 if it exists. If it does retrieve the student key for the form.
+       - All other fields can have asimple textfield input without lookups.
+       - All money inputs are in the form XXXXX.XX, please denote this with a help
+       	 or placeholder value 
