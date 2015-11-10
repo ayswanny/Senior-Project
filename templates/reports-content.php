@@ -9,20 +9,20 @@
   <div class="row">
 
     <!-- Simple jQuery calls to switch out divs-->
-    <a type="button" class="btn btn-primary" href="#" onClick="$('#teacher').hide(); 
+    <a type="button" class="btn btn-primary" href="#" onClick="$('#teacher').hide();
                                                                $('#lessons').hide();
-                                                               $('#orchestra').hide(); 
+                                                               $('#orchestra').hide();
                                                                $('#student').show()">Student</a>
-    <a type="button" class="btn btn-primary" href="#" onClick="$('#student').hide(); 
-                                                               $('#lessons').hide(); 
+    <a type="button" class="btn btn-primary" href="#" onClick="$('#student').hide();
+                                                               $('#lessons').hide();
                                                                $('#orchestra').hide();
                                                                $('#teacher').show()">Teacher</a>
-    <a type="button" class="btn btn-primary" href="#" onClick="$('#teacher').hide(); 
+    <a type="button" class="btn btn-primary" href="#" onClick="$('#teacher').hide();
                                                                $('#student').hide();
-                                                               $('#orchestra').hide(); 
+                                                               $('#orchestra').hide();
                                                                $('#lessons').show()">Lessons</a>
-    <a type="button" class="btn btn-primary" href="#" onClick="$('#teacher').hide(); 
-                                                               $('#student').hide(); 
+    <a type="button" class="btn btn-primary" href="#" onClick="$('#teacher').hide();
+                                                               $('#student').hide();
                                                                $('#lessons').hide()
                                                                $('#orchestra').show();">Rowan Youth Orchestra</a>
 
@@ -185,7 +185,7 @@
           else {
             // table headers
                   echo '<thead><tr>';
-                  echo '<th><a href="edit-lesson-form.php?lesson=','new','">
+                  echo '<th><a href="edit-lessons-form.php?lesson=','new','">
                          <img class="table-icon" src="./res/image/plus.png"></a></th>
                         <th>Student Last Name</th>
                         <th>Student First Name</th>
@@ -205,12 +205,12 @@
                   echo '<tbody>';
                  //fill in rows with data
                  while($row = $results->fetch_assoc()) {
-                    $tmp_student_name = get_student_name($row['student']); // call to get student names  
+                    $tmp_student_name = get_student_name($row['student']); // call to get student names
                     $student_name = $tmp_student_name->fetch_assoc();
 
                     $tmp_teacher_name = get_teacher_name($row['teacher']); // call to get teacher names
                     $teacher_name = $tmp_teacher_name->fetch_assoc();
-                    
+
                     echo '<tr>
                          <td><a href="edit-lessons-form.php?lesson=', $row['lesson_key'], '">
                          <img src="./res/image/edit.png"></a></td>
@@ -272,9 +272,9 @@
                  //fill in rows with data
                  while($row = $results->fetch_assoc()) {
 
-                  $tmp_student_info = get_student_info($row['student']); // call to get student names  
+                  $tmp_student_info = get_student_info($row['student']); // call to get student names
                   $student_info = $tmp_student_info->fetch_assoc();
-                  
+
                     echo '<tr>
                          <td><a href="edit-orchestra-form.php?orchestra=', $row['orchestra_key'], '">
                          <img src="./res/image/edit.png"></a></td>
