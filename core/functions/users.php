@@ -4,6 +4,17 @@
 		return(isset($_SESSION['id'])) ? true : false;
 	}
 
+	function isAdmin($user_key) {
+		global $db;
+		$user_key = clean_up($user_key);
+		$results = $db->query("SELECT * FROM `users` WHERE `user_key` ='$user_key'");
+		$rows = $results->fetch_assoc();
+		if($rows['admin'] == 1)
+			return true;
+		else
+			return false;
+	}
+
 	function user_exists($username) {
 		global $db;
 		$username = clean_up($username);
@@ -48,6 +59,36 @@
 
 	function clean_up($data) {
 		return mysql_real_escape_string($data);
+	}
+
+	function get_student_list() {
+		global $db;
+		return $results = $db->query("SELECT * FROM `students`");
+	}
+	function get_teacher_list(){
+		global $db;
+		return $results = $db->query("SELECT * FROM `teachers`");
+	}
+	function get_lessons_list(){
+		global $db;
+		return $results = $db->query("SELECT * FROM `lessons`");
+	}
+	function get_orchestra_list(){
+		global $db;
+		return $results = $db->query("SELECT * FROM `orchestra`");
+	}
+	function get_student_name($key){
+		global $db;
+		return $results = $db->query("SELECT `last_name`, `first_name` FROM `students` WHERE `student_key` =  '$key'");
+	}
+	function get_teacher_name($key){
+		global $db;
+		return $results = $db->query("SELECT `last_name`, `first_name` FROM `teachers` WHERE `teacher_key` =  '$key'");
+	}
+	function get_student_info($key){
+		global $db;
+		return $results = $db->query("SELECT `last_name`, `first_name`, `student_email`, `parent_email` 
+										FROM `students` WHERE `student_key` =  '$key'");
 	}
 
 ?>
