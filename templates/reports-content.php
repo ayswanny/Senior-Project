@@ -65,8 +65,8 @@
                         <th>Preferred Phone</th>
                         <th>Parent Email</th>
                         <th>Student Email</th>
-                        <th>Starting Date</th>
                         <th>Enrolled</th>
+                        <th>Currently Enrolled</th>
                         <th>Notes</th>
                         ';
                   echo '</tr></thead>';
@@ -97,8 +97,8 @@
                          <td>', display_phone($row['preferred_phone']),'</td>
                          <td>', $row['parent_email'],'</td>
                          <td>', $row['student_email'],'</td>
-                         <td>', $row['starting_date'],'</td>
                          <td>', $row['enrolled'],'</td>
+                         <td>', $row['currently_enrolled'],'</td>
                          <td>', $row['notes'],'</td></tr>'
                           ;
                   }
@@ -276,7 +276,7 @@
                   $student_info = $tmp_student_info->fetch_assoc();
 
                     echo '<tr>
-                         <td><a href="edit-orchestra-form.php?orchestra=', $row['orchestra_key'], '">
+                         <td><a href="edit-orchestra-form.php?orchestra=', $row['registration_key'], '">
                          <img src="./res/image/edit.png"></a></td>
                          <td>', $student_info['last_name'],'</td>
                          <td>', $student_info['first_name'],'</td>

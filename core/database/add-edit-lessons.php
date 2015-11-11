@@ -13,20 +13,15 @@
 			}
 		}
 	}
-
-  // $student_last_name = ($_POST["student_last_name"]);
-  // $student_first_name = ($_POST["student_first_name"]);
-  // $teacher_last_name = ($_POST["teacher_last_name"]);
-  // $teacher_first_name = ($_POST["teacher_first_name"]);
-
+ 
   /* This, I think, is where the check for names should go.
   * Somehow need to get IDs to put into the lessons table.
   * Really not sure on how to do this.
   * Highly doubt this works, probably needs $row like on line 10.
   */
-  $student = $db->query("SELECT * FROM `students` WHERE last_name=`student_last_name` AND first_name=`student_first_name`");
-  $teacher = $db->query("SELECT * FROM `teachers` WHERE last_name=`student_last_name` AND first_name=`student_first_name`");
-
+  
+  $student = $_POST["student"];
+  $teacher = $_POST["teacher"];
   $teacher_type = ($_POST["teacher_type"]);
   $duration = ($_POST["duration"]);
   $day = ($_POST["day"]);
@@ -35,20 +30,23 @@
   $instrument = ($_POST["instrument"]);
   $tuition_due = ($_POST["tuition_due"]);
   $tuition_paid = ($_POST["tuition_paid"]);
-  //Unsure about this too
   $tuition_owed = $tuition_due-$tuition_paid;
 
 
 
   /* Prepared statement, stage 1: prepare */
-  if ($addnew {
+  if ($addnew) {
     $sql = "INSERT INTO `lessons` (student, teacher, teacher_type, duration, day,
-                                  semester, year, instrument, tuition_due, tuition_paid, tuition_owed) VALUES (?,?,?,?,?,?,?,?,?,?,?)";
+                                  semester, year, instrument, tuition_due, tuition_paid, tuition_owed) 
+            VALUES (?,?,?,?,?,?,?,?,?,?,?)";
 
   } else {
 
-    	$sql = "UPDATE `lessons` SET student=?, teacher=?, teacher_type=?, duration=?, day=?,
-                                    semester=?, year=?, instrument=?, tuition_due=?, tuition_paid=?, tuition_owed=? WHERE lesson_key=$lessons";
+    	$sql = "UPDATE `lessons` 
+              SET student=?, teacher=?, teacher_type=?, duration=?, day=?,
+                  semester=?, year=?, instrument=?, tuition_due=?, tuition_paid=?, 
+                  tuition_owed=? 
+              WHERE lesson_key=$lesson";
 
   }
 

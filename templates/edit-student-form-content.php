@@ -21,8 +21,8 @@
 <fieldset>
 
 	<!-- Form Name -->
-	<legend><?php echo (($addnew)?"Add":"Edit"); ?> Student
-	<input type="submit" class="btn btn-primary" value="Save" />
+	<legend> <?php echo (($addnew)?"Add":"Edit"); ?> Student
+	<input type="submit" class="btn btn-primary" value="Save"/>
 	<input type="button" class="btn btn-primary" onclick="history.back();" value="Back">
 	</legend>
 
@@ -52,6 +52,14 @@
 	  <label class="col-md-4 control-label" for="textinput">Parent</label>
 	  <div class="col-md-5">
 	  <input id="textinput" name="parent" type="text" value="<?php echo $row['parent']?>" class="form-control input-md">
+
+	  </div>
+	</div>
+
+	<div class="form-group">
+	  <label class="col-md-4 control-label" for="textinput">Date of Birth</label>
+	  <div class="col-md-5">
+	  <input id="datepicker" name="date_of_birth" type="date" value="<?php echo $row['dob']?>" class="form-control input-md" required="">
 
 	  </div>
 	</div>
@@ -190,7 +198,6 @@
 	  <label class="col-md-4 control-label" for="textinput">Parent Email</label>
 	  <div class="col-md-5">
 	  <input id="textinput" name="parent_email" type="text" value="<?php echo $row['parent_email']?>" class="form-control input-md" required="">
-
 	  </div>
 	</div>
 
@@ -198,27 +205,23 @@
 	  <label class="col-md-4 control-label" for="textinput">Student Email</label>
 	  <div class="col-md-5">
 	  <input id="textinput" name="student_email" type="text" value="<?php echo $row['student_email']?>" class="form-control input-md" required="">
-
 	  </div>
 	</div>
-
-	<div class="form-group">
-	  <label class="col-md-4 control-label" for="textinput">Date of Birth</label>
-	  <div class="col-md-5">
-	  <input id="datepicker" name="date_of_birth" type="date" value="<?php echo $row['dob']?>" class="form-control input-md" required="">
-
-	  </div>
-	</div>
-
-	<!-- starting date -->
 
 	<div class="form-group">
 	  <label class="col-md-4 control-label" for="textinput">Enrolled</label>
 	  <div class="col-md-5">
 	  <input id="textinput" name="enrolled" type="date" value="<?php if ($addnew) echo time(); else echo $row['enrolled']; ?>" class="form-control input-md" required="">
-
 	  </div>
 	</div>
+
+	<div class="form-group">
+	  <label class="col-md-4 control-label" for="textinput">Currently Enrolled</label>
+	  <div class="col-md-5">
+	  <input id="textinput" name="currently_enrolled" type="text" value="<?php echo $row['currently_enrolled']?>" class="form-control input-md" required="">
+	  </div>
+	</div>
+
 
 	<div class="form-group">
 	  <label class="col-md-4 control-label" for="textinput">Notes</label>
