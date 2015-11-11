@@ -20,12 +20,15 @@ SET time_zone = "+00:00";
 -- Database: `rowanprep`
 --
 
+USE `rowanprep`;
+
 -- --------------------------------------------------------
 
 --
 -- Table structure for table `lessons`
 --
 
+DROP TABLE `lessons`;
 CREATE TABLE IF NOT EXISTS `lessons` (
   `student` int(11) NOT NULL,
   `teacher` int(11) NOT NULL,
@@ -54,6 +57,7 @@ INSERT INTO `lessons` (`student`, `teacher`, `teacher_type`, `duration`, `day`, 
 -- Table structure for table `orchestra`
 --
 
+DROP TABLE `orchestra`;
 CREATE TABLE IF NOT EXISTS `orchestra` (
   `student` int(11) NOT NULL,
   `Instrument` varchar(20) NOT NULL,
@@ -81,7 +85,7 @@ INSERT INTO `orchestra` (`student`, `Instrument`, `ryo_form`, `paid_check`, `che
 --
 -- Table structure for table `students`
 --
-
+DROP TABLE `students`;
 CREATE TABLE IF NOT EXISTS `students` (
   `last_name` varchar(20) NOT NULL,
   `first_name` varchar(20) NOT NULL,
@@ -124,7 +128,7 @@ INSERT INTO `students` (`last_name`, `first_name`, `parent`, `dob`, `teacher`, `
 --
 -- Table structure for table `teachers`
 --
-
+DROP TABLE `teachers`;
 CREATE TABLE IF NOT EXISTS `teachers` (
   `last_name` varchar(20) NOT NULL,
   `first_name` varchar(20) NOT NULL,
@@ -155,7 +159,7 @@ INSERT INTO `teachers` (`last_name`, `first_name`, `banner_id`, `faculty_status`
 --
 -- Table structure for table `users`
 --
-
+DROP TABLE `users`;
 CREATE TABLE IF NOT EXISTS `users` (
   `username` char(20) NOT NULL,
   `password` char(20) NOT NULL,

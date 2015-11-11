@@ -6,9 +6,6 @@
 
 ?>
 
-    <script src="scripts/js/jquery.js"></script>
-    <script src="scripts/js/bootstrap.min.js"></script>
-
 <?php
     include 'templates/footer.php';
 ?>
