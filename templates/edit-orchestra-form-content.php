@@ -57,7 +57,7 @@
   <div class="form-group">
     <label class="col-md-4 control-label" for="textinput">Instrument</label>
     <div class="col-md-5">
-    <input id="textinput" name="instrument" type="number" value="<?php echo $row['instrument']?>" class="form-control input-md" required="">
+    <input id="textinput" name="instrument" type="text" value="<?php echo $row['instrument']?>" class="form-control input-md" required="">
 
     </div>
   </div>
@@ -73,7 +73,7 @@
   <div class="form-group">
     <label class="col-md-4 control-label" for="textinput">Paid by Check</label>
     <div class="col-md-5">
-    <input id="textinput" name="semester" type="text" value="<?php echo $row['paid_check']?>" class="form-control input-md" required="">
+    <input id="textinput" name="paid_check" type="text" value="<?php echo $row['paid_check']?>" class="form-control input-md" required="">
 
     </div>
   </div>
@@ -89,7 +89,7 @@
   <div class="form-group">
     <label class="col-md-4 control-label" for="textinput">Paid by Card</label>
     <div class="col-md-5">
-    <input id="textinput" name="semester" type="text" value="<?php echo $row['paid_card']?>" class="form-control input-md" required="">
+    <input id="textinput" name="paid_card" type="text" value="<?php echo $row['paid_card']?>" class="form-control input-md" required="">
 
     </div>
   </div>

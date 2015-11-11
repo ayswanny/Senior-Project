@@ -250,7 +250,7 @@
           else {
             // table headers
                   echo '<thead><tr>';
-                  echo '<th><a href="edit-orchestra-form-form.php?orchestra=','new','">
+                  echo '<th><a href="edit-orchestra-form.php?orchestra=','new','">
                          <img class="table-icon" src="./res/image/plus.png"></a></th>
                         <th>Student Last Name</th>
                         <th>Student First Name</th>
