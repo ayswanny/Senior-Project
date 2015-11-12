@@ -48,6 +48,7 @@
                   echo '<thead><tr>';
                   echo '<th><a href="edit-student-form.php?student=\"new\"">
                          <img class="table-icon" src="./res/image/plus.png"></a></th>
+                        <th></th>
                         <th>Last Name</th>
                         <th>First Name</th>
                         <th>Parent</th>
@@ -132,6 +133,7 @@
                   echo '<thead><tr>';
                   echo '<th><a href="edit-teacher-form.php?teacher=','new','">
                          <img class="table-icon" src="./res/image/plus.png"></a></th>
+                        <th></th>
                         <th>Last Name</th>
                         <th>First Name</th>
                         <th>Banner ID</th>
@@ -197,6 +199,7 @@
                   echo '<thead><tr>';
                   echo '<th><a href="edit-lessons-form.php?lesson=','new','">
                          <img class="table-icon" src="./res/image/plus.png"></a></th>
+                        <th></th>
                         <th>Student Last Name</th>
                         <th>Student First Name</th>
                         <th>Teacher Last Name</th>
@@ -265,6 +268,7 @@
                   echo '<thead><tr>';
                   echo '<th><a href="edit-orchestra-form.php?orchestra=','new','">
                          <img class="table-icon" src="./res/image/plus.png"></a></th>
+                        <th></th>
                         <th>Student Last Name</th>
                         <th>Student First Name</th>
                         <th>Intrument</th>
@@ -289,11 +293,11 @@
                   $student_info = $tmp_student_info->fetch_assoc();
 
                     echo '<tr>
-                         <td>
+                         
                          <td><button id="close-image" onclick="Confirm.render(\'Delete Orchestra Entry?\',\'delete_orchestra\',\'', $row['registration_key'], '\')">
                            <img src="./res/image/remove-user.png">
                            </button></td>
-                         <a href="edit-orchestra-form.php?orchestra=', $row['registration_key'], '">
+                         <td><a href="edit-orchestra-form.php?orchestra=', $row['registration_key'], '">
                          <img src="./res/image/edit.png"></a></td>
                          <td>', $student_info['last_name'],'</td>
                          <td>', $student_info['first_name'],'</td>
