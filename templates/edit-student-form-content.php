@@ -1,4 +1,5 @@
 <?php
+
 	if(isset($_GET['student'])) {
 		$student = clean_up($_GET['student']);
 	}

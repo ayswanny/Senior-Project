@@ -4,4 +4,13 @@
 		$results = $db->query("SELECT * FROM `users`");
 		return $results;
 	}
+
+	function delete_user(){
+
+
+	}
+
+	function add_user(){
+		
+	}
 ?>

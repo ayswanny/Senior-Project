@@ -1,17 +1,11 @@
 <?php
 	require 'core/init.php';
-	if(!isAdmin($_SESSION[id])){
+	if(!logged_in())
 		header("Location: index.php");
-	}
+	if(!isAdmin($_SESSION[id]))
+		header("Location: index.php");
     include 'templates/header.php';
     include 'templates/navbar-logged-in.php';
     include 'templates/admin-content.php';
-
-?>
-
-    <script src="scripts/js/jquery.js"></script>
-    <script src="scripts/yjs/bootstrap.min.js"></script>
-
-<?php
     include 'templates/footer.php';
 ?>
