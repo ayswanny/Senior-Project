@@ -78,6 +78,9 @@
                  //fill in rows with data
                  while($row = $results->fetch_assoc()) {
                     echo '<tr>
+                         <td><button id="close-image" onclick="Confirm.render(\'Delete Student?\',\'delete_student\',\'', $row['student_key'], '\')">
+                           <img src="./res/image/remove-user.png">
+                           </button></td>
                          <td><a href="edit-student-form.php?student=', $row['student_key'], '">
                          <img src="./res/image/edit.png"></a></td>
                          <td>', $row['last_name'],'</td>
@@ -150,6 +153,9 @@
                  while($row = $results->fetch_assoc()) {
 
                     echo '<tr>
+                         <td><button id="close-image" onclick="Confirm.render(\'Delete Teacher?\',\'delete_teacher\',\'', $row['teacher_key'], '\')">
+                         <img src="./res/image/remove-user.png">
+                         </button></td>
                          <td><a href="edit-teacher-form.php?teacher=', $row['teacher_key'], '">
                          <img src="./res/image/edit.png" alt="edit" ></a></td>
                          <td>', $row['last_name'],'</td>
@@ -216,6 +222,9 @@
                     $teacher_name = $tmp_teacher_name->fetch_assoc();
 
                     echo '<tr>
+                         <td><button id="close-image" onclick="Confirm.render(\'Delete Lesson?\',\'delete_lesson\',\'', $row['lesson_key'], '\')">
+                         <img src="./res/image/remove-user.png">
+                         </button></td>
                          <td><a href="edit-lessons-form.php?lesson=', $row['lesson_key'], '">
                          <img src="./res/image/edit.png"></a></td>
                          <td>', $student_name['last_name'],'</td>
@@ -280,7 +289,11 @@
                   $student_info = $tmp_student_info->fetch_assoc();
 
                     echo '<tr>
-                         <td><a href="edit-orchestra-form.php?orchestra=', $row['registration_key'], '">
+                         <td>
+                         <td><button id="close-image" onclick="Confirm.render(\'Delete Orchestra Entry?\',\'delete_orchestra\',\'', $row['registration_key'], '\')">
+                           <img src="./res/image/remove-user.png">
+                           </button></td>
+                         <a href="edit-orchestra-form.php?orchestra=', $row['registration_key'], '">
                          <img src="./res/image/edit.png"></a></td>
                          <td>', $student_info['last_name'],'</td>
                          <td>', $student_info['first_name'],'</td>

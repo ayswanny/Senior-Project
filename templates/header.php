@@ -19,16 +19,22 @@
     <link href="css/about.css" rel="stylesheet">
     <link href="css/navbar.css" rel="stylesheet">
     <link href="css/footer.css" rel="stylesheet">
+    <link href="css/dialog.css" rel="stylesheet">
+    
     <style>
     body {
         padding-top: 70px;
     }
     </style>
-        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-
+    
+    <!--Scripts -->
+    
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <script src="scripts/js/jquery.js"></script>
     <script src="scripts/js/bootstrap.min.js"></script>
+    <script src="scripts/js/dialog.js"></script>
+
 
     <script>
       $(function() {
@@ -40,3 +46,12 @@
 </head>
 
 <body>
+
+<div id="dialogoverlay"></div>
+<div id="dialogbox">
+  <div>
+    <div id="dialogboxhead"></div>
+    <div id="dialogboxbody"></div>
+    <div id="dialogboxfoot"></div>
+  </div>
+</div>

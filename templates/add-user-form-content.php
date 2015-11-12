@@ -26,17 +26,14 @@
                             <input id="login-email" type="text" class="form-control" name="email" placeholder="email">
                 </div>
                 <!-- Type -->
-                <div style="margin-bottom: 45px" class="input-group">
-                            <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
-                            <div class="radio">
-                                <label><input type="radio" name="optradio">Student</label>
-                            </div>
-                             <div class="radio">
-                                <label><input type="radio" name="optradio">Teacher</label>
-                            </div>
-                             <div class="radio">
-                                <label><input type="radio" name="optradio">Administrator</label>
-                            </div>
+                <div class="form-group">
+                    <label class="col-md-4 control-label" for="selectbasic">Account Type</label>
+                    <div class="col-md-5">
+                      <select id="selectbasic" name="teacher_type" class="form-control">
+                        <option value="0">User</option>
+                        <option value="1">Administrator</option>
+                      </select>
+                    </div>
                 </div>
                 
                
