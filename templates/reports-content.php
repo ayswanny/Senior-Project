@@ -71,7 +71,6 @@
                         <th>Preferred Phone</th>
                         <th>Parent Email</th>
                         <th>Student Email</th>
-                        <th>Enrolled</th>
                         <th>Currently Enrolled</th>
                         <th>Notes</th>
                         ';
@@ -110,7 +109,6 @@
                          <td>', $row['parent_email'],'</td>
                          <td>', $row['student_email'],'</td>
                          <td>', $row['enrolled'],'</td>
-                         <td>', $row['currently_enrolled'],'</td>
                          <td>', $row['notes'],'</td></tr>'
                           ;
                   }
