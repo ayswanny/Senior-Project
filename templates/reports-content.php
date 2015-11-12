@@ -295,7 +295,7 @@
                  while($row = $results->fetch_assoc()) {
 
                     echo '<tr>
-                         
+
                          <td><button id="close-image" onclick="Confirm.render(\'Delete Orchestra Entry?\',\'delete_orchestra\',\'', $row['registration_key'], '\')">
                            <img src="./res/image/remove-user.png">
                            </button></td>
