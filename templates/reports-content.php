@@ -49,6 +49,7 @@
                   echo '<th><a href="edit-student-form.php?student=\"new\"">
                          <img class="table-icon" src="./res/image/plus.png"></a></th>
                         <th></th>
+                        <th></th>
                         <th>Last Name</th>
                         <th>First Name</th>
                         <th>Parent</th>
@@ -82,8 +83,11 @@
                          <td><button id="close-image" onclick="Confirm.render(\'Delete Student?\',\'delete_student\',\'', $row['student_key'], '\')">
                            <img src="./res/image/remove-user.png">
                            </button></td>
+
+                         <td><a href="student-timesheet.php?student=', $row['student_key'], '">
+                         <img class="table-icon" src="./res/image/timesheet.png"></a></td>
                          <td><a href="edit-student-form.php?student=', $row['student_key'], '">
-                         <img src="./res/image/edit.png"></a></td>
+                         <img class="table-icon" src="./res/image/edit.png"></a></td>
                          <td>', $row['last_name'],'</td>
                          <td>', $row['first_name'],'</td>
                          <td>', $row['parent'],'</td>
@@ -134,6 +138,7 @@
                   echo '<th><a href="edit-teacher-form.php?teacher=','new','">
                          <img class="table-icon" src="./res/image/plus.png"></a></th>
                         <th></th>
+                        <th></th>
                         <th>Last Name</th>
                         <th>First Name</th>
                         <th>Banner ID</th>
@@ -156,10 +161,12 @@
 
                     echo '<tr>
                          <td><button id="close-image" onclick="Confirm.render(\'Delete Teacher?\',\'delete_teacher\',\'', $row['teacher_key'], '\')">
-                         <img src="./res/image/remove-user.png">
+                         <img class="table-icon" src="./res/image/remove-user.png">
                          </button></td>
+                         <td><a href="teacher-timesheet.php?teacher=', $row['teacher_key'], '">
+                         <img class="table-icon" src="./res/image/timesheet.png" alt="edit" ></a></td>
                          <td><a href="edit-teacher-form.php?teacher=', $row['teacher_key'], '">
-                         <img src="./res/image/edit.png" alt="edit" ></a></td>
+                         <img class="table-icon" src="./res/image/edit.png" alt="edit" ></a></td>
                          <td>', $row['last_name'],'</td>
                          <td>', $row['first_name'],'</td>
                          <td>', $row['banner_id'],'</td>
