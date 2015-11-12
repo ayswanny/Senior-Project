@@ -38,7 +38,7 @@
 	<!-- TODO: FIX this bit. -->
 
 	<div id="lessons" class="table-responsive">  
-		<h3>Lessons</h3>
+		<h3>Timesheet</h3>
 		<table class="table table-striped">
 
 			<?php
@@ -84,10 +84,26 @@
                 	echo '<td></td>';
 	                foreach ($fields as $key => $value) {
 	                	echo "<td>$row[$value]</td>";
-	                	# code...
 	                }
 	                echo "</tr>";
 	            }
+
+	            $sumresult = $db->query("SELECT SUM(tuition_owed),SUM(tuition_due),SUM(tuition_paid) FROM `lessons` WHERE `teacher` = $teacher");
+	            $sumrow = $sumresult->fetch_assoc();
+
+				echo '<tr>';
+            	echo '<td></td>';
+                foreach ($fields as $key => $value) {
+                	$tmp = "SUM($value)";
+                	if ($key == 5) {
+                		echo "<td>". $sumrow[$tmp] ."</td>";	
+                	} else {
+                		echo "<td></td>";
+                	}
+                	
+                }
+                echo "</tr>";
+
 	            echo "</tbody>";
 
 			?>
