@@ -253,7 +253,7 @@
   </div>
 
   <div id="orchestra" style="display:none";class="table-responsive">
-    <h3>Lessons</h3>
+    <h3>Rowan Youth Orchestra</h3>
     <div class="col-md-3">
       <table class="table table-striped">
         <?php
@@ -268,7 +268,7 @@
                   echo '<thead><tr>';
                   echo '<th><a href="edit-orchestra-form.php?orchestra=','new','">
                          <img class="table-icon" src="./res/image/plus.png"></a></th>
-                        <th></th>
+                        <th></th>,
                         <th>Student Last Name</th>
                         <th>Student First Name</th>
                         <th>Intrument</th>
@@ -289,9 +289,6 @@
                  //fill in rows with data
                  while($row = $results->fetch_assoc()) {
 
-                  $tmp_student_info = get_student_info($row['student']); // call to get student names
-                  $student_info = $tmp_student_info->fetch_assoc();
-
                     echo '<tr>
                          
                          <td><button id="close-image" onclick="Confirm.render(\'Delete Orchestra Entry?\',\'delete_orchestra\',\'', $row['registration_key'], '\')">
@@ -299,11 +296,11 @@
                            </button></td>
                          <td><a href="edit-orchestra-form.php?orchestra=', $row['registration_key'], '">
                          <img src="./res/image/edit.png"></a></td>
-                         <td>', $student_info['last_name'],'</td>
-                         <td>', $student_info['first_name'],'</td>
+                         <td>', $row['last_name'],'</td>
+                         <td>', $row['first_name'],'</td>
                          <td>', $row['instrument'],'</td>
-                         <td>', $student_info['student_email'],'</td>
-                         <td>', $student_info['parent_email'],'</td>
+                         <td>', $row['student_email'],'</td>
+                         <td>', $row['parent_email'],'</td>
                          <td>', $row['ryo_form'],'</td>
                          <td>', $row['paid_check'],'</td>
                          <td>', $row['check_number'],'</td>

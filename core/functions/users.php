@@ -75,7 +75,11 @@
 	}
 	function get_orchestra_list(){
 		global $db;
-		return $results = $db->query("SELECT * FROM `orchestra`");
+		// $sql_ryo = 	"SELECT st.first_name, st.last_name, ryor.instrument, st.student_email, st.parent_email ryor.ryo_form, ryor.tuition_due, ryor.tuition_paid, ryor.tuition_owed FROM orchestra ryor " .
+		// 		"JOIN students st ON ryor.student = st.student_key WHERE st.student_key = $student";
+		// $sql_ryo = 	"SELECT * FROM orchestra ryor JOIN students st ON ryor.student = st.student_key";
+		
+		return $results = $db->query("SELECT * FROM students st JOIN orchestra ryor ON ryor.student = st.student_key"); //"SELECT * FROM `orchestra`");
 	}
 	function get_student_name($key){
 		global $db;
