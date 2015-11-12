@@ -4,14 +4,6 @@
   }
 </style>
 
-<div id="dialogoverlay"></div>
-<div id="dialogbox">
-  <div>
-    <div id="dialogboxhead"></div>
-    <div id="dialogboxbody"></div>
-    <div id="dialogboxfoot"></div>
-  </div>
-</div>
 
 <div class="container">
 
@@ -19,7 +11,7 @@
     
     <div id="users" class="table-responsive col-md-offset-1">
       <h3 class="col-md-offset-5">Users   </h3>
-      <div class="col-md-3 col-md-offset-2">
+      <div class="col-md-3 col-md-offset-3">
         <table class="table table-striped">
           <?php
 

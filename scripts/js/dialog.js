@@ -20,8 +20,19 @@ function CustomAlert(){
 }
 var Alert = new CustomAlert();
 function deleteUser(id){
-	id.replace("post_", "");
-	location.replace("./core/delete-user.php?id=" + id);
+	location.replace("./core/database/delete-user.php?key=" + id);
+}
+function deleteStudent(id){
+	location.replace("./core/database/delete-student.php?key=" + id);
+}
+function deleteTeacher(id){
+	location.replace("./core/database/delete-teacher.php?key=" + id);
+}
+function deleteLesson(id){
+	location.replace("./core/database/delete-lesson.php?key=" + id);
+}
+function deleteOrchestra(id){
+	location.replace("./core/database/delete-orchestra.php?key=" + id);
 }
 function CustomConfirm(){
 	this.render = function(dialog,op,id){
@@ -44,8 +55,22 @@ function CustomConfirm(){
 		document.getElementById('dialogoverlay').style.display = "none";
 	}
 	this.yes = function(op,id){
-		if(op == "delete_user"){
-			deleteUser(id);
+		switch(op){
+			case "delete_user":
+				deleteUser(id);
+				break;
+			case "delete_student":
+				deleteStudent(id);
+				break;
+			case "delete_teacher":
+				deleteTeacher(id);
+				break;
+			case "delete_lesson":
+				deleteLesson(id);
+				break;
+			case "delete_ochestra":
+				deleteOrchestra(id);
+				break;	
 		}
 		document.getElementById('dialogbox').style.display = "none";
 		document.getElementById('dialogoverlay').style.display = "none";
