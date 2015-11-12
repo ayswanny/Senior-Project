@@ -23,7 +23,8 @@
             else {
               // table headers
                     echo '<thead><tr>';
-                    echo '<th></th>
+                    echo '<th><a href="add-user-form.php">
+                         <img class="table-icon" src="./res/image/plus.png"></a></th>
                           <th>Username</th>
                           <th>Email</th>
                           <th>Admin</th>

@@ -38,8 +38,8 @@
 	$parent_email = ($_POST["parent_email"]);
 	$instrument = $_POST["instrument"];
 	$date_of_birth = $_POST["date_of_birth"];
-	$enrolled = $_POST["enrolled"];
-	$currently_enrolled = $_POST['currently_enrolled'];
+	$starting_date = $_POST["enrolled"];
+	$enrolled = $_POST['currently_enrolled'];
 	$notes = $_POST["notes"];
 
 
@@ -57,11 +57,11 @@
 		$sql = "INSERT INTO `students` (last_name, first_name, parent, teacher, classes, ensembles, 
 										events, progress_report_date, home_phone, mobile_phone, work_phone, 
 										preferred_phone, student_email, parent_email, street_address, city, 
-										state, zip_code, photo_release, dob, enrolled, currently_enrolled, instrument, notes) 
+										state, zip_code, photo_release, dob, starting_date, enrolled, instrument, notes) 
 										VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 	} else {
-		// $sql = "UPDATE `students` SET last_name=?, first_name=?, parent=?, teacher=?, classes=?, ensembles=?, events=?, home_phone=?, mobile_phone=?, work_phone=?, preferred_phone=?, student_email=?, parent_email=?, street_address=?, city=?, state=?, zip_code=?, photo_release=?, dob=?, enrolled=?, instrument=?, notes=? WHERE student_key = $student";
-		$sql = "UPDATE `students` SET last_name=?, first_name=?, parent=?, teacher=?, classes=?, ensembles=?, events=?, progress_report_date=?, home_phone=?, mobile_phone=?, work_phone=?, preferred_phone=?, student_email=?, parent_email=?, street_address=?, city=?, state=?, zip_code=?, photo_release=?, dob=?, enrolled=?, currently_enrolled=?, instrument=?, notes=? WHERE student_key = $student";
+		// $sql = "UPDATE `students` SET last_name=?, first_name=?, parent=?, teacher=?, classes=?, ensembles=?, events=?, home_phone=?, mobile_phone=?, work_phone=?, preferred_phone=?, student_email=?, parent_email=?, street_address=?, city=?, state=?, zip_code=?, photo_release=?, dob=?, starting_date=?, instrument=?, notes=? WHERE student_key = $student";
+		$sql = "UPDATE `students` SET last_name=?, first_name=?, parent=?, teacher=?, classes=?, ensembles=?, events=?, progress_report_date=?, home_phone=?, mobile_phone=?, work_phone=?, preferred_phone=?, student_email=?, parent_email=?, street_address=?, city=?, state=?, zip_code=?, photo_release=?, dob=?, starting_date=?, enrolled=?, instrument=?, notes=? WHERE student_key = $student";
 	}
 
 	if (!($stmt = $db->prepare($sql))) {
@@ -70,7 +70,7 @@
 
 
 	/* Prepared statement, stage 2: bind and execute */
-	if (!$stmt->bind_param("ssssssssssssssssssssssss", $last_name, $first_name, $parent, $teacher, $classes, $ensembles, $events, $progress_report_date, $home_phone, $mobile_phone, $work_phone, $preferred_phone, $student_email, $parent_email, $street_address, $city, $state, $zip_code, $photo_release, $date_of_birth, $enrolled, $currently_enrolled, $instrument, $notes)) {
+	if (!$stmt->bind_param("ssssssssssssssssssssssss", $last_name, $first_name, $parent, $teacher, $classes, $ensembles, $events, $progress_report_date, $home_phone, $mobile_phone, $work_phone, $preferred_phone, $student_email, $parent_email, $street_address, $city, $state, $zip_code, $photo_release, $date_of_birth, $starting_date, $enrolled, $instrument, $notes)) {
 	    echo "Binding parameters failed: (" . $stmt->errno . ") " . $stmt->error;
 	}
 
