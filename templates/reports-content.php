@@ -275,7 +275,7 @@
                   echo '<thead><tr>';
                   echo '<th><a href="edit-orchestra-form.php?orchestra=','new','">
                          <img class="table-icon" src="./res/image/add-user.png"></a></th>
-                        <th></th>,
+                        <th></th>
                         <th>Student Last Name</th>
                         <th>Student First Name</th>
                         <th>Intrument</th>

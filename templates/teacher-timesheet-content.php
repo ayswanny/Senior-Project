@@ -8,7 +8,7 @@
 <?php 
 
 	if(isset($_GET['teacher'])) {
-		$orchestra = clean_up($_GET['teacher']);
+		$teacher = clean_up($_GET['teacher']);
 	}
 	else {
 		header('Location: ../reports.php');
