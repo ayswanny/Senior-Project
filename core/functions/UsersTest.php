@@ -1,13 +1,14 @@
 <?php
-require '../init.php';
+// if running on a content page init is already loaded.
+// require '../init.php';
 
 /*
 There are 2 cases, logged out and logged in.
 */
 function _test_logged_in() {
-  //Force a log out
-  session_start();
+  //Force a log out 
   session_destroy();
+  session_start();
 
   //result1 is logged out
   $result1 = logged_in();
@@ -15,19 +16,27 @@ function _test_logged_in() {
   $_SESSION['id']=1;
   $result2 = logged_in();
 
+  echo '<br />';
   //Test logged out
-  if($result === false){
+  if($result1 === false){
     echo 'Test case:\'logged out\' succeeded';
   } else{
     echo 'Test case:\'logged out\' failed';
   }
-
+  
+  echo '<br />';
   //Test logged in
   if ($result2 ===true){
     echo 'Test case:\'logged in\' succeeded';
   } else{
     echo 'Test case:\'logged in\' failed';
   }
+
+  //Force a log out 
+  session_destroy();
+  session_start();
+
+
 }
 
 /*
@@ -268,7 +277,7 @@ function _test_get_student_list() {
     $bool=false;
     echo 'Test failed, student key mismatch';
   }else{
-    echo 'Test succeeded. Student is a match.'
+    echo 'Test succeeded. Student is a match.';
   }
 }
 

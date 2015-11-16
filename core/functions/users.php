@@ -15,6 +15,14 @@
 			return false;
 	}
 
+	function get_name($user_key) {
+		global $db;
+		$user_key = clean_up($user_key);
+		$results = $db->query("SELECT username FROM `users` WHERE `user_key` ='$user_key'");
+		$rows = $results->fetch_assoc();
+		return $rows['username'];
+	}
+
 	function user_exists($username) {
 		global $db;
 		$username = clean_up($username);

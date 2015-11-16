@@ -23,11 +23,12 @@
 <fieldset>
 
 	<!-- Form Name -->
-	<legend><?php echo (($addnew)?"Add":"Edit"); ?> Teacher</legend>
+	<legend><?php echo (($addnew)?"Add":"Edit"); ?> Teacher
+	<input type="submit" class="btn btn-primary" value="Save" />
+	<input type="button" class="btn btn-primary" onclick="history.back();" value="Back">
+	</legend>
 
-	<input type="submit" class="btn btn-lg btn-primary" value="Save" />
-	<input type="button" class="btn btn-lg btn-primary" onclick="history.back();" value="Back">
-
+	
 	<!-- Text input-->
 	<div class="form-group">
 	  <label class="col-md-4 control-label" for="textinput">Last Name</label>

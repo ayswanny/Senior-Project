@@ -10,6 +10,14 @@
 
 <?php
   $mytabs = array('#student' => 'Students' ,'#teacher' => 'Teacher','#lessons' => 'Lessons' , '#orchestra' => 'Orchestra' );
+
+  if (!isset($_GET['tab'])) {
+    header('Location: reports.php?tab=student');
+  } else {
+    $tab = clean_up($_GET['tab']);
+  }
+
+
 ?>
 
 <div style="margin-top:50px;" class="mainbox col-md-12">
@@ -19,7 +27,7 @@
     <!-- Simple jQuery calls to switch out divs-->
     <a type="button" class="btn btn-primary" href="#" onClick="<?php make_swap_code('#student',$mytabs); ?>">Student</a>
     <a type="button" class="btn btn-primary" href="#" onClick="<?php make_swap_code('#teacher',$mytabs); ?>">Teacher</a>
-    <a type="button" class="btn btn-primary" href="#" onClick="<?php make_swap_code('#lessons',$mytabs); ?>">Lessons</a>
+    <a type="button" class="btn btn-primary" href="#" onClick="<?php make_swap_code('#lessons',$mytabs); ?>">Lesson</a>
     <a type="button" class="btn btn-primary" href="#" onClick="<?php make_swap_code('#orchestra',$mytabs); ?>">Rowan Youth Orchestra</a>
 
   </div>
@@ -63,6 +71,7 @@
                         <th>Preferred Phone</th>
                         <th>Parent Email</th>
                         <th>Student Email</th>
+                        <th>Starting Date</th>
                         <th>Currently Enrolled</th>
                         <th>Notes</th>
                         ';
@@ -100,6 +109,7 @@
                          <td>', display_phone($row['preferred_phone']),'</td>
                          <td>', $row['parent_email'],'</td>
                          <td>', $row['student_email'],'</td>
+                         <td>', $row['starting_date'],'</td>
                          <td>', $row['enrolled'],'</td>
                          <td>', $row['notes'],'</td></tr>'
                           ;
@@ -111,7 +121,7 @@
     </div>
   </div>
 
-  <div id="teacher" style="display:none"; class="table-responsive">
+  <div id="teacher" style="display:none;" class="table-responsive">
     <h3>Teachers</h3>
     <div class="col-md-3 offset-md-3">
       <table class="table table-striped">
@@ -318,3 +328,8 @@
 
 
 </div>
+<script type="text/javascript">
+$(document).ready(function() {
+     <?php make_swap_code('#'.$tab,$mytabs); ?>
+});
+</script>

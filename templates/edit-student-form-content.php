@@ -210,16 +210,16 @@
 	</div>
 
 	<div class="form-group">
-	  <label class="col-md-4 control-label" for="textinput">Enrolled</label>
+	  <label class="col-md-4 control-label" for="textinput">Enrollment Date</label>
 	  <div class="col-md-5">
-	  <input id="textinput" name="enrolled" type="date" value="<?php if ($addnew) echo time(); else echo $row['enrolled']; ?>" class="form-control input-md" required="">
+	  <input id="textinput" name="starting_date" type="date" value="<?php if ($addnew) echo time(); else echo $row['starting_date']; ?>" class="form-control input-md" required="">
 	  </div>
 	</div>
 
 	<div class="form-group">
 	  <label class="col-md-4 control-label" for="textinput">Currently Enrolled</label>
 	  <div class="col-md-5">
-	  <input id="textinput" name="currently_enrolled" type="text" value="<?php echo $row['currently_enrolled']?>" class="form-control input-md" required="">
+	  <input id="textinput" name="currently_enrolled" type="text" value="<?php echo $row['enrolled']?>" class="form-control input-md" required="">
 	  </div>
 	</div>
 

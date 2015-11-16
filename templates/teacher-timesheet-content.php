@@ -11,7 +11,7 @@
 		$orchestra = clean_up($_GET['teacher']);
 	}
 	else {
-		header('../reports.php');
+		header('Location: ../reports.php');
 	}
 	$sql_lessons = 	"SELECT st.first_name AS student_first_name, st.last_name AS student_last_name, te.first_name, te.last_name, el.tuition_due, el.tuition_paid, el.tuition_owed, el.instrument, el.duration FROM lessons el " .
 					"JOIN students st ON el.student = st.student_key JOIN teachers te ON el.teacher = te.teacher_key WHERE te.teacher_key = $teacher";

@@ -38,7 +38,7 @@
 	$parent_email = ($_POST["parent_email"]);
 	$instrument = $_POST["instrument"];
 	$date_of_birth = $_POST["date_of_birth"];
-	$starting_date = $_POST["enrolled"];
+	$starting_date = $_POST["starting_date"];
 	$enrolled = $_POST['currently_enrolled'];
 	$notes = $_POST["notes"];
 
