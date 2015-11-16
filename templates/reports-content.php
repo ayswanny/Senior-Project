@@ -8,27 +8,19 @@
   }
 </style>
 
+<?php
+  $mytabs = array('#student' => 'Students' ,'#teacher' => 'Teacher','#lessons' => 'Lessons' , '#orchestra' => 'Orchestra' );
+?>
+
 <div style="margin-top:50px;" class="mainbox col-md-12">
 
   <div class="row">
 
     <!-- Simple jQuery calls to switch out divs-->
-    <a type="button" class="btn btn-primary" href="#" onClick="$('#teacher').hide();
-                                                               $('#lessons').hide();
-                                                               $('#orchestra').hide();
-                                                               $('#student').show()">Student</a>
-    <a type="button" class="btn btn-primary" href="#" onClick="$('#student').hide();
-                                                               $('#lessons').hide();
-                                                               $('#orchestra').hide();
-                                                               $('#teacher').show()">Teacher</a>
-    <a type="button" class="btn btn-primary" href="#" onClick="$('#teacher').hide();
-                                                               $('#student').hide();
-                                                               $('#orchestra').hide();
-                                                               $('#lessons').show()">Lessons</a>
-    <a type="button" class="btn btn-primary" href="#" onClick="$('#teacher').hide();
-                                                               $('#student').hide();
-                                                               $('#lessons').hide()
-                                                               $('#orchestra').show();">Rowan Youth Orchestra</a>
+    <a type="button" class="btn btn-primary" href="#" onClick="<?php make_swap_code('#student',$mytabs); ?>">Student</a>
+    <a type="button" class="btn btn-primary" href="#" onClick="<?php make_swap_code('#teacher',$mytabs); ?>">Teacher</a>
+    <a type="button" class="btn btn-primary" href="#" onClick="<?php make_swap_code('#lessons',$mytabs); ?>">Lessons</a>
+    <a type="button" class="btn btn-primary" href="#" onClick="<?php make_swap_code('#orchestra',$mytabs); ?>">Rowan Youth Orchestra</a>
 
   </div>
 
@@ -47,7 +39,7 @@
             // table headers
                   echo '<thead><tr>';
                   echo '<th><a href="edit-student-form.php?student=\"new\"">
-                         <img class="table-icon" src="./res/image/plus.png"></a></th>
+                         <img class="table-icon" src="./res/image/add-user.png"></a></th>
                         <th></th>
                         <th></th>
                         <th>Last Name</th>
@@ -79,9 +71,9 @@
                  //fill in rows with data
                  while($row = $results->fetch_assoc()) {
                     echo '<tr>
-                         <td><button id="close-image" onclick="Confirm.render(\'Delete Student?\',\'delete_student\',\'', $row['student_key'], '\')">
-                           <img src="./res/image/remove-user.png">
-                           </button></td>
+                         <td><a href="#" onclick="Confirm.render(\'Delete Student?\',\'delete_student\',\'', $row['student_key'], '\')">
+                           <img class="table-icon" src="./res/image/rm-user.png">
+                           </a></td>
 
                          <td><a href="student-timesheet.php?student=', $row['student_key'], '">
                          <img class="table-icon" src="./res/image/timesheet.png"></a></td>
@@ -134,7 +126,7 @@
             // table headers
                   echo '<thead><tr>';
                   echo '<th><a href="edit-teacher-form.php?teacher=','new','">
-                         <img class="table-icon" src="./res/image/plus.png"></a></th>
+                         <img class="table-icon" src="./res/image/add-user.png"></a></th>
                         <th></th>
                         <th></th>
                         <th>Last Name</th>
@@ -158,9 +150,9 @@
                  while($row = $results->fetch_assoc()) {
 
                     echo '<tr>
-                         <td><button id="close-image" onclick="Confirm.render(\'Delete Teacher?\',\'delete_teacher\',\'', $row['teacher_key'], '\')">
-                         <img class="table-icon" src="./res/image/remove-user.png">
-                         </button></td>
+                         <td><a href="#" onclick="Confirm.render(\'Delete Teacher?\',\'delete_teacher\',\'', $row['teacher_key'], '\')">
+                         <img class="table-icon" src="./res/image/rm-user.png">
+                         </a></td>
                          <td><a href="teacher-timesheet.php?teacher=', $row['teacher_key'], '">
                          <img class="table-icon" src="./res/image/timesheet.png" alt="edit" ></a></td>
                          <td><a href="edit-teacher-form.php?teacher=', $row['teacher_key'], '">
@@ -203,7 +195,7 @@
             // table headers
                   echo '<thead><tr>';
                   echo '<th><a href="edit-lessons-form.php?lesson=','new','">
-                         <img class="table-icon" src="./res/image/plus.png"></a></th>
+                         <img class="table-icon" src="./res/image/add-record.png"></a></th>
                         <th></th>
                         <th>Student Last Name</th>
                         <th>Student First Name</th>
@@ -230,11 +222,11 @@
                     $teacher_name = $tmp_teacher_name->fetch_assoc();
 
                     echo '<tr>
-                         <td><button id="close-image" onclick="Confirm.render(\'Delete Lesson?\',\'delete_lesson\',\'', $row['lesson_key'], '\')">
-                         <img src="./res/image/remove-user.png">
-                         </button></td>
+                         <td><a href="#" onclick="Confirm.render(\'Delete Lesson?\',\'delete_lesson\',\'', $row['lesson_key'], '\')">
+                         <img class="table-icon" src="./res/image/rm-record.png">
+                         </a></td>
                          <td><a href="edit-lessons-form.php?lesson=', $row['lesson_key'], '">
-                         <img src="./res/image/edit.png"></a></td>
+                         <img class="table-icon" src="./res/image/edit.png"></a></td>
                          <td>', $student_name['last_name'],'</td>
                          <td>', $student_name['first_name'],'</td>
                          <td>', $teacher_name['last_name'],'</td>
@@ -272,7 +264,7 @@
             // table headers
                   echo '<thead><tr>';
                   echo '<th><a href="edit-orchestra-form.php?orchestra=','new','">
-                         <img class="table-icon" src="./res/image/plus.png"></a></th>
+                         <img class="table-icon" src="./res/image/add-user.png"></a></th>
                         <th></th>,
                         <th>Student Last Name</th>
                         <th>Student First Name</th>
@@ -296,11 +288,11 @@
 
                     echo '<tr>
 
-                         <td><button id="close-image" onclick="Confirm.render(\'Delete Orchestra Entry?\',\'delete_orchestra\',\'', $row['registration_key'], '\')">
-                           <img src="./res/image/remove-user.png">
-                           </button></td>
+                         <td><a href="#" onclick="Confirm.render(\'Delete Orchestra Entry?\',\'delete_orchestra\',\'', $row['registration_key'], '\')">
+                           <img class="table-icon" src="./res/image/rm-user.png">
+                           </a></td>
                          <td><a href="edit-orchestra-form.php?orchestra=', $row['registration_key'], '">
-                         <img src="./res/image/edit.png"></a></td>
+                         <img class="table-icon" src="./res/image/edit.png"></a></td>
                          <td>', $row['last_name'],'</td>
                          <td>', $row['first_name'],'</td>
                          <td>', $row['instrument'],'</td>

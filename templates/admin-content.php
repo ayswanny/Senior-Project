@@ -24,7 +24,7 @@
               // table headers
                     echo '<thead><tr>';
                     echo '<th><a href="add-user-form.php">
-                         <img class="table-icon" src="./res/image/plus.png"></a></th>
+                         <img class="table-icon" src="./res/image/add-user.png"></a></th>
                           <th>Username</th>
                           <th>Email</th>
                           <th>Admin</th>
@@ -34,9 +34,9 @@
                    //fill in rows with data
                    while($row = $results->fetch_assoc()) {
                       echo '<tr>
-                           <td><button id="close-image" onclick="Confirm.render(\'Delete User?\',\'delete_user\',\'', $row['user_key'], '\')">
-                           <img src="./res/image/remove-user.png">
-                           </button></td>
+                           <td><a href="#" onclick="Confirm.render(\'Delete User?\',\'delete_user\',\'', $row['user_key'], '\')">
+                           <img class="table-icon" src="./res/image/rm-user.png">
+                           </a></td>
                            <td>', $row['username'],'</td>
                            <td>', $row['email'],'</td>
                            <td>', $row['admin'],'</td>

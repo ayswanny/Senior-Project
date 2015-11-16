@@ -21,13 +21,13 @@
 
 	/* Prepared statement, stage 1: prepare */
 	
-	if($insert = $db->query("INSERT INTO `users` (`username`, `password`, `email`, `admin`) 
-												  VALUES ('$username', '$password', '$email', '$admin'")) {
+	if($insert = $db->query("INSERT INTO `users` (`username`, `password`, `email`, `admin`) " 
+										."VALUES ('$username', '$password', '$email', '$admin')")) {
 		header("Location: ../../admin.php");
 		die();
 	}
 	else {
-		echo "insert failed.";
+		echo "insert failed.". $db->error;
 	}
 	
 	$db->close();

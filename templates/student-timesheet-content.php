@@ -4,22 +4,6 @@
 	}
 </style>
 
-<script type="text/javascript">
-	function swap_in_table (show_this_one) {
-		var tabs = ["#lessons", "#youth_orchestra", "#total"];
-		$(tabs).each(function(tab) {
-			if (tab != show_this_one) {
-				$(tab).hide();
-			}
-
-		});
-		$(show_this_one).show();
-	}
-
-	swap_in_table("#lessons");
-
-</script>
-
 <?php 
 
 	$student = $_GET['student'];
@@ -32,22 +16,25 @@
 					"SELECT st.first_name AS student_first_name, st.last_name AS student_last_name, el.tuition_due, el.tuition_paid, el.tuition_owed FROM lessons el " .
 					"JOIN students st ON el.student = st.student_key WHERE st.student_key = $student";
 	
+	$mytabs = array('#lessons' => 'Lessons','#youth_orchestra' => 'Orchestra', '#total' => 'Aggregate' );
 ?>
 
 
 
 <div class="mainbox col-md-12" >
 	
-	<!-- <div class="row"> -->
-		<!-- Simple jQuery calls to switch out divs-->
-	    <!-- <a type="button" class="btn btn-primary" href="#" onClick="swap_in_table('#lessons');">Lesson</a> -->
-	    <!-- <a type="button" class="btn btn-primary" href="#" onClick="swap_in_table('#youth_orchestra');">Rowan Youth Orchestra</a> -->
-	    <!-- <a type="button" class="btn btn-primary" href="#" onClick="swap_in_table('#total');">Aggregate</a> -->
-	<!-- </div> -->
+	<div class="row">
+		<a type="button" class="btn btn-lg btn-primary" onclick="history.back();" value="Back">Back</a>
+	    <!-- Simple jQuery calls to switch out divs -->
+		<!-- <a type="button" class="btn btn-primary" href="#" onClick="<?php make_swap_code('#lessons',$mytabs); ?>">Lessons</a> -->
+	    <!-- <a type="button" class="btn btn-primary" href="#" onClick="<?php make_swap_code('#youth_orchestra',$mytabs); ?>">Rowan Youth Orchestra</a> -->
+	    <!-- <a type="button" class="btn btn-primary" href="#" onClick="<?php make_swap_code('#total',$mytabs); ?>">Aggregate</a> -->
+	    <!-- <a type="button" class="btn btn-primary" href="#" onClick="<?php make_show_all_tabs_code($mytabs); ?>">Show All</a> -->
+	</div>
 	<!-- TODO: FIX this bit. -->
 
 	<div id="lessons" class="table-responsive">  
-		<h3>Lesson</h3>
+		<h3>Lessons</h3>
 		<table class="table table-striped">
 
 			<?php

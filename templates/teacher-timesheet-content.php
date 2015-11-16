@@ -4,39 +4,28 @@
 	}
 </style>
 
-<script type="text/javascript">
-	function swap_in_table (show_this_one) {
-		var tabs = ["#lessons", "#youth_orchestra", "#total"];
-		$(tabs).each(function() {
-			if (this != show_this_one) {
-				$(this).hide();
-			}
-
-		});
-		$(show_this_one).show();
-	}
-
-</script>
 
 <?php 
-	$teacher = $_GET['teacher'];
+
+	if(isset($_GET['teacher'])) {
+		$orchestra = clean_up($_GET['teacher']);
+	}
+	else {
+		header('../reports.php');
+	}
 	$sql_lessons = 	"SELECT st.first_name AS student_first_name, st.last_name AS student_last_name, te.first_name, te.last_name, el.tuition_due, el.tuition_paid, el.tuition_owed, el.instrument, el.duration FROM lessons el " .
 					"JOIN students st ON el.student = st.student_key JOIN teachers te ON el.teacher = te.teacher_key WHERE te.teacher_key = $teacher";
+
+
 ?>
 
 
 
 <div class="mainbox col-md-12" >
 	
-	<!-- <div class="row"> -->
-		<!-- Simple jQuery calls to switch out divs-->
-	    <!-- <a type="button" class="btn btn-primary" href="#" onClick="swap_in_table('#lessons');">Lesson</a> -->
-	    <!-- <a type="button" class="btn btn-primary" href="#" onClick="swap_in_table('#youth_orchestra');">Rowan Youth Orchestra</a> -->
-	    <!-- <a type="button" class="btn btn-primary" href="#" onClick="swap_in_table('#total');">Aggregate</a> -->
-	<!-- </div> -->
-	<!-- TODO: FIX this bit. -->
+	<input type="button" class="btn btn-lg btn-primary" onclick="history.back();" value="Back">
 
-	<div id="lessons" class="table-responsive">  
+	<div id="timesheet" class="table-responsive">  
 		<h3>Timesheet</h3>
 		<table class="table table-striped">
 
@@ -94,7 +83,7 @@
             	echo '<td></td>';
                 foreach ($fields as $key => $value) {
                 	$tmp = "SUM($value)";
-                	if ($key == 5) {
+                	if ($key >= 3 and $key <= 5) {
                 		echo "<td>". $sumrow[$tmp] ."</td>";	
                 	} else {
                 		echo "<td></td>";

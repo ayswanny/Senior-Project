@@ -1,7 +1,7 @@
 <?php
 	require '../init.php';
 
-  if(!isAdmin($_SESSION[id]))
+  if(!isAdmin($_SESSION['id']))
     header("Location: ../../index.php");
 
 	if (isset($_GET['key'])) {
@@ -14,5 +14,7 @@
 				$delete = true;
 		}
 	}
-    	$db->close();
+    $db->close();
+
+    header("Location: ../../admin.php");
 ?>
