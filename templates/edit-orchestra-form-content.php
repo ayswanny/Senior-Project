@@ -22,11 +22,12 @@
 <fieldset>
 
 	<!-- Form Name -->
-	<legend><?php echo (($addnew)?"Add":"Edit"); ?> Orchestra Student</legend>
+	<legend><?php echo (($addnew)?"Add":"Edit"); ?> Orchestra Student
+  <input type="submit" class="btn btn-primary" value="Save" />
+  <a type="button" class="btn btn-primary" href="reports.php?tab=orchestra" value="Back">Back</a>
+  </legend>
 
-	<input type="submit" class="btn btn-lg btn-primary" value="Save" />
-	<input type="button" class="btn btn-lg btn-primary" onclick="history.back();" value="Back">
-
+	
 
 	<!-- Text input-->
 	<form class="form-horizontal">

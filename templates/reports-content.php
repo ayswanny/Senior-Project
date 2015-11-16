@@ -32,7 +32,7 @@
 
   </div>
 
-  <div id="student" class="table-responsive">
+  <div <?php $my_id = "student"; make_div_line_code($my_id, $tab===$my_id); ?> class="table-responsive">
     <h3>Students</h3>
     <div class="col-md-3">
       <table class="table table-striped">
@@ -121,7 +121,7 @@
     </div>
   </div>
 
-  <div id="teacher" style="display:none;" class="table-responsive">
+  <div <?php $my_id = "teacher"; make_div_line_code($my_id, $tab===$my_id); ?> class="table-responsive">
     <h3>Teachers</h3>
     <div class="col-md-3 offset-md-3">
       <table class="table table-striped">
@@ -190,7 +190,7 @@
     </div>
   </div>
 
-  <div id="lessons" style="display:none";class="table-responsive">
+  <div <?php $my_id = "lessons"; make_div_line_code($my_id, $tab===$my_id); ?> class="table-responsive">
     <h3>Lessons</h3>
     <div class="col-md-3">
       <table class="table table-striped">
@@ -259,7 +259,7 @@
     </div>
   </div>
 
-  <div id="orchestra" style="display:none";class="table-responsive">
+  <div <?php $my_id = "orchestra"; make_div_line_code($my_id, $tab===$my_id); ?> class="table-responsive">
     <h3>Rowan Youth Orchestra</h3>
     <div class="col-md-3">
       <table class="table table-striped">
@@ -328,8 +328,3 @@
 
 
 </div>
-<script type="text/javascript">
-$(document).ready(function() {
-     <?php make_swap_code('#'.$tab,$mytabs); ?>
-});
-</script>

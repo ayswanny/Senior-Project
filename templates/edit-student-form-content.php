@@ -24,7 +24,7 @@
 	<!-- Form Name -->
 	<legend> <?php echo (($addnew)?"Add":"Edit"); ?> Student
 	<input type="submit" class="btn btn-primary" value="Save"/>
-	<input type="button" class="btn btn-primary" onclick="history.back();" value="Back">
+	<a type="button" class="btn btn-primary" href="reports.php?tab=student" value="Back">Back</a>
 	</legend>
 
 	
