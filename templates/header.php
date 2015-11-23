@@ -20,7 +20,7 @@
     <link href="css/navbar.css" rel="stylesheet">
     <link href="css/footer.css" rel="stylesheet">
     <link href="css/dialog.css" rel="stylesheet">
-    
+    <link href="css/index-logged-out.css" rel="stylesheet">
     <style>
     body {
         padding-top: 70px;
