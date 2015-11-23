@@ -9,7 +9,7 @@
 </style>
 
 <?php
-  $mytabs = array('#student' => 'Students' ,'#teacher' => 'Teacher','#lessons' => 'Lessons' , '#orchestra' => 'Orchestra' );
+  $mytabs = array('student' => 'Students' ,'teacher' => 'Teacher','lessons' => 'Lessons' , 'orchestra' => 'Orchestra' );
 
   if (!isset($_GET['tab'])) {
     header('Location: reports.php?tab=student');
@@ -25,10 +25,10 @@
   <div class="row">
 
     <!-- Simple jQuery calls to switch out divs-->
-    <a type="button" class="btn btn-primary" href="#" onClick="<?php make_swap_code('#student',$mytabs); ?>">Student</a>
-    <a type="button" class="btn btn-primary" href="#" onClick="<?php make_swap_code('#teacher',$mytabs); ?>">Teacher</a>
-    <a type="button" class="btn btn-primary" href="#" onClick="<?php make_swap_code('#lessons',$mytabs); ?>">Lesson</a>
-    <a type="button" class="btn btn-primary" href="#" onClick="<?php make_swap_code('#orchestra',$mytabs); ?>">Rowan Youth Orchestra</a>
+    <a type="button" class="btn btn-primary" href="#" onClick="<?php make_swap_code('student',$mytabs); ?>">Student</a>
+    <a type="button" class="btn btn-primary" href="#" onClick="<?php make_swap_code('teacher',$mytabs); ?>">Teacher</a>
+    <a type="button" class="btn btn-primary" href="#" onClick="<?php make_swap_code('lessons',$mytabs); ?>">Lesson</a>
+    <a type="button" class="btn btn-primary" href="#" onClick="<?php make_swap_code('orchestra',$mytabs); ?>">Rowan Youth Orchestra</a>
 
   </div>
 

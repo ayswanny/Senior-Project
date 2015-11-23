@@ -4,10 +4,13 @@
 	{
 		foreach ($tabs as $key => $value) {
 			if ($key !== $show_this_one) {
-				echo "$('$key').hide();";
+				echo "$('#$key').hide();";
 			}
 		}
-		echo "$('$show_this_one').show();";
+		echo "$('#$show_this_one').show();";
+
+		echo "history.pushState({}, '$tabs[$show_this_one]', '".$_SERVER['PHP_SELF'].'?tab='.$show_this_one."');";
+		
 	}
 
 	function make_show_all_tabs_code($tabs)
