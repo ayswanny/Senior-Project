@@ -7,14 +7,15 @@
 
 	}
 
-	if($result = $db->query("SELECT * FROM `orchestra` WHERE `registration_key` LIKE '$orchestra'")) {
-		$row = $result->fetch_assoc();
-		if ($result->num_rows === 0) {
-			$addnew = true;
-		} else {
-			$addnew = false;
-		}
-	}
+	$addnew = false;
+  $link = connectDB();
+  $result = mysql_db_query("rowanprep", "SELECT * FROM orchestra WHERE registration_key LIKE '$orchestra'");
+  $num_rows = mysql_num_rows($result);
+  if ($num_rows === 0) {
+    $addnew = true;
+  } else {
+    $row = mysql_fetch_assoc($result);
+  }
 
 ?>
 
@@ -43,7 +44,7 @@
             echo '<option value="0"> - Select Student</option>';
           }
           $student_list = get_student_list();
-          while($student_identity = $student_list->fetch_assoc()) {
+          while($student_identity = mysql_fetch_assoc($student_list)) {
             if($student_identity['student_key'] === $row['student']) {
              echo '<option value="', $student_identity['student_key'],'" selected>', $student_identity['last_name'], ', ', $student_identity['first_name'], '</option>';
             }

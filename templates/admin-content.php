@@ -14,7 +14,7 @@
       <div class="text-center">
         <table class="table table-striped text-center">
           <?php
-
+	    $link = connectDB();
             //output student table.
             $results = get_user_list();
             if(!$results) {
@@ -32,7 +32,7 @@
                     echo '</tr></thead>';
                     echo '<tbody>';
                    //fill in rows with data
-                   while($row = $results->fetch_assoc()) {
+                   while($row = mysql_fetch_assoc($results)) {
                       echo '<tr>
                            <td><div class="text-center"><a href="#" onclick="Confirm.render(\'Delete User?\',\'delete_user\',\'', $row['user_key'], '\')">
                            <img class="table-icon" src="./res/image/rm-user.png">

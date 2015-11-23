@@ -6,8 +6,8 @@
 	if (isset($_GET['orchestra'])) {
 		$orchestra = clean_up($_GET['orchestra']);
 
-		if($result = $db->query("SELECT * FROM `orchestra` WHERE `registration_key` LIKE '$orchestra'")) {
-			$row = $result->fetch_assoc();
+		if($result = mysql_db_query("rowanprep", "SELECT * FROM `orchestra` WHERE `registration_key` LIKE '$orchestra'")) {
+			$row = mysql_fetch_assoc($result);
 			if ($result->num_rows !== 0) {
 				$addnew = false;
 			}
@@ -36,45 +36,21 @@
 
   /* Prepared statement, stage 1: prepare */
   if ($addnew) {
-    $sql = "INSERT INTO `orchestra` (student, instrument, ryo_form, paid_check, check_number,
-                                  paid_card, payment_date, tuition_due, tuition_paid, tuition_owed, notes) 
-            VALUES (?,?,?,?,?,?,?,?,?,?,?)";
+    $sql = "INSERT INTO `orchestra` (student, instrument, ryo_form, paid_check, check_number, paid_card, payment_date, tuition_due, tuition_paid, tuition_owed, notes) VALUES ('$student', '$instrument', '$ryo_form', '$paid_check', '$check_number', '$paid_card', '$payment_date', '$tuition_due', '$tuition_paid', '$tuition_owed', '$notes')";
 
   } else {
-
-    	$sql = "UPDATE `orchestra` 
-              SET student=?, instrument=?, ryo_form=?, paid_check=?, check_number=?,
-                  paid_card=?, payment_date=?, tuition_due=?, tuition_paid=?, 
-                  tuition_owed=?, notes=?
-              WHERE registration_key=$orchestra";
-
-  }
-
-  if(!($stmt = $db->prepare($sql))) {
-	     echo "Prepare failed: (" . $db->errno . ") " . $db->error;
-	}
-
-
-  	/* Prepared statement, stage 2: bind and execute */
-    	if (!$stmt->bind_param("sssssssssss", $student, $instrument, $ryo_form, $paid_check, $check_number, $paid_card, $payment_date, $tuition_due, $tuition_paid, $tuition_owed, $notes)){
-        echo "Binding parameters failed: (" . $stmt->errno . ") " . $stmt->error;
-      }
-
-      if ($stmt->execute()) {
-    		if ($addnew) {
-    			$orchestra = $db->insert_id;
-    		}
-
-    		header("Location: ../../edit-orchestra-form.php?orchestra=$orchestra");
-    	}
-    	else {
-    	    echo "Execute failed: (" . $stmt->errno . ") " . $stmt->error;
-    	    echo "<a type=\"button\" class=\"btn btn-lg btn-primary\" href=\".\">Back Home</a>";
-
-    	}
-
-
-    	$db->close();
+  	$sql = "UPDATE `orchestra` SET student='$student', instrument='$instrument', ryo_form='$ryo_form', paid_check='$paid_check', check_number='$check_number', paid_card='$paid_card', payment_date='$payment_date', tuition_due='$tuition_due', tuition_paid='$tuition_paid', tuition_owed='$tuition_owed', notes='$notes' WHERE registration_key= '$orchestra'";
+    }
+  
+  $link = connectDB();
+   $results = mysql_db_query("rowanprep", $sql);
+   if(!$results) {
+    echo 'Input failed...<br>';
+    echo mysql_errno($link) . ": " . mysql_error($link). "\n";
+   }
+   else {
+     header("Location:../../reports.php");
+   }
 
 
   ?>

@@ -8,6 +8,8 @@
 	else {
 		include 'templates/navbar-logged-in.php';
 		include 'templates/index-content-logged-in.php';
+		echo $_SESSION['id'];
+		echo "poop";
 	}
 	include 'templates/footer.php';
 ?>

@@ -8,18 +8,19 @@
 
 	}
 
-	if($result = $db->query("SELECT * FROM `teachers` WHERE `teacher_key` LIKE '$teacher'")) {
-		$row = $result->fetch_assoc();
-		if ($result->num_rows === 0) {
-			$addnew = true;
-		} else {
-			$addnew = false;	
-		}
-	} 
+	$addnew = false;
+        $link = connectDB();
+        $result = mysql_db_query("rowanprep", "SELECT * FROM teachers WHERE teacher_key LIKE '$teacher'");
+        $num_rows = mysql_num_rows($result);
+        if ($num_rows === 0) {
+                $addnew = true;
+        } else {
+	  $row = mysql_fetch_assoc($result);
+        } 
 
 ?>
 
-<form action="core/database/add-edit-teacher.php?teacher=<?php echo $teacher ?>" class="form-horizontal" method="post" onsubmit="validate()">
+<form action="core/database/add-edit-teacher.php?teacher=<?php echo $teacher?>" class="form-horizontal" method="post" onsubmit="validate()">
 <fieldset>
 
 	<!-- Form Name -->

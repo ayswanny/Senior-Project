@@ -33,11 +33,11 @@
   </div>
 
   <div <?php $my_id = "student"; make_div_line_code($my_id, $tab===$my_id); ?> class="table-responsive">
-    <h3>Students</h3>
     <div class="text-center">
+      <h3>Students</h3>
       <table class="table table-striped text-center">
         <?php
-
+	  $link = connectDB();
           //output student table.
           $results = get_student_list();
           if(!$results) {
@@ -46,7 +46,7 @@
           else {
             // table headers
                   echo '<thead><tr>';
-                  echo '<th><div class="text-center"><a href="edit-student-form.php?student=\"new\"">
+                  echo '<th><div class="text-center"><a href="edit-student-form.php?student=new"">
                          <img class="table-icon" src="./res/image/add-user.png"></a></div></th>
                         <th><div class="text-center"></div></th>
                         <th><div class="text-center"></div></th>
@@ -78,7 +78,7 @@
                   echo '</tr></thead>';
                   echo '<tbody>';
                  //fill in rows with data
-                 while($row = $results->fetch_assoc()) {
+                 while($row = mysql_fetch_assoc($results)) {
                     echo '<tr>
                          <td><div class="text-center"><a href="#" onclick="Confirm.render(\'Delete Student?\',\'delete_student\',\'', $row['student_key'], '\')">
                            <img class="table-icon" src="./res/image/rm-user.png">
@@ -126,7 +126,7 @@
     <div class="text-center">
       <table class="table table-striped text-center">
         <?php
-
+ 	  $link = connectDB();
           //out teachers table
           $results = get_teacher_list();
           if(!$results) {
@@ -157,7 +157,7 @@
                   echo '</tr></thead>';
                   echo '<tbody>';
                  //fill in rows with data
-                 while($row = $results->fetch_assoc()) {
+                 while($row = mysql_fetch_assoc($results)) {
 
                     echo '<tr>
                          <td><div class="text-center"><a href="#" onclick="Confirm.render(\'Delete Teacher?\',\'delete_teacher\',\'', $row['teacher_key'], '\')">
@@ -195,7 +195,7 @@
     <div class="text-center">
       <table class="table table-striped">
         <?php
-
+	  $link = connectDB();
           //out lessons table
           $results = get_lessons_list();
           if(!$results) {
@@ -224,12 +224,12 @@
                   echo '</tr></thead>';
                   echo '<tbody>';
                  //fill in rows with data
-                 while($row = $results->fetch_assoc()) {
+                 while($row = mysql_fetch_assoc($results)) {
                     $tmp_student_name = get_student_name($row['student']); // call to get student names
-                    $student_name = $tmp_student_name->fetch_assoc();
+                    $student_name = mysql_fetch_assoc($tmp_student_name);
 
                     $tmp_teacher_name = get_teacher_name($row['teacher']); // call to get teacher names
-                    $teacher_name = $tmp_teacher_name->fetch_assoc();
+                    $teacher_name = mysql_fetch_assoc($tmp_teacher_name);
 
                     echo '<tr>
                          <td><div class="text-center"><a href="#" onclick="Confirm.render(\'Delete Lesson?\',\'delete_lesson\',\'', $row['lesson_key'], '\')">
@@ -266,6 +266,7 @@
         <?php
 
           //out lessons table
+	  $link = connectDB();
           $results = get_orchestra_list();
           if(!$results) {
             echo "Database Error";
@@ -294,7 +295,7 @@
                   echo '</tr></thead>';
                   echo '<tbody>';
                  //fill in rows with data
-                 while($row = $results->fetch_assoc()) {
+                 while($row = mysql_fetch_assoc($results)) {
 
                     echo '<tr>
 
