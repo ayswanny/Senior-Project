@@ -13,7 +13,7 @@
 		if(mysql_num_rows(results) === 0)
 			return false;
 		else
-			return true;
+			return false;
 	}
 
 	function random_password($length) {

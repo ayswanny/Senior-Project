@@ -5,17 +5,13 @@
 	$addnew = true;
 	if (isset($_GET['student'])) {
 		$student = clean_up($_GET['student']);
-
-		if($result = $db->query("SELECT * FROM `students` WHERE `student_key` LIKE '$student'")) {
-			$row = $result->fetch_assoc();
-			if ($result->num_rows !== 0) {
+		if($result = mysql_db_query("rowanprep", "SELECT * FROM students WHERE student_key LIKE '$student'")) {
+			$row = mysql_fetch_assoc($result);
+			if (mysql_num_rows($result) !== 0) {
 				$addnew = false;	
 			}
 		}
 	}
-
-	$required_fields = array("first_name","last_name","teacher");
-
 
 	$first_name = ($_POST["first_name"]);
 	$last_name = ($_POST["last_name"]);
@@ -43,51 +39,21 @@
 	$notes = $_POST["notes"];
 
 
-	foreach ($required_fields as $varname) {
-		if (empty(${$varname})) {
-			echo "Missing $varname";
-			echo '<input type="button" class="btn btn-primary" onclick="history.back();" value="Back">';
-		}
-		# code...
-	}
-
-
-	/* Prepared statement, stage 1: prepare */
+		/* Prepared statement, stage 1: prepare */
 	if ($addnew) {
-		$sql = "INSERT INTO `students` (last_name, first_name, parent, teacher, classes, ensembles, 
-										events, progress_report_date, home_phone, mobile_phone, work_phone, 
-										preferred_phone, student_email, parent_email, street_address, city, 
-										state, zip_code, photo_release, dob, starting_date, enrolled, instrument, notes) 
-										VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+		$sql = "INSERT INTO students (last_name, first_name, street_address, city, state, zip_code, student_email, parent, teacher, classes, ensembles, events, progress_report_date, photo_release, home_phone, mobile_phone, work_phone, preferred_phone, parent_email, instrument, dob, starting_date, enrolled, notes) VALUES ('$last_name', '$first_name', '$street_address', '$city', '$state', '$zip_code', '$student_email', '$parent', '$teacher', '$classes', '$ensembles', '$events', '$progress_report_date', '$photo_release', '$home_phone', '$mobile_phone', '$work_phone', '$preferred_phone', '$parent_email', '$instrument', '$date_of_birth', '$starting_date', '$currently_enrolled', '$notes')
+			";
 	} else {
-		// $sql = "UPDATE `students` SET last_name=?, first_name=?, parent=?, teacher=?, classes=?, ensembles=?, events=?, home_phone=?, mobile_phone=?, work_phone=?, preferred_phone=?, student_email=?, parent_email=?, street_address=?, city=?, state=?, zip_code=?, photo_release=?, dob=?, starting_date=?, instrument=?, notes=? WHERE student_key = $student";
-		$sql = "UPDATE `students` SET last_name=?, first_name=?, parent=?, teacher=?, classes=?, ensembles=?, events=?, progress_report_date=?, home_phone=?, mobile_phone=?, work_phone=?, preferred_phone=?, student_email=?, parent_email=?, street_address=?, city=?, state=?, zip_code=?, photo_release=?, dob=?, starting_date=?, enrolled=?, instrument=?, notes=? WHERE student_key = $student";
+		$sql = "UPDATE students SET last_name='$last_name', first_name='$first_name', street_address='$street_address', city='$city', state='$state', zip_code='$zip_code', student_email='$student_email', parent='$parent', teacher='$teacher', classes='$classes', ensembles='$ensembles', events='$events', progress_report_date='$progress_report_date', photo_release='$photo_release', home_phone='$home_phone', mobile_phone='$mobile_phone', preferred_phone='$preferred_phone', parent_email='$parent_email', instrument='$instrument', dob='$date_of_birth', starting_date='$starting_date', enrolled='$currently_enrolled', notes='$notes' WHERE student_key = '$student'";
 	}
-
-	if (!($stmt = $db->prepare($sql))) {
-	     echo "Prepare failed: (" . $db->errno . ") " . $db->error;
-	}
-
-
-	/* Prepared statement, stage 2: bind and execute */
-	if (!$stmt->bind_param("ssssssssssssssssssssssss", $last_name, $first_name, $parent, $teacher, $classes, $ensembles, $events, $progress_report_date, $home_phone, $mobile_phone, $work_phone, $preferred_phone, $student_email, $parent_email, $street_address, $city, $state, $zip_code, $photo_release, $date_of_birth, $starting_date, $enrolled, $instrument, $notes)) {
-	    echo "Binding parameters failed: (" . $stmt->errno . ") " . $stmt->error;
-	}
-
-	if ($stmt->execute()) {
-		if ($addnew) {
-			$student = $db->insert_id;
-		}
-
-		header("Location: ../../reports.php");
-	}
-	else {
-	    echo "Execute failed: (" . $stmt->errno . ") " . $stmt->error;
-	    echo "<a type=\"button\" class=\"btn btn-lg btn-primary\" href=\".\">Back Home</a>";
-
-	}
-	
-
-	$db->close();
+	 $link = connectDB();
+	 $results = mysql_db_query("rowanprep", $sql);
+	 if(!$results) {
+	 	echo 'Input failed...<br>';
+	 	echo mysql_errno($link) . ": " . mysql_error($link). "\n";
+	 }
+	 else {
+	 	header("Location:../../reports.php");
+	 }
 
 ?>

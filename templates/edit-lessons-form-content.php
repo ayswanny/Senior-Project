@@ -6,19 +6,20 @@
 	else {
 
 	}
-
-	if($result = $db->query("SELECT * FROM `lessons` WHERE `lesson_key` LIKE '$lesson'")) {
-		$row = $result->fetch_assoc();
-		if ($result->num_rows === 0) {
-			$addnew = true;
-		} else {
-			$addnew = false;
-		}
-	}
+	
+	$addnew = false;
+  $link = connectDB();
+  $result = mysql_db_query("rowanprep", "SELECT * FROM lessons WHERE lesson_key LIKE '$lesson'");
+  $num_rows = mysql_num_rows($result);
+  if ($num_rows === 0) {
+    $addnew = true;
+  } else {
+    $row = mysql_fetch_assoc($result);
+  }
 
 ?>
 
-<form action="core/database/add-edit-lessons.php?lesson=<?php echo $row['lesson_key'] ?>" class="form-horizontal" method="post" onsubmit="validate()">
+<form action="core/database/add-edit-lessons.php?lesson=<?php echo $row['lesson_key']?>" class="form-horizontal" method="post" onsubmit="validate()">
 <fieldset>
 
 	<!-- Form Name -->
@@ -43,7 +44,7 @@
             echo '<option value="0"> - Select Student</option>';
           }
           $student_list = get_student_list();
-          while($student_identity = $student_list->fetch_assoc()) {
+          while($student_identity = mysql_fetch_assoc($student_list)) {
             if($student_identity['student_key'] === $row['student']) {
              echo '<option value="', $student_identity['student_key'],'" selected>', $student_identity['last_name'], ', ', $student_identity['first_name'], '</option>';
             }
@@ -67,7 +68,7 @@
             echo '<option value="0"> - Select Teacher</option>';
           }
           $teacher_list = get_teacher_list();
-          while($teacher_identity = $teacher_list->fetch_assoc()) {
+          while($teacher_identity = mysql_fetch_assoc($teacher_list)) {
             if($teacher_identity['teacher_key'] === $row['teacher']) {
              echo '<option value="', $teacher_identity['teacher_key'],'" selected>', $teacher_identity['last_name'], ', ', $teacher_identity['first_name'], '</option>';
             }

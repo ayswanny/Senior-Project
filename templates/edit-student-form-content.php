@@ -6,16 +6,16 @@
 	else {
 
 	}
-
-	if($result = $db->query("SELECT * FROM `students` WHERE `student_key` LIKE '$student'")) {
-		$row = $result->fetch_assoc();
-		if ($result->num_rows === 0) {
-			$addnew = true;
-		} else {
-			$addnew = false;	
-		}
-	} 
-
+	$addnew = false;
+	$link = connectDB();
+	$result = mysql_db_query("rowanprep", "SELECT * FROM students WHERE student_key LIKE '$student'");
+	$num_rows = mysql_num_rows($result);
+	if ($num_rows === 0) {
+		$addnew = true;
+	} else {
+		$row = mysql_fetch_assoc($result);
+	}
+	 
 ?>
 
 <form action="core/database/add-edit-student.php?student=<?php echo $row['student_key']?>" class="form-horizontal" method="post">

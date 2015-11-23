@@ -1,10 +1,10 @@
 <?php
 include '../init.php';
-
+$link = connectDB();
 if(empty($_POST) == false) {
-	$username = $_POST['username'];
-	$password = $_POST['password'];
-
+	$username = ($_POST['username']);
+	$password = ($_POST['password']);
+	
 	if(empty($username) == true || empty($password) == true) {
 		$errors[] = 'Enter a username and password';
 	}
@@ -17,14 +17,14 @@ if(empty($_POST) == false) {
 			$errors[] = 'Invalid password.';
 		}
 		else {
-			$id_array = mysqli_fetch_assoc($login);
+			$id_array = mysql_fetch_assoc($login);
 			$_SESSION['id'] = $id_array['user_key'];
 			header('Location: ../../index.php');
-			//
+			echo $_SESSION['id'];
 		}
 	}
 	print_r($errors);
 }
 
-$db->close();
+
 ?>
