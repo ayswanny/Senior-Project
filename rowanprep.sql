@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Dec 01, 2015 at 08:34 AM
+-- Generation Time: Dec 01, 2015 at 10:47 AM
 -- Server version: 10.0.17-MariaDB
 -- PHP Version: 5.6.14
 
@@ -23,6 +23,56 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `brass_band`
+--
+
+CREATE TABLE `brass_band` (
+  `student` int(11) NOT NULL,
+  `Instrument` varchar(20) NOT NULL,
+  `ryo_form` varchar(1) NOT NULL,
+  `tuition_due` decimal(7,2) NOT NULL,
+  `notes` varchar(250) NOT NULL,
+  `registration_key` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `brass_band`
+--
+
+INSERT INTO `brass_band` (`student`, `Instrument`, `ryo_form`, `tuition_due`, `notes`, `registration_key`) VALUES
+(1, 'trumpet', 'Y', '500.00', 'blah blah blah, bleh bleh bleh.', 1);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `classes`
+--
+
+CREATE TABLE `classes` (
+  `class_name` varchar(40) NOT NULL,
+  `teacher` int(11) NOT NULL,
+  `class_id` int(11) NOT NULL,
+  `pay_rate` decimal(5,2) NOT NULL,
+  `total_number` int(2) NOT NULL,
+  `year` int(4) NOT NULL,
+  `day` varchar(9) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `class_link`
+--
+
+CREATE TABLE `class_link` (
+  `student` int(11) NOT NULL,
+  `class_ref` int(11) NOT NULL,
+  `id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `lessons`
 --
 
@@ -36,8 +86,8 @@ CREATE TABLE `lessons` (
   `year` int(4) NOT NULL,
   `instrument` varchar(30) NOT NULL,
   `tuition_due` decimal(7,2) NOT NULL,
-  `tuition_paid` decimal(7,2) NOT NULL,
-  `tuition_owed` decimal(7,2) NOT NULL,
+  `total_lessons` int(2) NOT NULL,
+  `pay_rate` decimal(5,2) NOT NULL,
   `lesson_key` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -45,9 +95,9 @@ CREATE TABLE `lessons` (
 -- Dumping data for table `lessons`
 --
 
-INSERT INTO `lessons` (`student`, `teacher`, `teacher_type`, `duration`, `day`, `semester`, `year`, `instrument`, `tuition_due`, `tuition_paid`, `tuition_owed`, `lesson_key`) VALUES
-(1, 1, 'Rowan Prep', 60, 'Wednesday', 'Fall', 2015, 'Piano', '0.00', '0.00', '0.00', 1),
-(2, 1, 'Rowan Prep', 0, '', '', 0, '', '30.00', '30.00', '0.00', 2);
+INSERT INTO `lessons` (`student`, `teacher`, `teacher_type`, `duration`, `day`, `semester`, `year`, `instrument`, `tuition_due`, `total_lessons`, `pay_rate`, `lesson_key`) VALUES
+(1, 1, 'Rowan Prep', 60, 'Wednesday', 'Fall', 2015, 'Piano', '0.00', 0, '0.00', 1),
+(2, 1, 'Rowan Prep', 0, '', '', 0, '', '30.00', 0, '0.00', 2);
 
 -- --------------------------------------------------------
 
@@ -87,16 +137,26 @@ CREATE TABLE `payments` (
   `payment_key` int(11) NOT NULL,
   `payment_date` date NOT NULL,
   `amount_paid` decimal(7,2) NOT NULL,
-  `lesson` int(11) NOT NULL
+  `paid_check` char(1) NOT NULL,
+  `payment_type` varchar(12) NOT NULL,
+  `lesson` int(11) NOT NULL,
+  `student` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+-- --------------------------------------------------------
+
 --
--- Dumping data for table `payments`
+-- Table structure for table `payouts`
 --
 
-INSERT INTO `payments` (`payment_key`, `payment_date`, `amount_paid`, `lesson`) VALUES
-(1, '2015-11-23', '11.30', 2),
-(2, '2015-11-23', '11.30', 2);
+CREATE TABLE `payouts` (
+  `payout_key` int(11) NOT NULL,
+  `teacher` int(11) NOT NULL,
+  `payout_amount` decimal(7,2) NOT NULL,
+  `payout_date` date NOT NULL,
+  `lesson` int(11) NOT NULL,
+  `paid_lessons` int(3) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -203,6 +263,25 @@ INSERT INTO `users` (`username`, `password`, `user_key`, `email`, `admin`) VALUE
 --
 
 --
+-- Indexes for table `brass_band`
+--
+ALTER TABLE `brass_band`
+  ADD PRIMARY KEY (`registration_key`),
+  ADD KEY `student` (`student`);
+
+--
+-- Indexes for table `classes`
+--
+ALTER TABLE `classes`
+  ADD PRIMARY KEY (`class_id`);
+
+--
+-- Indexes for table `class_link`
+--
+ALTER TABLE `class_link`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `lessons`
 --
 ALTER TABLE `lessons`
@@ -222,6 +301,12 @@ ALTER TABLE `orchestra`
 --
 ALTER TABLE `payments`
   ADD PRIMARY KEY (`payment_key`);
+
+--
+-- Indexes for table `payouts`
+--
+ALTER TABLE `payouts`
+  ADD PRIMARY KEY (`payout_key`);
 
 --
 -- Indexes for table `students`
@@ -248,6 +333,21 @@ ALTER TABLE `users`
 --
 
 --
+-- AUTO_INCREMENT for table `brass_band`
+--
+ALTER TABLE `brass_band`
+  MODIFY `registration_key` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+--
+-- AUTO_INCREMENT for table `classes`
+--
+ALTER TABLE `classes`
+  MODIFY `class_id` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `class_link`
+--
+ALTER TABLE `class_link`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+--
 -- AUTO_INCREMENT for table `lessons`
 --
 ALTER TABLE `lessons`
@@ -262,6 +362,11 @@ ALTER TABLE `orchestra`
 --
 ALTER TABLE `payments`
   MODIFY `payment_key` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+--
+-- AUTO_INCREMENT for table `payouts`
+--
+ALTER TABLE `payouts`
+  MODIFY `payout_key` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `students`
 --

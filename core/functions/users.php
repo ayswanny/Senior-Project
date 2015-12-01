@@ -155,6 +155,9 @@
 	function get_teacher_payments($key) {
 		return $results = mysql_db_query("rowanprep", "SELECT st.first_name AS student_first_name, st.last_name AS student_last_name,ps.payment_date,ps.amount_paid FROM lessons el JOIN payments ps ON el.lesson_key = ps.lesson JOIN students st ON st.student_key = el.student WHERE el.teacher = '$key'"); 
 	}
+	function get_student_payments($key) {
+		return $results = mysql_db_query("rowanprep", "SELECT st.first_name AS student_first_name, st.last_name AS student_last_name,ps.payment_date,ps.amount_paid FROM lessons el JOIN payments ps ON el.lesson_key = ps.lesson JOIN students st ON st.student_key = el.student WHERE el.student = '$key'"); 
+	}
 
 	function get_teacher_timesheet($teacher)
 	{
