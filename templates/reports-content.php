@@ -246,6 +246,7 @@
                         <th><div class="text-center">Semester</div></th>
                         <th><div class="text-center">Year</div></th>
                         <th><div class="text-center">Instrument</div></th>
+                        <th><div class="text-center">Number of Lessons</div></th>
                         <th><div class="text-center">Tuition Due</div></th>
                         <th><div class="text-center">Tuition Paid</div></th>
                         <th><div class="text-center">Tuition Owed</div></th>
@@ -259,6 +260,14 @@
 
                     $tmp_teacher_name = get_teacher_name($row['teacher']); // call to get teacher names
                     $teacher_name = mysql_fetch_assoc($tmp_teacher_name);
+                    
+                    $tmp_payment = get_payment(0, $row['lesson_key']);
+                    $payment = 0;
+                    while($rows = mysql_fetch_assoc($tmp_payment)){
+                      $payment = $payment + $rows['amount_paid'];
+                    }
+                    $payment_due = $row['tuition_due'] - $payment;
+                  
 
                     echo '<tr>
                          <td><div class="text-center"><a href="#" onclick="Confirm.render(\'Delete Lesson?\',\'delete_lesson\',\'', $row['lesson_key'], '\')">
@@ -276,9 +285,10 @@
                          <td><div class="text-center">', $row['semester'],'</div></td>
                          <td><div class="text-center">', $row['year'],'</div></td>
                          <td><div class="text-center">', $row['instrument'],'</div></td>
+                         <td><div class="text-center">', $row['total_lessons'],'</div></td>
                          <td><div class="text-center">', $row['tuition_due'],'</div></td>
-                         <td><div class="text-center">', $row['tuition_paid'],'</div></td>
-                         <td><div class="text-center">', $row['tuition_owed'],'</div></td>'
+                         <td><div class="text-center">', $payment,'</div></td>
+                         <td><div class="text-center">', $payment_due,'</div></td>'
                           ;
                   }
                    echo '</tbody>';
@@ -325,10 +335,6 @@
                         <th><div class="text-center">Email</div></th>
                         <th><div class="text-center">Parent Email</div></th>
                         <th><div class="text-center">RYO Form</div></th>
-                        <th><div class="text-center">Paid Check</div></th>
-                        <th><div class="text-center">Check Numbers</div></th>
-                        <th><div class="text-center">Paid Card</div></th>
-                        <th><div class="text-center">Payment Date</div></th>
                         <th><div class="text-center">Tuition Due</div></th>
                         <th><div class="text-center">Tuition Paid</div></th>
                         <th><div class="text-center">Tuition Owed</div></th>
@@ -338,6 +344,14 @@
                   echo '<tbody>';
                  //fill in rows with data
                  while($row = mysql_fetch_assoc($results)) {
+
+                    $tmp_payment = get_payment(1, $row['registration_key']);
+                    $payment = 0;
+                    $payment_dates = "";
+                    while($rows = mysql_fetch_assoc($tmp_payment)){
+                      $payment = $payment + $rows['amount_paid'];
+                    }
+                    $payment_due = $row['tuition_due'] - $payment;
 
                     echo '<tr>
 
@@ -352,13 +366,9 @@
                          <td><div class="text-center">', $row['student_email'],'</div></td>
                          <td><div class="text-center">', $row['parent_email'],'</div></td>
                          <td><div class="text-center">', $row['ryo_form'],'</div></td>
-                         <td><div class="text-center">', $row['paid_check'],'</div></td>
-                         <td><div class="text-center">', $row['check_number'],'</div></td>
-                         <td><div class="text-center">', $row['paid_card'],'</div></td>
-                         <td><div class="text-center">', $row['payment_date'],'</div></td>
                          <td><div class="text-center">', $row['tuition_due'],'</div></td>
-                         <td><div class="text-center">', $row['tuition_paid'],'</div></td>
-                         <td><div class="text-center">', $row['tuition_owed'],'</div></td>
+                         <td><div class="text-center">', $payment,'</div></td>
+                         <td><div class="text-center">', $payment_due,'</div></td>
                          <td><div class="text-center">', $row['notes'],'</div></td>'
                           ;
                   }

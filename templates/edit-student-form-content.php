@@ -27,9 +27,6 @@
 	<a type="button" class="btn btn-primary" href="reports.php?tab=student" value="Back">Back</a>
 	</legend>
 
-	
-	
-
 	<!-- Text input-->
 	<div class="form-group">
 	  <label class="col-md-4 control-label" for="textinput">Last Name</label>

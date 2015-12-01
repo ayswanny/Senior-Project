@@ -159,6 +159,17 @@
 		return $results = mysql_db_query("rowanprep", "SELECT st.first_name AS student_first_name, st.last_name AS student_last_name,ps.payment_date,ps.amount_paid FROM lessons el JOIN payments ps ON el.lesson_key = ps.lesson JOIN students st ON st.student_key = el.student WHERE el.student = '$key'"); 
 	}
 
+	function get_payment($option, $key) {
+		if($option == 0) {
+			return $results = mysql_db_query("rowanprep", "SELECT * FROM payments WHERE lorc_id = '$key' AND lesson_or_class = '$option'");
+		}
+		else if($option == 1) {
+			return $results = mysql_db_query("rowanprep", "SELECT * FROM payments WHERE lorc_id = '$key' AND lesson_or_class = '$option'");
+		}
+		else 
+			return false;
+	}
+
 	function get_teacher_timesheet($teacher)
 	{
 		// $sql_lessons = 	"SELECT st.first_name AS student_first_name, st.last_name AS student_last_name, te.first_name, te.last_name, el.tuition_due, el.tuition_paid, el.tuition_owed, el.instrument, el.duration FROM lessons el " .
