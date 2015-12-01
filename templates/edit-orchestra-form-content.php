@@ -19,7 +19,7 @@
 
 ?>
 
-<form action="core/database/add-edit-orchestra.php?orchestra=<?php echo $row['registration_key'] ?>" class="form-horizontal" method="post" onsubmit="validate()">
+<form action="core/database/add-edit-orchestra.php?orchestra=<?php echo $row['registration_key']?>" class="form-horizontal" method="post" onsubmit="validate()">
 <fieldset>
 
 	<!-- Form Name -->
