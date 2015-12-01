@@ -37,7 +37,7 @@
       <h3>Students</h3>
       <table class="table table-striped text-center">
         <?php
-	  $link = connectDB();
+	 $link = connectDB();
           //output student table.
           $results = get_student_list();
           if(!$results) {
@@ -195,7 +195,7 @@
     <div class="text-center">
       <table class="table table-striped">
         <?php
-	  $link = connectDB();
+	 $link = connectDB();
           //out lessons table
           $results = get_lessons_list();
           if(!$results) {
@@ -266,7 +266,7 @@
         <?php
 
           //out lessons table
-	  $link = connectDB();
+	 $link = connectDB();
           $results = get_orchestra_list();
           if(!$results) {
             echo "Database Error";

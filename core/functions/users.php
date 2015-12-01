@@ -1,14 +1,11 @@
 <?php
-	function connectDB(){
-		 return mysql_connect("localhost", "swanso52", "utagydbo4");
-	}
 	function logged_in() {
 		return(isset($_SESSION['id'])) ? true : false;
 	}
 
 	function isAdmin() {
 		$user_key = $_SESSION['id'];
-		$results = mysql_db_query("rowanprep", "SELECT * FROM users WHERE user_key LIKE '$user_key'");
+		$results = mysql_db_query("rowanprep", "SELECT * FROM users WHERE user_key LIKE '$user_key' AND admin = 1 ");
 		$rows = mysql_fetch_assoc($results);
 		if(mysql_num_rows(results) === 0)
 			return false;
@@ -84,5 +81,28 @@
 		return $results = mysql_db_query("rowanprep", "SELECT last_name, first_name, student_email, parent_email 
 										FROM students WHERE student_key =  '$key'");
 	}
+	function get_student_lessons($key) {
+		return $results = mysql_db_query("rowanprep", "SELECT * FROM students st JOIN lessons el ON el.student = st.student_key WHERE st.student_key = '$key'"); 
+	}
+	function get_teacher_lessons($key) {
+		return $results = mysql_db_query("rowanprep", "SELECT * FROM students st JOIN lessons el ON el.teacher = te.teacher_key WHERE te.teacher_key = '$key'"); 
+	}
+	function get_lesson_payments($key) {
+		return $results = mysql_db_query("rowanprep", "SELECT * FROM payments ps JOIN lessons el ON ps.lesson = el.lesson_key WHERE el.lesson_key = '$key'"); 
+	}
+	function get_teacher_payments($key) {
+		return $results = mysql_db_query("rowanprep", "SELECT st.first_name AS student_first_name, st.last_name AS student_last_name,ps.payment_date,ps.amount_paid FROM lessons el JOIN payments ps ON el.lesson_key = ps.lesson JOIN students st ON st.student_key = el.student WHERE el.teacher = '$key'"); 
+	}
+
+	function get_teacher_timesheet($teacher)
+	{
+		// $sql_lessons = 	"SELECT st.first_name AS student_first_name, st.last_name AS student_last_name, te.first_name, te.last_name, el.tuition_due, el.tuition_paid, el.tuition_owed, el.instrument, el.duration FROM lessons el " .
+		// 		"JOIN students st ON el.student = st.student_key JOIN teachers te ON el.teacher = te.teacher_key JOIN payments ps ON ps.lesson = el.lesson_key WHERE el.lesson_key = '$key'";
+		$sql_lessons = 	"SELECT st.first_name AS student_first_name, st.last_name AS student_last_name, te.first_name, te.last_name, el.tuition_due, el.tuition_paid, el.tuition_owed, el.instrument, el.duration FROM lessons el " .
+					"JOIN students st ON el.student = st.student_key JOIN teachers te ON el.teacher = te.teacher_key WHERE te.teacher_key = $teacher";
+
+		return $results = mysql_db_query("rowanprep", $sql_lessons); 
+	}
+
 
 ?>
