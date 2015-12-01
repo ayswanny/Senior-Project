@@ -5,20 +5,13 @@
 	$addnew = true;
 	if (isset($_GET['orchestra'])) {
 		$orchestra = clean_up($_GET['orchestra']);
-
-		if($result = mysql_db_query("rowanprep", "SELECT * FROM `orchestra` WHERE `registration_key` LIKE '$orchestra'")) {
+		if($result = mysql_db_query("rowanprep", "SELECT * FROM orchestra WHERE registration_key LIKE '$orchestra'")) {
 			$row = mysql_fetch_assoc($result);
-			if ($result->num_rows !== 0) {
-				$addnew = false;
-			}
+			if (mysql_num_rows($result) !== 0) {
+        $addnew = false;  
+      }
 		}
 	}
- 
-  /* This, I think, is where the check for names should go.
-  * Somehow need to get IDs to put into the lessons table.
-  * Really not sure on how to do this.
-  * Highly doubt this works, probably needs $row like on line 10.
-  */
   
   $student = $_POST["student"];
   $instrument = ($_POST["instrument"]);
@@ -32,9 +25,6 @@
   $notes = $_POST["notes"];
   $tuition_owed = $tuition_due-$tuition_paid;
 
-
-
-  /* Prepared statement, stage 1: prepare */
   if ($addnew) {
     $sql = "INSERT INTO `orchestra` (student, instrument, ryo_form, paid_check, check_number, paid_card, payment_date, tuition_due, tuition_paid, tuition_owed, notes) VALUES ('$student', '$instrument', '$ryo_form', '$paid_check', '$check_number', '$paid_card', '$payment_date', '$tuition_due', '$tuition_paid', '$tuition_owed', '$notes')";
 

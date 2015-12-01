@@ -5,7 +5,6 @@
 	$addnew = true;
 	if (isset($_GET['teacher'])) {
 		$teacher = clean_up($_GET['teacher']);
-
 		if($result = mysql_db_query("rowanprep", "SELECT * FROM teachers WHERE teacher_key LIKE '$teacher'")) {
 			$row = mysql_fetch_assoc($result);
 			if (mysql_num_rows($result) !== 0) {
@@ -34,10 +33,8 @@
 
 	/* Prepared statement, stage 1: prepare */
 	if ($addnew) {
-		echo 'insert';
 		$sql = "INSERT INTO teachers (last_name, first_name, banner_id, home_phone, mobile_phone, email, alternate_email, street_address, city, state, zip_code, faculty_status, instrument, background_check) VALUES ('$last_name', '$first_name','$banner_id','$home_phone','$mobile_phone','$email','$alternate_email','$street_address','$city','$state','$zip_code','$faculty_status','$instrument','$background_check')";
 	} else {
-		echo 'update';
 		$sql = "UPDATE teachers SET last_name='$last_name', first_name='$first_name', banner_id='$banner_id', home_phone='$home_phone', mobile_phone='$mobile_phone', email='$email', alternate_email='$alternate_email', street_address='$street_address', city='$city', state='$state', zip_code='$zip_code', faculty_status='$faculty_status', instrument='$instrument', background_check='$background_check' WHERE teacher_key = '$teacher'";
 	}
 	 $link = connectDB();

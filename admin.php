@@ -4,8 +4,9 @@
 		header("Location: index.php");
 	if(!isAdmin())
 		header("Location: index.php");
-    	include 'templates/header.php';
-        include 'templates/navbar-logged-in.php';
-        include 'templates/admin-content.php';
-        include 'templates/footer.php';
+	echo $_SESSION['id'];
+	include 'templates/header.php';	
+    include 'templates/navbar-logged-in.php';
+    include 'templates/admin-content.php';
+    include 'templates/footer.php';
 ?>

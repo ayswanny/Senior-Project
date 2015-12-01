@@ -22,7 +22,7 @@
 	function get_name($user_key) {
 		$user_key = clean_up($user_key);
 		$results = mysql_db_query("rowanprep", "SELECT username FROM users WHERE user_key ='$user_key'");
-		$rows = $mysql_fetch_assoc($results);
+		$rows = mysql_fetch_assoc($results);
 		return $rows['username'];
 	}
 
@@ -59,17 +59,79 @@
 	function clean_up($data) {
 		return mysql_real_escape_string($data);
 	}
-	function get_student_list() {
-		return $results = mysql_db_query("rowanprep","SELECT * FROM students");
+	function get_student_list($sort) {
+		switch($sort) {
+			case '1';
+				return $results = mysql_db_query("rowanprep","SELECT * FROM students ORDER BY last_name");
+			break;
+			case '2':
+				return $results = mysql_db_query("rowanprep", "SELECT * FROM students ORDER BY first_name");
+			break;
+			case '3';
+				return $results = mysql_db_query("rowanprep", "SELECT * FROM students ORDER BY teacher");
+			break;
+			case '4':
+				return $results = mysql_db_query("rowanprep", "SELECT * FROM students ORDER BY instrument");
+			break;
+
+			default:
+				return $results = mysql_db_query("rowanprep","SELECT * FROM students");
+			break;
+		}
 	}
-	function get_teacher_list(){
-		return $results = mysql_db_query("rowanprep", "SELECT * FROM teachers");
+	function get_teacher_list($sort){
+		switch($sort) {
+			case 1: 
+				return $results = mysql_db_query("rowanprep", "SELECT * FROM teachers ORDER BY last_name");
+			break;
+			case 2:
+				return $results = mysql_db_query("rowanprep", "SELECT * FROM teachers ORDER BY first_name");
+			break;
+			case 3: 
+				return $results = mysql_db_query("rowanprep", "SELECT * FROM teachers ORDER BY instrument");
+			break;
+			default:
+				return $results = mysql_db_query("rowanprep", "SELECT * FROM teachers");
+			break;
+		}
 	}
-	function get_lessons_list(){
-		return $results = mysql_db_query("rowanprep", "SELECT * FROM lessons");
+	function get_lessons_list($sort){
+		switch($sort) {
+			case 1: 
+				return $results = mysql_db_query("rowanprep", "SELECT * FROM students st JOIN lessons les ON les.student = st.student_key ORDER BY last_name");
+			break;
+			case 2:
+				return $results = mysql_db_query("rowanprep", "SELECT * FROM teachers tea JOIN lessons les ON les.teacher = tea.teacher_key ORDER BY last_name");
+			break;
+			case 3: 
+				return $results = mysql_db_query("rowanprep", "SELECT * FROM lessons ORDER BY instrument");
+			break;
+			case 4:
+				return $results = mysql_db_query("rowanprep", "SELECT * FROM lessons ORDER BY day");
+			break;
+			default:
+				return $results = mysql_db_query("rowanprep", "SELECT * FROM lessons");
+			break;
+		}
 	}
-	function get_orchestra_list(){
-		return $results = mysql_db_query("rowanprep", "SELECT * FROM students st JOIN orchestra ryor ON ryor.student = st.student_key"); //"SELECT * FROM `orchestra`");
+	function get_orchestra_list($sort){
+		switch($sort) {
+			case 1: 
+				return $results = mysql_db_query("rowanprep", "SELECT * FROM students st JOIN orchestra ryor ON ryor.student = st.student_key ORDER BY last_name");
+			break;
+			case 2:
+				return $results = mysql_db_query("rowanprep", "SELECT * FROM students st JOIN orchestra ryor ON ryor.student = st.student_key ORDER BY first_name");
+			break;
+			case 3: 
+				return $results = mysql_db_query("rowanprep", "SELECT * FROM students st JOIN orchestra ryor ON ryor.student = st.student_key ORDER BY ryor.instrument");
+			break;
+			case 4:
+				return $results = mysql_db_query("rowanprep", "SELECT * FROM students st JOIN orchestra ryor ON ryor.student = st.student_key ORDER BY tuition_owed DESC");
+			break;
+			default:
+				return $results = mysql_db_query("rowanprep", "SELECT * FROM students st JOIN orchestra ryor ON ryor.student = st.student_key"); //"SELECT * FROM `orchestra`");			break;
+		}
+		
 	}
 	function get_student_name($key){
 		return $results = mysql_db_query("rowanprep", "SELECT last_name, first_name FROM students WHERE student_key =  '$key'");

@@ -4,11 +4,11 @@
 		header("Location: index.php");
 
 	if (!isset($_GET['tab'])) {
-	    header('Location: reports.php?tab=student');
+	    header('Location: reports.php?tab=students');
 	  } else {
 	    $tab = clean_up($_GET['tab']);
 	  }
-	  $mytabs = array('#student' => 'Students' ,'#teacher' => 'Teacher','#lessons' => 'Lessons' , '#orchestra' => 'Orchestra' );
+	 
 
 	include "templates/header.php";
 	include "templates/navbar-logged-in.php";

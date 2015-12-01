@@ -8,38 +8,42 @@
   }
 </style>
 
-<?php
-  $mytabs = array('student' => 'Students' ,'teacher' => 'Teacher','lessons' => 'Lessons' , 'orchestra' => 'Orchestra' );
-
-  if (!isset($_GET['tab'])) {
-    header('Location: reports.php?tab=student');
-  } else {
-    $tab = clean_up($_GET['tab']);
-  }
-
-
-?>
-
-<div style="margin-top:50px;" class="mainbox col-md-12">
+<div style="margin-top:50px;" class="mainbox col-md-12 text-center">
 
   <div class="row">
 
     <!-- Simple jQuery calls to switch out divs-->
-    <a type="button" class="btn btn-primary" href="#" onClick="<?php make_swap_code('student',$mytabs); ?>">Student</a>
-    <a type="button" class="btn btn-primary" href="#" onClick="<?php make_swap_code('teacher',$mytabs); ?>">Teacher</a>
-    <a type="button" class="btn btn-primary" href="#" onClick="<?php make_swap_code('lessons',$mytabs); ?>">Lesson</a>
-    <a type="button" class="btn btn-primary" href="#" onClick="<?php make_swap_code('orchestra',$mytabs); ?>">Rowan Youth Orchestra</a>
+    <a type="button" class="btn btn-primary" href="reports.php?tab=students">Student</a>
+    <a type="button" class="btn btn-primary" href="reports.php?tab=teachers">Teacher</a>
+    <a type="button" class="btn btn-primary" href="reports.php?tab=lessons">Lessons</a>
+    <a type="button" class="btn btn-primary" href="reports.php?tab=orchestra" >Rowan Youth Orchestra</a>
 
   </div>
-
-  <div <?php $my_id = "student"; make_div_line_code($my_id, $tab===$my_id); ?> class="table-responsive">
+  
+  <?php if($tab == 'students') {  ?>
+  <div id="student" class="table-responsive">
     <div class="text-center">
       <h3>Students</h3>
+      <ul class="list-inline">
+      <li><a href="reports.php?tab=students&sortby=1">Last Name</a></li>
+      <li><a href="reports.php?tab=students&sortby=2">First Name</a></li>
+      <li><a href="reports.php?tab=students&sortby=3">Teacher</a></li>
+      <li><a href="reports.php?tab=students&sortby=4">Instrument</a></li>
+    </ul>
+    </div>
+
       <table class="table table-striped text-center">
         <?php
-	 $link = connectDB();
+	        $link = connectDB();
           //output student table.
-          $results = get_student_list();
+          if(isset($_GET['sortby']))  {
+            $sort = $_GET['sortby'];
+            $results = get_student_list($sort);
+          }
+          else {
+            $sort = 0;
+            $results = get_student_list($sort);
+          }
           if(!$results) {
             echo "Database Error";
           }
@@ -120,15 +124,27 @@
       </table>
     </div>
   </div>
-
-  <div <?php $my_id = "teacher"; make_div_line_code($my_id, $tab===$my_id); ?> class="table-responsive">
+  <?php } else if($tab == 'teachers') { ?>
+  <div id="teacher" class="table-responsive">
     <h3>Teachers</h3>
+    <ul class="list-inline">
+      <li><a href="reports.php?tab=teachers&sortby=1">Last Name</a></li>
+      <li><a href="reports.php?tab=teachers&sortby=2">First Name</a></li>
+      <li><a href="reports.php?tab=teachers&sortby=3">Instrument</a></li>
+    </ul>
     <div class="text-center">
       <table class="table table-striped text-center">
         <?php
- 	  $link = connectDB();
+ 	        $link = connectDB();
           //out teachers table
-          $results = get_teacher_list();
+           if(isset($_GET['sortby']))  {
+            $sort = $_GET['sortby'];
+            $results = get_teacher_list($sort);
+          }
+          else {
+            $sort = 0;
+            $results = get_teacher_list($sort);
+          }
           if(!$results) {
             echo "Database Error";
           }
@@ -189,15 +205,28 @@
       </table>
     </div>
   </div>
-
-  <div <?php $my_id = "lessons"; make_div_line_code($my_id, $tab===$my_id); ?> class="table-responsive">
+  <?php } else if($tab == 'lessons') { ?>
+  <div id="lessons" class="table-responsive">
     <h3>Lessons</h3>
+    <ul class="list-inline">
+      <li><a href="reports.php?tab=lessons&sortby=1">Student Last Name</a></li>
+      <li><a href="reports.php?tab=lessons&sortby=2">Teacher Last Name</a></li>
+      <li><a href="reports.php?tab=lessons&sortby=3">Instrument</a></li>
+      <li><a href="reports.php?tab=lessons&sortby=4">Day</a></li>
+    </ul>
     <div class="text-center">
       <table class="table table-striped">
         <?php
-	 $link = connectDB();
+	  $link = connectDB();
           //out lessons table
-          $results = get_lessons_list();
+           if(isset($_GET['sortby']))  {
+            $sort = $_GET['sortby'];
+            $results = get_lessons_list($sort);
+          }
+          else {
+            $sort = 0;
+            $results = get_lessons_list($sort);
+          }
           if(!$results) {
             echo "Database Error";
           }
@@ -258,16 +287,29 @@
       </table>
     </div>
   </div>
-
-  <div <?php $my_id = "orchestra"; make_div_line_code($my_id, $tab===$my_id); ?> class="table-responsive">
+  <?php } else if($tab == 'orchestra') { ?>
+  <div id="orchestra" class="table-responsive">
     <h3>Rowan Youth Orchestra</h3>
+    <ul class="list-inline">
+      <li><a href="reports.php?tab=orchestra&sortby=1">Last Name</a></li>
+      <li><a href="reports.php?tab=orchestra&sortby=2">First name</a></li>
+      <li><a href="reports.php?tab=orchestra&sortby=3">Instrument</a></li>
+      <li><a href="reports.php?tab=orchestra&sortby=4">Tuition Owed</a></li>
+    </ul>
     <div class="text-center">
       <table class="table table-striped">
         <?php
 
           //out lessons table
-	 $link = connectDB();
-          $results = get_orchestra_list();
+	  $link = connectDB();
+         if(isset($_GET['sortby']))  {
+            $sort = $_GET['sortby'];
+            $results = get_orchestra_list($sort);
+          }
+          else {
+            $sort = 0;
+            $results = get_orchestra_list($sort);
+          }
           if(!$results) {
             echo "Database Error";
           }
@@ -326,6 +368,9 @@
       </table>
     </div>
   </div>
-
-
+  <?php } else { ?>
+  <div class="text-center">
+    <h3>Please Select a Tab !</h3>
+  </div>
+  <?php } ?>
 </div>
