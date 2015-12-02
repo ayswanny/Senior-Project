@@ -1,14 +1,3 @@
-<style type="text/css">
-  table td {
-    white-space: nowrap;
-  }
-  a.tooltip{
-    position: relative;
-    display: inline;
-  }
-  
-  }
-</style>
 
 <div style="margin-top:10px;" class="mainbox col-md-12 text-center">
 
@@ -21,14 +10,21 @@
     <a type="button" class="btn btn-primary" href="reports.php?tab=orchestra" >Rowan Orchestra</a>
     <a type="button" class="btn btn-primary" href="reports.php?tab=band">Atlantic Brass Band</a>
     
+     <span class="btn-group">
+        <button class="drop-down-btn">Classes</button>
+        <button class="drop-down-toggle dropdown-toggle" data-toggle="dropdown">
+            <span class="caret"></span>
+        </button>
+         <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Unsorted</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Another action</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Something else here</a></li>
+          </ul>
+      </span>
+
   </div>
   <br>
-  <div class="row">
-    <select name="class-list" class="div-inline" onchange="location = this.options[this.selectedIndex].value;">
-      <option value="" selected>Class</option>
-      <option value="reports.php?tab=class">Option two</option>
-    </select>
-  </div>
+  
 
   
   <?php if($tab == 'students') {  ?>
