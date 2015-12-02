@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Dec 01, 2015 at 10:54 PM
+-- Generation Time: Dec 02, 2015 at 08:41 AM
 -- Server version: 5.6.24
 -- PHP Version: 5.5.20
 
@@ -28,7 +28,7 @@ SET time_zone = "+00:00";
 
 CREATE TABLE IF NOT EXISTS `brass_band` (
   `student` int(11) NOT NULL,
-  `Instrument` varchar(20) NOT NULL,
+  `instrument` varchar(20) NOT NULL,
   `ryo_form` varchar(1) NOT NULL,
   `tuition_due` decimal(7,2) NOT NULL,
   `notes` varchar(250) NOT NULL,
@@ -39,7 +39,7 @@ CREATE TABLE IF NOT EXISTS `brass_band` (
 -- Dumping data for table `brass_band`
 --
 
-INSERT INTO `brass_band` (`student`, `Instrument`, `ryo_form`, `tuition_due`, `notes`, `registration_key`) VALUES
+INSERT INTO `brass_band` (`student`, `instrument`, `ryo_form`, `tuition_due`, `notes`, `registration_key`) VALUES
 (1, 'trumpet', 'Y', '500.00', 'blah blah blah, bleh bleh bleh.', 1);
 
 -- --------------------------------------------------------

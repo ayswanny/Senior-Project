@@ -7,7 +7,7 @@
 		$user_key = $_SESSION['id'];
 		$results = mysql_db_query("rowanprep", "SELECT * FROM users WHERE user_key LIKE '$user_key' AND admin = 1 ");
 		$rows = mysql_fetch_assoc($results);
-		if(mysql_num_rows(results) === 0)
+		if(mysql_num_rows($results) === 0)
 			return false;
 		else
 			return true;
@@ -131,7 +131,24 @@
 			default:
 				return $results = mysql_db_query("rowanprep", "SELECT * FROM students st JOIN orchestra ryor ON ryor.student = st.student_key"); //"SELECT * FROM `orchestra`");			break;
 		}
-		
+	}
+	function get_band_list($sort){
+		switch($sort) {
+			case 1: 
+				return $results = mysql_db_query("rowanprep", "SELECT * FROM students st JOIN brass_band bb ON bb.student = st.student_key ORDER BY last_name");
+			break;
+			case 2:
+				return $results = mysql_db_query("rowanprep", "SELECT * FROM students st JOIN brass_band bb ON bb.student = st.student_key ORDER BY first_name");
+			break;
+			case 3: 
+				return $results = mysql_db_query("rowanprep", "SELECT * FROM students st JOIN brass_band bb ON bb.student = st.student_key ORDER BY bb.instrument");
+			break;
+			case 4:
+				return $results = mysql_db_query("rowanprep", "SELECT * FROM students st JOIN brass_band bb ON bb.student = st.student_key ORDER BY tuition_owed DESC");
+			break;
+			default:
+				return $results = mysql_db_query("rowanprep", "SELECT * FROM students st JOIN brass_band bb ON bb.student = st.student_key"); //"SELECT * FROM `orchestra`");			break;
+		}
 	}
 	function get_student_name($key){
 		return $results = mysql_db_query("rowanprep", "SELECT last_name, first_name FROM students WHERE student_key =  '$key'");
