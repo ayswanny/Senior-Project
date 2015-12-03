@@ -4,6 +4,13 @@
 	}
 </style>
 
+<script type="text/javascript">
+	function function_name (which_one, pay_rate, number) {
+		document.getElementById(which_one).innerHTML = "test" + number;
+	}
+	
+</script>
+
 
 <?php 
 	$db = connectDB();
@@ -71,8 +78,8 @@
 	                foreach ($fields as $key => $value) {
 	                	echo "<td>$row[$value]</td>";
 	                }
-	                echo '<td><select id="selectbasic" name="total_lessons" class="form-control">';
-                      
+	                echo '<td><select id="select_', $row['student_name'] ,'" onchange="function_name( \'content_', $row['student_name'] ,"',",$row['pay_rate'] ,',this.selectedIndex) " name="total_lessons" class="form-control">';
+                      // TODO: subtract payouts.
                       for ($tmp_int=1; $tmp_int <= $row['total_lessons']; $tmp_int++) { 
                       	if($row['total_lessons'] === $tmp_int) {
 			             echo '<option value="', $tmp_int,'" selected>', $tmp_int,'</option>';
@@ -82,25 +89,26 @@
 			            }
                       }
 			        echo '</select></td>';
+			        echo '<td><div id="content_', $row['student_name'],'"></div></td>';
 	                echo "</tr>";
 	            }
 
-	            $sumresult = mysql_query("SELECT SUM(el.tuition_due),SUM(ps.amount_paid) FROM lessons el JOIN payments ps ON el.lesson_key = ps.lesson WHERE el.teacher = $teacher");
+	   //          $sumresult = mysql_query("SELECT SUM(el.tuition_due),SUM(ps.amount_paid) FROM lessons el JOIN payments ps ON el.lesson_key = ps.lesson WHERE el.teacher = $teacher");
 	            
-	            $sumrow =  mysql_fetch_assoc($sumresult);
+	   //          $sumrow =  mysql_fetch_assoc($sumresult);
 
-				echo '<tr>';
-            	echo '<td></td>';
-                foreach ($fields as $key => $value) {
-                	$tmp = "SUM($value)";
-                	if ($key >= 7 and $key <= 9) {
-                		echo "<td>". $sumrow[$tmp] ."</td>";	
-                	} else {
-                		echo "<td></td>";
-                	}
+				// echo '<tr>';
+    //         	echo '<td></td>';
+    //             foreach ($fields as $key => $value) {
+    //             	$tmp = "SUM($value)";
+    //             	if ($key >= 7 and $key <= 9) {
+    //             		echo "<td>". $sumrow[$tmp] ."</td>";	
+    //             	} else {
+    //             		echo "<td></td>";
+    //             	}
                 	
-                }
-                echo "</tr>";
+    //             }
+    //             echo "</tr>";
 
 	            echo "</tbody>";
 
