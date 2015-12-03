@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Dec 02, 2015 at 08:41 AM
+-- Generation Time: Dec 03, 2015 at 03:38 AM
 -- Server version: 5.6.24
 -- PHP Version: 5.5.20
 
@@ -56,7 +56,14 @@ CREATE TABLE IF NOT EXISTS `classes` (
   `total_number` int(2) NOT NULL,
   `year` int(4) NOT NULL,
   `day` varchar(9) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `classes`
+--
+
+INSERT INTO `classes` (`class_name`, `teacher`, `class_id`, `pay_rate`, `total_number`, `year`, `day`) VALUES
+('Jedi Training', 1, 1, '20.00', 8, 2015, 'Thursday');
 
 -- --------------------------------------------------------
 
@@ -67,8 +74,16 @@ CREATE TABLE IF NOT EXISTS `classes` (
 CREATE TABLE IF NOT EXISTS `class_link` (
   `student` int(11) NOT NULL,
   `class_ref` int(11) NOT NULL,
-  `id` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `id` int(11) NOT NULL,
+  `tuition_due` double(7,2) NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `class_link`
+--
+
+INSERT INTO `class_link` (`student`, `class_ref`, `id`, `tuition_due`) VALUES
+(1, 1, 1, 0.00);
 
 -- --------------------------------------------------------
 
@@ -140,17 +155,20 @@ CREATE TABLE IF NOT EXISTS `payments` (
   `amount_paid` decimal(7,2) NOT NULL,
   `paid_check` char(1) NOT NULL,
   `check_number` varchar(12) NOT NULL,
-  `lesson_or_class` tinyint(4) NOT NULL,
-  `lorc_id` int(11) NOT NULL,
+  `type` tinyint(4) NOT NULL,
+  `id` int(11) NOT NULL,
   `student` int(11) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `payments`
 --
 
-INSERT INTO `payments` (`payment_key`, `payment_date`, `amount_paid`, `paid_check`, `check_number`, `lesson_or_class`, `lorc_id`, `student`) VALUES
-(3, '2015-12-01 20:48:43', '100.00', 'Y', '555555555', 0, 1, 1);
+INSERT INTO `payments` (`payment_key`, `payment_date`, `amount_paid`, `paid_check`, `check_number`, `type`, `id`, `student`) VALUES
+(3, '2015-12-01 20:48:43', '100.00', 'Y', '555555555', 0, 1, 1),
+(4, '2015-12-03 03:30:49', '100.00', 'Y', '999999999', 3, 1, 1),
+(5, '2015-12-03 03:30:49', '100.00', 'Y', '999999999', 2, 1, 1),
+(6, '2015-12-03 03:30:49', '100.00', 'Y', '999999999', 1, 1, 1);
 
 -- --------------------------------------------------------
 
@@ -350,12 +368,12 @@ ALTER TABLE `brass_band`
 -- AUTO_INCREMENT for table `classes`
 --
 ALTER TABLE `classes`
-  MODIFY `class_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `class_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `class_link`
 --
 ALTER TABLE `class_link`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `lessons`
 --
@@ -370,7 +388,7 @@ ALTER TABLE `orchestra`
 -- AUTO_INCREMENT for table `payments`
 --
 ALTER TABLE `payments`
-  MODIFY `payment_key` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
+  MODIFY `payment_key` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=7;
 --
 -- AUTO_INCREMENT for table `payouts`
 --

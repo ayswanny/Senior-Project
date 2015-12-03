@@ -150,6 +150,13 @@
 				return $results = mysql_db_query("rowanprep", "SELECT * FROM students st JOIN brass_band bb ON bb.student = st.student_key"); //"SELECT * FROM `orchestra`");			break;
 		}
 	}
+	function get_class_list() {
+		return $results = mysql_db_query("rowanprep", "SELECT * FROM classes");
+
+	}
+	function get_class_student_list($key) {
+		return $results = mysql_db_query("rowanprep", "SELECT * FROM class_link JOIN students ON student_key = student WHERE class_ref = '$key'");
+	}
 	function get_student_name($key){
 		return $results = mysql_db_query("rowanprep", "SELECT last_name, first_name FROM students WHERE student_key =  '$key'");
 	}
@@ -176,15 +183,12 @@
 		return $results = mysql_db_query("rowanprep", "SELECT st.first_name AS student_first_name, st.last_name AS student_last_name,ps.payment_date,ps.amount_paid FROM lessons el JOIN payments ps ON el.lesson_key = ps.lesson JOIN students st ON st.student_key = el.student WHERE el.student = '$key'"); 
 	}
 
-	function get_payment($option, $key) {
-		if($option == 0) {
-			return $results = mysql_db_query("rowanprep", "SELECT * FROM payments WHERE lorc_id = '$key' AND lesson_or_class = '$option'");
-		}
-		else if($option == 1) {
-			return $results = mysql_db_query("rowanprep", "SELECT * FROM payments WHERE lorc_id = '$key' AND lesson_or_class = '$option'");
-		}
-		else 
-			return false;
+	function get_payment($option, $key) {	
+		return $results = mysql_db_query("rowanprep", "SELECT * FROM payments WHERE id = '$key' AND type = '$option'");		
+	}
+	//TODO not working!!
+	function get_class_payment($option, $key, $student_key) {	
+		return $results = mysql_db_query("rowanprep", "SELECT * FROM payments WHERE id = '$key' AND student = '$student_key' AND type = '$option'");		
 	}
 
 	function get_teacher_timesheet($teacher)

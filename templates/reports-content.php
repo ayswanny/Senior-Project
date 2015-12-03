@@ -16,9 +16,13 @@
             <span class="caret"></span>
         </button>
          <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
-            <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Unsorted</a></li>
-            <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Another action</a></li>
-            <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Something else here</a></li>
+            <?php
+              $link = connectDB();
+              $result = get_class_list();
+              while ($class_id = mysql_fetch_assoc($result)) {
+                echo '<li role="presentation"><a role="menuitem" href="reports.php?tab=class&class-key=', $class_id['class_id'],'">', $class_id['class_name'] ,'</a></li>';
+              }
+            ?>
           </ul>
       </span>
 
@@ -385,7 +389,7 @@
       </table>
     </div>
   </div>
-    <?php } else if($tab == 'band') { ?>
+  <?php } else if($tab == 'band') { ?>
   <div id="band" class="table-responsive">
     <h3>Atlantic Youth Brass Band</h3>
     <ul class="list-inline">
@@ -433,7 +437,7 @@
                  //fill in rows with data
                  while($row = mysql_fetch_assoc($results)) {
 
-                    $tmp_payment = get_payment(1, $row['registration_key']);
+                    $tmp_payment = get_payment(2, $row['registration_key']);
                     $payment = 0;
                     $payment_dates = "";
                     while($rows = mysql_fetch_assoc($tmp_payment)){
@@ -447,6 +451,87 @@
                            <img class="table-icon" src="./res/image/rm-user.png">
                            </a></div></td>
                          <td><div class="text-center"><a href="edit-band-form.php?band=', $row['registration_key'], '">
+                         <img class="table-icon" src="./res/image/edit.png"></a></div></td>
+                         <td><div class="text-center">', $row['last_name'],'</div></td>
+                         <td><div class="text-center">', $row['first_name'],'</div></td>
+                         <td><div class="text-center">', $row['instrument'],'</div></td>
+                         <td><div class="text-center">', $row['student_email'],'</div></td>
+                         <td><div class="text-center">', $row['parent_email'],'</div></td>
+                         <td><div class="text-center">', $row['ryo_form'],'</div></td>
+                         <td><div class="text-center">', $row['tuition_due'],'</div></td>
+                         <td><div class="text-center">', $payment,'</div></td>
+                         <td><div class="text-center">', $payment_due,'</div></td>
+                         <td><div class="text-center">', $row['notes'],'</div></td>'
+                          ;
+                  }
+                   echo '</tbody>';
+              }
+        ?>
+      </table>
+    </div>
+  </div>
+  <?php } else if($tab == 'class') { ?>
+  <div id="class" class="table-responsive">
+    <h3>Class</h3>
+    <ul class="list-inline">
+      <li><a href="reports.php?tab=class&class-key="<?php echo $class_key ?>"&sortby=1">Last Name</a></li>
+      <li><a href="reports.php?tab=class&class-key="<?php echo $class_key ?>"&sortby=2">First name</a></li>
+      <li><a href="reports.php?tab=class&class-key="<?php echo $class_key ?>"&sortby=3">Instrument</a></li>
+      <li><a href="reports.php?tab=class&class-key="<?php echo $class_key ?>"&sortby=4">Tuition Owed</a></li>
+    </ul>
+    <div class="text-center">
+      <table class="table table-striped">
+        <?php
+
+          //out lessons table
+        $link = connectDB();
+         if(isset($_GET['sortby']))  {
+            $sort = $_GET['sortby'];
+            $results = get_class_student_list($class_key);
+          }
+          else {
+            $sort = 0;
+            $results = get_class_student_list($class_key);
+          }
+          if(!$results) {
+            echo "Database Error";
+          }
+          else {
+            // table headers
+                  echo '<thead><tr>';
+                  echo '<th><div class="text-center"><a href="edit-class-form.php?class=','new','">
+                         <img class="table-icon" src="./res/image/add-user.png"></a></div></th>
+                        <th><div class="text-center"></div></th>
+                        <th><div class="text-center">Student Last Name</div></th>
+                        <th><div class="text-center">Student First Name</div></th>
+                        <th><div class="text-center">Intrument</div></th>
+                        <th><div class="text-center">Email</div></th>
+                        <th><div class="text-center">Parent Email</div></th>
+                        <th><div class="text-center">Tuition Due</div></th>
+                        <th><div class="text-center">Tuition Paid</div></th>
+                        <th><div class="text-center">Tuition Owed</div></th>
+                        <th><div class="text-center">Notes</div></th>
+                        ';
+                  echo '</tr></thead>';
+                  echo '<tbody>';
+                 //fill in rows with data
+                 while($row = mysql_fetch_assoc($results)) {
+
+                    $tmp_payment = get_class_payment('3', $row['class_id'], $row['student_key']);
+                    $payment = 0;
+                    $payment_dates = "";
+                    while($rows = mysql_fetch_assoc($tmp_payment)){
+                      var_dump($rows);
+                      $payment = $payment + $rows['amount_paid'];
+                    }
+                    $payment_due = $row['tuition_due'] - $payment;
+
+                    echo '<tr>
+
+                         <td><div class="text-center"><a href="#" onclick="Confirm.render(\'Delete Band Entry?\',\'delete_band\',\'', $row['registration_key'], '\')">
+                           <img class="table-icon" src="./res/image/rm-user.png">
+                           </a></div></td>
+                         <td><div class="text-center"><a href="edit-class-form.php?class=', $row['registration_key'], '">
                          <img class="table-icon" src="./res/image/edit.png"></a></div></td>
                          <td><div class="text-center">', $row['last_name'],'</div></td>
                          <td><div class="text-center">', $row['first_name'],'</div></td>
