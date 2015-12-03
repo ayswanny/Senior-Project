@@ -28,7 +28,7 @@
     $sql = "INSERT INTO lessons (student, teacher, teacher_type, duration, day, semester, year, instrument, tuition_due, total_lessons, pay_rate) VALUES ('$student', '$teacher', '$teacher_type', '$duration', '$day', '$semester', '$year', '$instrument', '$tuition_due', '$total_lessons', '$pay_rate')";
   } else {
     echo 'update';
-    	$sql = "UPDATE lessons SET student='$student', teacher='$teacher', teacher_type='$teacher_type', duration='$duration', day='$day', semester='$semester', year='$year', instrument='$instrument', tuition_due='$tuition_due' total_lessons='$total_lessons', pay_rate='$pay_rate' WHERE lesson_key = '$lesson'";
+    	$sql = "UPDATE lessons SET student='$student', teacher='$teacher', teacher_type='$teacher_type', duration='$duration', day='$day', semester='$semester', year='$year', instrument='$instrument', tuition_due='$tuition_due', total_lessons='$total_lessons', pay_rate='$pay_rate' WHERE lesson_key = '$lesson'";
   }
 
   $link = connectDB();

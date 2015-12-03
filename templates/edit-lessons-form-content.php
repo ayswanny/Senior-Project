@@ -195,7 +195,7 @@
   <div class="form-group">
     <label class="col-md-4 control-label" for="textinput">Teacher Pay Rate</label>
     <div class="col-md-5">
-    <input id="textinput" name="pay_rate" type="text" value="<?php echo (($addnew)?"\"placeholder=\"Amount\"":$row['tuition_due'])?>" class="form-control input-md" required="">
+    <input id="textinput" name="pay_rate" type="text" value="<?php echo (($addnew)?"\"placeholder=\"Amount\"":$row['pay_rate'])?>" class="form-control input-md" required="">
 
     </div>
   </div>
