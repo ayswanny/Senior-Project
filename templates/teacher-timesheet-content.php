@@ -40,23 +40,16 @@
 				}
 
 				$columns = array(
-					1 => "Student First Name", 
-					2 => "Student Last Name", 
-					3 => "Teacher First Name", 
-					4 => "Teacher Last Name",
-					5 => "Instrument",
-					6 => "Duration",
-					7 => "Tuition Due", 
-					8 => "Tuition Paid", 
-					9 => "Tuition Owed");
+					1 => "Student", 
+					2 => "Total Lessons",
+					3 => "Pay Rate",
+					4 => "Payout Now",
+					5 => "Total");
+					
 				$fields = array(
-					1 => "student_first_name", 
-					2 => "student_last_name", 
-					3 => "first_name",
-					4 => "last_name",
-					5 => "instrument",
-					6 => "duration",
-					7 => "el.tuition_due");
+					1 => "student_name", 
+					2 => "total_lessons",
+					3 => "pay_rate");
 
 				$pay_fields = array(
 					1 => "student_first_name", 
