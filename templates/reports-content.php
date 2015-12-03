@@ -521,7 +521,6 @@
                     $payment = 0;
                     $payment_dates = "";
                     while($rows = mysql_fetch_assoc($tmp_payment)){
-                      var_dump($rows);
                       $payment = $payment + $rows['amount_paid'];
                     }
                     $payment_due = $row['tuition_due'] - $payment;
@@ -538,7 +537,6 @@
                          <td><div class="text-center">', $row['instrument'],'</div></td>
                          <td><div class="text-center">', $row['student_email'],'</div></td>
                          <td><div class="text-center">', $row['parent_email'],'</div></td>
-                         <td><div class="text-center">', $row['ryo_form'],'</div></td>
                          <td><div class="text-center">', $row['tuition_due'],'</div></td>
                          <td><div class="text-center">', $payment,'</div></td>
                          <td><div class="text-center">', $payment_due,'</div></td>
