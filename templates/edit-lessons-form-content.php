@@ -1,13 +1,11 @@
 <?php
-
-	if(isset($_GET['lesson'])) {
-		$lesson = clean_up($_GET['lesson']);
-	}
-	else {
-
-	}
-	
-	$addnew = false;
+  if(isset($_GET['lesson'])) {
+    $lesson = clean_up($_GET['lesson']);
+  }
+  else {
+  }
+  
+  $addnew = false;
   $link = connectDB();
   $result = mysql_db_query("rowanprep", "SELECT * FROM lessons WHERE lesson_key LIKE '$lesson'");
   $num_rows = mysql_num_rows($result);
@@ -16,22 +14,21 @@
   } else {
     $row = mysql_fetch_assoc($result);
   }
-
 ?>
 
 <form action="core/database/add-edit-lessons.php?lesson=<?php echo $row['lesson_key']?>" class="form-horizontal" method="post" onsubmit="validate()">
 <fieldset>
 
-	<!-- Form Name -->
-	<legend><?php echo (($addnew)?"Add":"Edit"); ?> Lesson
+  <!-- Form Name -->
+  <legend><?php echo (($addnew)?"Add":"Edit"); ?> Lesson
   <input type="submit" class="btn btn-primary" value="Save" />
   <a type="button" class="btn btn-primary" href="reports.php?tab=lessons" value="Back">Back</a>
   </legend>
 
-	
+  
 
-	<!-- Text input-->
-	<form class="form-horizontal">
+  <!-- Text input-->
+  <form class="form-horizontal">
   <fieldset>
 
   <!-- Select Basic -->
@@ -195,7 +192,7 @@
   <div class="form-group">
     <label class="col-md-4 control-label" for="textinput">Teacher Pay Rate</label>
     <div class="col-md-5">
-    <input id="textinput" name="pay_rate" type="text" value="<?php echo (($addnew)?"\"placeholder=\"Amount\"":$row['tuition_due'])?>" class="form-control input-md" required="">
+    <input id="textinput" name="pay_rate" type="text" value="<?php echo (($addnew)?"\"placeholder=\"Amount\"":$row['pay_rate'])?>" class="form-control input-md" required="">
 
     </div>
   </div>

@@ -73,7 +73,7 @@
 	                }
 	                echo '<td><select id="selectbasic" name="total_lessons" class="form-control">';
                       
-                      for ($tmp_int=1; $tmp_int < $row['total_lessons']; $tmp_int++) { 
+                      for ($tmp_int=1; $tmp_int <= $row['total_lessons']; $tmp_int++) { 
                       	if($row['total_lessons'] === $tmp_int) {
 			             echo '<option value="', $tmp_int,'" selected>', $tmp_int,'</option>';
 			            }

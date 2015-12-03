@@ -14,6 +14,5 @@
 				$delete = true;
 		}
 	}
-    $db->close();
     header("Location: ../../reports.php");
 ?>
