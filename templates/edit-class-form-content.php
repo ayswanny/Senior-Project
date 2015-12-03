@@ -9,7 +9,7 @@
 	
 	$addnew = false;
   $link = connectDB();
-  $result = mysql_db_query("rowanprep", "SELECT * FROM class_link WHERE lesson_key LIKE '$class'");
+  $result = mysql_db_query("rowanprep", "SELECT * FROM class_link WHERE class_ref LIKE '$class'");
   $num_rows = mysql_num_rows($result);
   if ($num_rows === 0) {
     $addnew = true;

@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.4.3
+-- version 4.5.0.2
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Dec 03, 2015 at 03:38 AM
--- Server version: 5.6.24
--- PHP Version: 5.5.20
+-- Generation Time: Dec 03, 2015 at 10:03 AM
+-- Server version: 10.0.17-MariaDB
+-- PHP Version: 5.6.14
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -14,7 +14,7 @@ SET time_zone = "+00:00";
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8 */;
+/*!40101 SET NAMES utf8mb4 */;
 
 --
 -- Database: `rowanprep`
@@ -26,14 +26,14 @@ SET time_zone = "+00:00";
 -- Table structure for table `brass_band`
 --
 
-CREATE TABLE IF NOT EXISTS `brass_band` (
+CREATE TABLE `brass_band` (
   `student` int(11) NOT NULL,
   `instrument` varchar(20) NOT NULL,
   `ryo_form` varchar(1) NOT NULL,
   `tuition_due` decimal(7,2) NOT NULL,
   `notes` varchar(250) NOT NULL,
   `registration_key` int(11) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `brass_band`
@@ -48,7 +48,7 @@ INSERT INTO `brass_band` (`student`, `instrument`, `ryo_form`, `tuition_due`, `n
 -- Table structure for table `classes`
 --
 
-CREATE TABLE IF NOT EXISTS `classes` (
+CREATE TABLE `classes` (
   `class_name` varchar(40) NOT NULL,
   `teacher` int(11) NOT NULL,
   `class_id` int(11) NOT NULL,
@@ -56,7 +56,7 @@ CREATE TABLE IF NOT EXISTS `classes` (
   `total_number` int(2) NOT NULL,
   `year` int(4) NOT NULL,
   `day` varchar(9) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `classes`
@@ -71,12 +71,12 @@ INSERT INTO `classes` (`class_name`, `teacher`, `class_id`, `pay_rate`, `total_n
 -- Table structure for table `class_link`
 --
 
-CREATE TABLE IF NOT EXISTS `class_link` (
+CREATE TABLE `class_link` (
   `student` int(11) NOT NULL,
   `class_ref` int(11) NOT NULL,
   `id` int(11) NOT NULL,
   `tuition_due` double(7,2) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `class_link`
@@ -91,7 +91,7 @@ INSERT INTO `class_link` (`student`, `class_ref`, `id`, `tuition_due`) VALUES
 -- Table structure for table `lessons`
 --
 
-CREATE TABLE IF NOT EXISTS `lessons` (
+CREATE TABLE `lessons` (
   `student` int(11) NOT NULL,
   `teacher` int(11) NOT NULL,
   `teacher_type` varchar(30) NOT NULL,
@@ -104,7 +104,7 @@ CREATE TABLE IF NOT EXISTS `lessons` (
   `total_lessons` int(2) NOT NULL,
   `pay_rate` decimal(5,2) NOT NULL,
   `lesson_key` int(11) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `lessons`
@@ -113,7 +113,8 @@ CREATE TABLE IF NOT EXISTS `lessons` (
 INSERT INTO `lessons` (`student`, `teacher`, `teacher_type`, `duration`, `day`, `semester`, `year`, `instrument`, `tuition_due`, `total_lessons`, `pay_rate`, `lesson_key`) VALUES
 (1, 1, 'Rowan Prep', 60, 'Wednesday', 'Fall', 2015, 'Piano', '400.00', 5, '20.00', 1),
 (2, 1, 'Rowan Prep', 0, '', '', 0, '', '30.00', 0, '0.00', 2),
-(2, 2, 'Rowan University', 45, 'Monday', 'Fall', 2015, 'Violin', '500.00', 8, '20.00', 3);
+(2, 2, 'Rowan University', 45, 'Monday', 'Fall', 2015, 'Violin', '500.00', 8, '20.00', 3),
+(5, 2, 'Rowan Prep', 45, 'Thursday', 'Fall', 2015, 'mandolin', '0.00', 1, '15.00', 4);
 
 -- --------------------------------------------------------
 
@@ -121,7 +122,7 @@ INSERT INTO `lessons` (`student`, `teacher`, `teacher_type`, `duration`, `day`, 
 -- Table structure for table `orchestra`
 --
 
-CREATE TABLE IF NOT EXISTS `orchestra` (
+CREATE TABLE `orchestra` (
   `student` int(11) NOT NULL,
   `instrument` varchar(20) NOT NULL,
   `ryo_form` varchar(1) NOT NULL,
@@ -134,14 +135,15 @@ CREATE TABLE IF NOT EXISTS `orchestra` (
   `tuition_owed` decimal(7,2) NOT NULL,
   `notes` varchar(250) NOT NULL,
   `registration_key` int(11) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `orchestra`
 --
 
 INSERT INTO `orchestra` (`student`, `instrument`, `ryo_form`, `paid_check`, `check_number`, `paid_card`, `payment_date`, `tuition_due`, `tuition_paid`, `tuition_owed`, `notes`, `registration_key`) VALUES
-(1, 'ukelele', 'Y', 'Y', '123456789', '', '2015-03-03', '500.00', '500.00', '0.00', 'blah blah blah, bleh bleh bleh.', 1);
+(1, 'ukelele', 'Y', 'Y', '123456789', '', '2015-03-03', '500.00', '500.00', '0.00', 'blah blah blah, bleh bleh bleh.', 1),
+(2, 'clarinet', 'Y', '', '', '', '', '0.00', '0.00', '0.00', 'Eh. Meowmeowmeow.', 2);
 
 -- --------------------------------------------------------
 
@@ -149,7 +151,7 @@ INSERT INTO `orchestra` (`student`, `instrument`, `ryo_form`, `paid_check`, `che
 -- Table structure for table `payments`
 --
 
-CREATE TABLE IF NOT EXISTS `payments` (
+CREATE TABLE `payments` (
   `payment_key` int(11) NOT NULL,
   `payment_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `amount_paid` decimal(7,2) NOT NULL,
@@ -158,7 +160,7 @@ CREATE TABLE IF NOT EXISTS `payments` (
   `type` tinyint(4) NOT NULL,
   `id` int(11) NOT NULL,
   `student` int(11) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `payments`
@@ -176,7 +178,7 @@ INSERT INTO `payments` (`payment_key`, `payment_date`, `amount_paid`, `paid_chec
 -- Table structure for table `payouts`
 --
 
-CREATE TABLE IF NOT EXISTS `payouts` (
+CREATE TABLE `payouts` (
   `payout_key` int(11) NOT NULL,
   `teacher` int(11) NOT NULL,
   `payout_amount` decimal(7,2) NOT NULL,
@@ -191,7 +193,7 @@ CREATE TABLE IF NOT EXISTS `payouts` (
 -- Table structure for table `students`
 --
 
-CREATE TABLE IF NOT EXISTS `students` (
+CREATE TABLE `students` (
   `last_name` varchar(20) NOT NULL,
   `first_name` varchar(20) NOT NULL,
   `parent` varchar(40) NOT NULL,
@@ -217,7 +219,7 @@ CREATE TABLE IF NOT EXISTS `students` (
   `enrolled` char(1) NOT NULL,
   `notes` varchar(150) NOT NULL,
   `student_key` int(11) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `students`
@@ -234,7 +236,7 @@ INSERT INTO `students` (`last_name`, `first_name`, `parent`, `dob`, `teacher`, `
 -- Table structure for table `teachers`
 --
 
-CREATE TABLE IF NOT EXISTS `teachers` (
+CREATE TABLE `teachers` (
   `last_name` varchar(20) NOT NULL,
   `first_name` varchar(20) NOT NULL,
   `banner_id` int(9) NOT NULL,
@@ -250,7 +252,7 @@ CREATE TABLE IF NOT EXISTS `teachers` (
   `state` varchar(2) NOT NULL,
   `zip_code` char(5) NOT NULL,
   `teacher_key` int(11) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `teachers`
@@ -266,13 +268,13 @@ INSERT INTO `teachers` (`last_name`, `first_name`, `banner_id`, `faculty_status`
 -- Table structure for table `users`
 --
 
-CREATE TABLE IF NOT EXISTS `users` (
+CREATE TABLE `users` (
   `username` char(20) NOT NULL,
   `password` char(20) NOT NULL,
   `user_key` int(11) NOT NULL,
   `email` char(30) NOT NULL,
   `admin` tinyint(1) NOT NULL DEFAULT '0'
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `users`
@@ -363,32 +365,32 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `brass_band`
 --
 ALTER TABLE `brass_band`
-  MODIFY `registration_key` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
+  MODIFY `registration_key` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `classes`
 --
 ALTER TABLE `classes`
-  MODIFY `class_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
+  MODIFY `class_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `class_link`
 --
 ALTER TABLE `class_link`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `lessons`
 --
 ALTER TABLE `lessons`
-  MODIFY `lesson_key` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
+  MODIFY `lesson_key` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT for table `orchestra`
 --
 ALTER TABLE `orchestra`
-  MODIFY `registration_key` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
+  MODIFY `registration_key` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `payments`
 --
 ALTER TABLE `payments`
-  MODIFY `payment_key` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=7;
+  MODIFY `payment_key` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 --
 -- AUTO_INCREMENT for table `payouts`
 --
@@ -398,17 +400,17 @@ ALTER TABLE `payouts`
 -- AUTO_INCREMENT for table `students`
 --
 ALTER TABLE `students`
-  MODIFY `student_key` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=6;
+  MODIFY `student_key` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 --
 -- AUTO_INCREMENT for table `teachers`
 --
 ALTER TABLE `teachers`
-  MODIFY `teacher_key` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
+  MODIFY `teacher_key` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `user_key` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=8;
+  MODIFY `user_key` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 --
 -- Constraints for dumped tables
 --

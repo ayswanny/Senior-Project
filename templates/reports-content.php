@@ -11,10 +11,7 @@
     <a type="button" class="btn btn-primary" href="reports.php?tab=band">Atlantic Brass Band</a>
     
      <span class="btn-group">
-        <button class="drop-down-btn">Classes</button>
-        <button class="drop-down-toggle dropdown-toggle" data-toggle="dropdown">
-            <span class="caret"></span>
-        </button>
+        <button class="drop-down-btn dropdown-toggle" data-toggle="dropdown">Classes <span class="caret"></span></button>
          <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
             <?php
               $link = connectDB();
@@ -64,7 +61,6 @@
                   echo '<th><div class="text-center"><a href="edit-student-form.php?student=new"">
                          <img class="table-icon" src="./res/image/add-user.png"></a></div></th>
                         <th><div class="text-center"></div></th>
-                        <th><div class="text-center"></div></th>
                         <th><div class="text-center">Last Name</div></th>
                         <th><div class="text-center">First Name</div></th>
                         <th><div class="text-center">Parent</div></th>
@@ -99,8 +95,6 @@
                            <img class="table-icon" src="./res/image/rm-user.png">
                            </a></div></td>
 
-                         <td><div class="text-center"><a href="student-timesheet.php?student=', $row['student_key'], '">
-                         <img class="table-icon" src="./res/image/timesheet.png"></a></div></td>
                          <td><div class="text-center"><a href="edit-student-form.php?student=', $row['student_key'], '">
                          <img class="table-icon" src="./res/image/edit.png"></a></div></td>
                          <td><div class="text-center">', $row['last_name'],'</div></td>
@@ -517,7 +511,7 @@
                  //fill in rows with data
                  while($row = mysql_fetch_assoc($results)) {
 
-                    $tmp_payment = get_class_payment('3', $row['class_id'], $row['student_key']);
+                    $tmp_payment = get_class_payment('3', $row['class_ref'], $row['student_key']);
                     $payment = 0;
                     $payment_dates = "";
                     while($rows = mysql_fetch_assoc($tmp_payment)){
