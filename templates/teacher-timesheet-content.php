@@ -58,7 +58,7 @@
 
 				echo '<thead><tr>';
 				echo '<th></th>';
-				foreach ($fields as $key => $value) {
+				foreach ($columns as $key => $value) {
 					echo "<th>$columns[$key]</th>";
 					# code...
 				}
