@@ -1,7 +1,6 @@
 <?php
-
-	if(isset($_GET['orchestra'])) {
-		$orchestra = clean_up($_GET['orchestra']);
+	if(isset($_GET['band'])) {
+		$band = clean_up($_GET['band']);
 	}
 	else {
 
@@ -9,9 +8,9 @@
 
 	$addnew = false;
   $link = connectDB();
-  $result = mysql_db_query("rowanprep", "SELECT * FROM orchestra WHERE registration_key LIKE '$orchestra'");
+  $result = mysql_db_query("rowanprep", "SELECT * FROM brass_band WHERE registration_key LIKE '$band'");
   $num_rows = mysql_num_rows($result);
-  if ($num_rows === 0) {
+  if($num_rows === 0) {
     $addnew = true;
   } else {
     $row = mysql_fetch_assoc($result);
@@ -19,13 +18,13 @@
 
 ?>
 
-<form action="core/database/add-edit-orchestra.php?orchestra=<?php echo $row['registration_key']?>" class="form-horizontal" method="post" onsubmit="validate()">
+<form action="core/database/add-edit-band.php?band=<?php echo $row['registration_key']?>" class="form-horizontal" method="post" onsubmit="validate()">
 <fieldset>
 
 	<!-- Form Name -->
-	<legend><?php echo (($addnew)?"Add":"Edit"); ?> Orchestra Student
+	<legend><?php echo (($addnew)?"Add":"Edit"); ?> Band Student
   <input type="submit" class="btn btn-primary" value="Save" />
-  <a type="button" class="btn btn-primary" href="reports.php?tab=orchestra" value="Back">Back</a>
+  <a type="button" class="btn btn-primary" href="reports.php?tab=band" value="Back">Back</a>
   </legend>
 
 	

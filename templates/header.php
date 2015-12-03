@@ -17,6 +17,7 @@
     <!-- Custom CSS -->
     <link href="css/contactus.ccs" rel="stylesheet">
     <link href="css/about.css" rel="stylesheet">
+    <link href="css/reports.css" rel="stylesheet">
     <link href="css/navbar.css" rel="stylesheet">
     <link href="css/footer.css" rel="stylesheet">
     <link href="css/dialog.css" rel="stylesheet">

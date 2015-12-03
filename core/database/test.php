@@ -1,9 +1,12 @@
 <?php
-/* session_start();
-   require_once 'core/functions/users.php';
+
+   require_once '../init.php';
    
    $link = connectDB();
-
+   $results = get_class_student_list(1);
+   $row = mysql_fetch_assoc($results);
+   var_dump($row);
+/*
    $results = get_student_list();
    echo "here we go";
    if(isEmpty($results) {

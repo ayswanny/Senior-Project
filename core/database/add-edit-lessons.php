@@ -11,13 +11,6 @@
       }
     }
 	}
- 
- 
-  /* This, I think, is where the check for names should go.
-  * Somehow need to get IDs to put into the lessons table.
-  * Really not sure on how to do this.
-  * Highly doubt this works, probably needs $row like on line 10.
-  */
   
   $student = clean_up($_POST["student"]);
   $teacher = clean_up($_POST["teacher"]);
@@ -28,14 +21,14 @@
   $year = clean_up($_POST["year"]);
   $instrument = clean_up($_POST["instrument"]);
   $tuition_due = clean_up($_POST["tuition_due"]);
-  $tuition_paid = clean_up($_POST["tuition_paid"]);
-  $tuition_owed = $tuition_due-$tuition_paid;
-
+  $total_lessons = clean_up($_POST["total_lessons"]);
+  $pay_rate = clean_up($_POST["pay_rate"]);
+  
   if ($addnew) {
-    $sql = "INSERT INTO lessons (student, teacher, teacher_type, duration, day, semester, year, instrument, tuition_due, tuition_paid, tuition_owed) VALUES ('$student', '$teacher', '$teacher_type', '$duration', '$day', '$semester', '$year', '$instrument', '$tuition_due', '$tuition_paid', '$tuition_owed')";
+    $sql = "INSERT INTO lessons (student, teacher, teacher_type, duration, day, semester, year, instrument, tuition_due, total_lessons, pay_rate) VALUES ('$student', '$teacher', '$teacher_type', '$duration', '$day', '$semester', '$year', '$instrument', '$tuition_due', '$total_lessons', '$pay_rate')";
   } else {
     echo 'update';
-    	$sql = "UPDATE lessons SET student='$student', teacher='$teacher', teacher_type='$teacher_type', duration='$duration', day='$day', semester='$semester', year='$year', instrument='$instrument', tuition_due='$tuition_due', tuition_paid='$tuition_paid', tuition_owed='$tuition_owed' WHERE lesson_key = '$lesson'";
+    	$sql = "UPDATE lessons SET student='$student', teacher='$teacher', teacher_type='$teacher_type', duration='$duration', day='$day', semester='$semester', year='$year', instrument='$instrument', tuition_due='$tuition_due' total_lessons='$total_lessons', pay_rate='$pay_rate' WHERE lesson_key = '$lesson'";
   }
 
   $link = connectDB();

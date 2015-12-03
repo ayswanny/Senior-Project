@@ -8,6 +8,8 @@
 	  } else {
 	    $tab = clean_up($_GET['tab']);
 	  }
+	if (isset($_GET['class-key']))
+		$class_key = clean_up($_GET['class-key']);
 	 
 
 	include "templates/header.php";

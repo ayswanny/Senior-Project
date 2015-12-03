@@ -56,9 +56,7 @@
       </select>
     </div>
   </div>
-  <?php
-  
-   ?>
+
   <div class="form-group">
     <label class="col-md-4 control-label" for="selectbasic">Teacher</label>
     <div class="col-md-5">
@@ -102,24 +100,56 @@
   <div class="form-group">
     <label class="col-md-4 control-label" for="textinput">Day</label>
     <div class="col-md-5">
-    <input id="textinput" name="day" type="text" value="<?php echo $row['day']?>" class="form-control input-md" required="">
-
+    <select id="selectbasic" name="day" class="form-control">
+      <?php if($addnew == true) { ?>
+        <option value="Sunday">Sunday</option>
+        <option value="Monday">Monday</option>
+        <option value="Tuesday">Tuesday</option>
+        <option value="Wednesday">Wednesday</option>
+        <option value="Thursday">Thursday</option>
+        <option value="Friday">Friday</option>
+        <option value="Saturday">Fall</option>
+      <?php } else { ?>
+        <option value="Sunday"<?php echo (($row['day']=='Sunday')?"selected>":">");?>Sunday</option>
+        <option value="Monday"<?php echo (($row['day']=='Monday')?"selected>":">");?>Monday</option>
+        <option value="Tuesday"<?php echo (($row['day']=='Tuesday')?"selected>":">");?>Tuesday</option>
+        <option value="Wednesday"<?php echo (($row['day']=='Wednesday')?"selected>":">");?>Wednesday</option>
+        <option value="Thursday"<?php echo (($row['day']=='Thursday')?"selected>":">");?>Thursday</option>
+        <option value="Friday"<?php echo (($row['day']=='Friday')?"selected>":">");?>Friday</option>
+        <option value="Saturday"<?php echo (($row['day']=='Saturday')?"selected>":">");?>Saturday</option>
+      <?php }?>
+        
+      </select>
     </div>
   </div>
 
   <div class="form-group">
-    <label class="col-md-4 control-label" for="textinput">Semester</label>
+    <label class="col-md-4 control-label" for="selectbasic">Number of Lessons</label>
     <div class="col-md-5">
-    <input id="textinput" name="semester" type="text" value="<?php echo $row['semester']?>" class="form-control input-md" required="">
-
+      <select id="selectbasic" name="semester" class="form-control">
+        <option value="Fall">Fall</option>
+        <option value="Spring">Spring</option>
+      </select>
     </div>
   </div>
 
   <div class="form-group">
     <label class="col-md-4 control-label" for="textinput">Year</label>
     <div class="col-md-5">
-    <input id="textinput" name="year" type="number" value="<?php echo $row['year']?>" class="form-control input-md" required="">
-
+    <select id="selectbasic" name="year" class="form-control">
+      <option value="-1">- Select Year</option>
+       <?php $int_year = 2000; 
+             while($int_year != 2100) {
+                if($int_year == $row['year']) {
+                  echo '<option value="', $int_year,'" selected>', $int_year, '</option>';
+                }
+                else {
+                echo '<option value="', $int_year,'">', $int_year, '</option>';
+                }
+                $int_year++;
+             }
+       ?>
+      </select>
     </div>
   </div>
 
@@ -134,15 +164,38 @@
   <div class="form-group">
     <label class="col-md-4 control-label" for="textinput">Tuition Due</label>
     <div class="col-md-5">
-    <input id="textinput" name="tuition_due" type="text" value="<?php echo (($addnew)?"XXXXX.XX":$row['tuition_due'])?>" class="form-control input-md" required="">
+    <input id="textinput" name="tuition_due" type="text" value="<?php echo (($addnew)?"\"placeholder=\"Amount\"":$row['tuition_due'])?>" class="form-control input-md" required="">
 
     </div>
   </div>
 
   <div class="form-group">
-    <label class="col-md-4 control-label" for="textinput">Tuition Paid</label>
+    <label class="col-md-4 control-label" for="selectbasic">Number of Lessons</label>
     <div class="col-md-5">
-    <input id="textinput" name="tuition_paid" type="text" value="<?php echo (($addnew)?"XXXXX.XX":$row['tuition_paid'])?>" class="form-control input-md" required="">
+      <select id="selectbasic" name="total_lessons" class="form-control">
+        <?php 
+          if($addnew) {
+            echo '<option value="0"> - Select a Value</option>';
+          }
+          $tmp_int = 1;
+          while($tmp_int != '100') {
+            if($row['total_lessons'] === $tmp_int) {
+             echo '<option value="', $tmp_int,'" selected>', $tmp_int,'</option>';
+            }
+            else {
+             echo '<option value="', $tmp_int,'">', $tmp_int,'</option>';
+            }
+            $tmp_int++;
+          }
+        ?>
+      </select>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label class="col-md-4 control-label" for="textinput">Teacher Pay Rate</label>
+    <div class="col-md-5">
+    <input id="textinput" name="pay_rate" type="text" value="<?php echo (($addnew)?"\"placeholder=\"Amount\"":$row['tuition_due'])?>" class="form-control input-md" required="">
 
     </div>
   </div>
