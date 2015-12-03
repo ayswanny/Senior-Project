@@ -22,10 +22,8 @@
 <fieldset>
 
 	<!-- Form Name -->
-	<legend> <?php echo (($addnew)?"Add":"Edit"); ?> Student
-	<input type="submit" class="btn btn-primary" value="Save"/>
-	<a type="button" class="btn btn-primary" href="reports.php?tab=student" value="Back">Back</a>
-	</legend>
+  <legend><div class="row text-center"><?php echo (($addnew)?"Add":"Edit"); ?> Student</div></legend>
+	
 
 	<!-- Text input-->
 	<div class="form-group">
@@ -228,6 +226,11 @@
 
 	  </div>
 	</div>
+
+	<div class="row text-center">
+    <input type="submit" class="btn btn-primary" value="Save" />
+     <a type="button" class="btn btn-primary" href="reports.php?tab=lessons" value="Back">Back</a>
+  </div>
 
 	</fieldset>
 	</form>

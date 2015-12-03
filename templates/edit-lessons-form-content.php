@@ -20,13 +20,7 @@
 <fieldset>
 
   <!-- Form Name -->
-  <legend><?php echo (($addnew)?"Add":"Edit"); ?> Lesson
-  <input type="submit" class="btn btn-primary" value="Save" />
-  <a type="button" class="btn btn-primary" href="reports.php?tab=lessons" value="Back">Back</a>
-  </legend>
-
-  
-
+  <legend><div class="row text-center"><?php echo (($addnew)?"Add":"Edit"); ?> Lesson</div></legend>
   <!-- Text input-->
   <form class="form-horizontal">
   <fieldset>
@@ -195,6 +189,12 @@
 
     </div>
   </div>
+
+  <div class="row text-center">
+    <input type="submit" class="btn btn-primary" value="Save" />
+     <a type="button" class="btn btn-primary" href="reports.php?tab=lessons" value="Back">Back</a>
+  </div>
+
 
 </fieldset>
 </form>
