@@ -35,7 +35,7 @@
 
 				if ($results = get_teacher_timesheet($teacher)) {
 				} else {
-					echo msql_error ();
+					echo mysql_error ();
 					die();
 				}
 
@@ -56,9 +56,7 @@
 					4 => "last_name",
 					5 => "instrument",
 					6 => "duration",
-					7 => "tuition_due", 
-					8 => "tuition_paid", 
-					9 => "tuition_owed");
+					7 => "el.tuition_due");
 
 				$pay_fields = array(
 					1 => "student_first_name", 
@@ -100,7 +98,7 @@
 	                echo "</tr>";
 	            }
 
-	            $sumresult = mysql_query("SELECT SUM(tuition_owed),SUM(tuition_due),SUM(tuition_paid) FROM `lessons` WHERE `teacher` = $teacher");
+	            $sumresult = mysql_query("SELECT SUM(el.tuition_due),SUM(ps.amount_paid) FROM lessons el JOIN payments ps ON el.lesson_key = ps.lesson WHERE el.teacher = $teacher");
 	            
 	            $sumrow =  mysql_fetch_assoc($sumresult);
 
