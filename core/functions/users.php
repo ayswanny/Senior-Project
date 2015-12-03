@@ -188,9 +188,8 @@
 	}
 	//TODO not working!!
 	function get_class_payment($option, $key, $student_key) {	
-		return $results = mysql_db_query("rowanprep", "SELECT * FROM payments WHERE id = '$key' AND student = '$student_key' AND type = '$option'");		
+		return $results = mysql_db_query("rowanprep", "SELECT * FROM payments pm JOIN class_link cl ON cl.class_ref = pm.id WHERE type = '$option' AND pm.student = '$student_key'");
 	}
-
 	function get_teacher_timesheet($teacher)
 	{
 		// $sql_lessons = 	"SELECT st.first_name AS student_first_name, st.last_name AS student_last_name, te.first_name, te.last_name, el.tuition_due, el.tuition_paid, el.tuition_owed, el.instrument, el.duration FROM lessons el " .

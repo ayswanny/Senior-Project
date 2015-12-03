@@ -3,7 +3,7 @@
    require_once '../init.php';
    
    $link = connectDB();
-   $results = get_class_student_list(1);
+   $results = get_class_payment(3, 1, 1);
    $row = mysql_fetch_assoc($results);
    var_dump($row);
 /*
