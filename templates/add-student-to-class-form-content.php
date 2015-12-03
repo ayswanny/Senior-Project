@@ -59,7 +59,6 @@
 
 
   <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
- 
    <div class="row text-center">
     <input type="submit" class="btn btn-primary" value="Add" />
      <a type="button" class="btn btn-primary" href="reports.php?tab=lessons" value="Back">Back</a>

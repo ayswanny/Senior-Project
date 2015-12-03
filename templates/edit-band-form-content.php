@@ -21,11 +21,7 @@
 <form action="core/database/add-edit-band.php?band=<?php echo $row['registration_key']?>" class="form-horizontal" method="post" onsubmit="validate()">
 <fieldset>
 
-	<!-- Form Name -->
-	<legend><?php echo (($addnew)?"Add":"Edit"); ?> Band Student
-  <input type="submit" class="btn btn-primary" value="Save" />
-  <a type="button" class="btn btn-primary" href="reports.php?tab=band" value="Back">Back</a>
-  </legend>
+	<legend><div class="row text-center"><?php echo (($addnew)?"Add":"Edit"); ?> Band Student</div></legend>
 
 	
 
@@ -101,6 +97,10 @@
 
     </div>
   </div>
-
+  
+  <div class="row text-center">
+    <input type="submit" class="btn btn-primary" value="Save" />
+     <a type="button" class="btn btn-primary" href="reports.php?tab=lessons" value="Back">Back</a>
+  </div>
 </fieldset>
 </form>
