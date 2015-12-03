@@ -520,7 +520,7 @@
                     $payment_due = $row['tuition_due'] - $payment;
 
                     echo '<tr>
-                         <td><div class="text-center"><a href="#" onclick="Confirm.render(\'Delete student from class?\',\'delete_student_from_class\',\'', $rows['id'], '\')">
+                         <td><div class="text-center"><a href="#" onclick="Confirm.render(\'Delete student from class?\',\'delete_student_from_class\',\'', $row['id'], '\')">
                            <img class="table-icon" src="./res/image/rm-user.png">
                            </a></div></td>
                          <td><div class="text-center"><a href="#" onclick="Alert.render(\'Cannot edit students from class tab. Use student tab.\')">
