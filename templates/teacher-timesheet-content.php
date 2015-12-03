@@ -33,7 +33,7 @@
 
 <div class="mainbox col-md-12" >
 	
-	<input type="button" class="btn btn-lg btn-primary" onclick="history.back();" value="Back">
+	<!-- <input type="button" class="btn btn-lg btn-primary" onclick="history.back();" value="Back"> -->
 
 	<div id="timesheet" class="table-responsive">  
 		<h3>Timesheet</h3>
