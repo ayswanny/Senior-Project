@@ -21,10 +21,10 @@
   $tuition_owed = $tuition_due-$tuition_paid;
 
   if ($addnew) {
-    $sql = "INSERT INTO band (student, instrument, ryo_form, tuition_due, notes) VALUES ('$student', '$instrument', '$ryo_form', '$tuition_due', '$notes')";
+    $sql = "INSERT INTO brass_band (student, instrument, ryo_form, tuition_due, notes) VALUES ('$student', '$instrument', '$ryo_form', '$tuition_due', '$notes')";
 
   } else {
-  	$sql = "UPDATE band SET student='$student', instrument='$instrument', ryo_form='$ryo_form', tuition_due='$tuition_due', notes='$notes' WHERE registration_key= '$band'";
+  	$sql = "UPDATE brass_band SET student='$student', instrument='$instrument', ryo_form='$ryo_form', tuition_due='$tuition_due', notes='$notes' WHERE registration_key= '$band'";
     }
   
   $link = connectDB();

@@ -34,6 +34,12 @@ function deleteLesson(id){
 function deleteOrchestra(id){
 	location.replace("./core/database/delete-orchestra.php?key=" + id);
 }
+function deleteBand(id){
+	location.replace("./core/database/delete-band.php?key=" + id);
+}
+function deleteStudentFromClass(id){
+	location.replace("./core/database/delete-student-from-class.php?key=" + id);
+}
 function CustomConfirm(){
 	this.render = function(dialog,op,id){
 		var winW = window.innerWidth;
@@ -68,9 +74,15 @@ function CustomConfirm(){
 			case "delete_lesson":
 				deleteLesson(id);
 				break;
-			case "delete_ochestra":
+			case "delete_orchestra":
 				deleteOrchestra(id);
-				break;	
+				break;
+			case "delete_band":
+				deleteBand(id);
+				break;
+			case "delete_student_from_class":
+				deleteStudentFromClass(id);
+				break;			
 		}
 		document.getElementById('dialogbox').style.display = "none";
 		document.getElementById('dialogoverlay').style.display = "none";
