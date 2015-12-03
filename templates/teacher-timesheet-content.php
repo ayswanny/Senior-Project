@@ -5,8 +5,9 @@
 </style>
 
 <script type="text/javascript">
-	function function_name (which_one, pay_rate, number) {
-		document.getElementById(which_one).innerHTML = "test" + number;
+	function function_name (which_one, pay_rate) {
+		var othernumber = document.getElementById('select_'+which_one).value;
+		document.getElementById('content_'+which_one).innerHTML = othernumber * pay_rate;
 	}
 	
 </script>
@@ -78,7 +79,7 @@
 	                foreach ($fields as $key => $value) {
 	                	echo "<td>$row[$value]</td>";
 	                }
-	                echo '<td><select id="select_', $row['student_name'] ,'" onchange="function_name( \'content_', $row['student_name'] ,"',",$row['pay_rate'] ,',this.selectedIndex) " name="total_lessons" class="form-control">';
+	                echo '<td><select id="select_', $row['student_name'] ,'" onchange="function_name( \'', $row['student_name'] ,"',",$row['pay_rate'] ,') " name="total_lessons" class="form-control">';
                       // TODO: subtract payouts.
                       for ($tmp_int=1; $tmp_int <= $row['total_lessons']; $tmp_int++) { 
                       	if($row['total_lessons'] === $tmp_int) {
