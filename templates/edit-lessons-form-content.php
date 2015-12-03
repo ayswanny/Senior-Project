@@ -124,7 +124,7 @@
   </div>
 
   <div class="form-group">
-    <label class="col-md-4 control-label" for="selectbasic">Number of Lessons</label>
+    <label class="col-md-4 control-label" for="selectbasic">Semester</label>
     <div class="col-md-5">
       <select id="selectbasic" name="semester" class="form-control">
         <option value="Fall">Fall</option>

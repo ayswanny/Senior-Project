@@ -71,23 +71,17 @@
 	                foreach ($fields as $key => $value) {
 	                	echo "<td>$row[$value]</td>";
 	                }
-	                echo "</tr>";
-	            }
-
-	            $pay_results = get_teacher_payments($teacher);
-                while($row = mysql_fetch_assoc ( $pay_results )) {
-                	echo '<tr>';
-                	echo '<td></td>';
-	                foreach ($fields as $key => $value) {
-	                	if (!isset($pay_fields[$key])) {
-	                		echo "<td></td>";
-	                		continue;
-	                	}
-	                	$pay_value = $pay_fields[$key];
-	                	if (isset($row[$pay_value])) {
-	                		echo "<td>$row[$pay_value]</td>";
-	                	} 
-	                }
+	                echo '<td><select id="selectbasic" name="total_lessons" class="form-control">';
+                      
+                      for ($tmp_int=1; $tmp_int < $row['total_lessons']; $tmp_int++) { 
+                      	if($row['total_lessons'] === $tmp_int) {
+			             echo '<option value="', $tmp_int,'" selected>', $tmp_int,'</option>';
+			            }
+			            else {
+			             echo '<option value="', $tmp_int,'">', $tmp_int,'</option>';
+			            }
+                      }
+			        echo '</select></td>';
 	                echo "</tr>";
 	            }
 
