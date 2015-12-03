@@ -156,7 +156,7 @@
   <div class="form-group">
     <label class="col-md-4 control-label" for="textinput">Instrument</label>
     <div class="col-md-5">
-    <input id="textinput" name="instrument" type="text" value="<?php echo $row['instrument']?>" class="form-control input-md" required="">
+    <input id="textinput" name="instrument" type="text" value="<?php echo $row['instrument']; ?>" class="form-control input-md" required="">
 
     </div>
   </div>
