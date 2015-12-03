@@ -526,11 +526,10 @@
                     $payment_due = $row['tuition_due'] - $payment;
 
                     echo '<tr>
-
-                         <td><div class="text-center"><a href="#" onclick="Confirm.render(\'Delete Band Entry?\',\'delete_band\',\'', $row['registration_key'], '\')">
+                         <td><div class="text-center"><a href="#" onclick="Confirm.render(\'Delete student from class?\',\'delete_student_from_class\',\'', $rows['id'], '\')">
                            <img class="table-icon" src="./res/image/rm-user.png">
                            </a></div></td>
-                         <td><div class="text-center"><a href="edit-class-form.php?class=', $row['registration_key'], '">
+                         <td><div class="text-center"><a href="#" onclick="Alert.render(\'Cannot edit students from class tab. Use student tab.\')">
                          <img class="table-icon" src="./res/image/edit.png"></a></div></td>
                          <td><div class="text-center">', $row['last_name'],'</div></td>
                          <td><div class="text-center">', $row['first_name'],'</div></td>

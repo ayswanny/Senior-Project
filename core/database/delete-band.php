@@ -7,13 +7,12 @@
 	if (isset($_GET['key'])) {
 		$key = clean_up($_GET['key']);
     $delete = false;
-    mysql_db_query("rowanprep", "DELETE FROM `students` WHERE `student_key` LIKE '$key'");
-		if($result = mysql_db_query("rowanprep", "SELECT * FROM `students` WHERE `student_key` LIKE '$key'")) {
+    mysql_db_query("rowanprep", "DELETE FROM `brass_band` WHERE `registration_key` LIKE '$key'");
+		if($result = mysql_db_query("rowanprep", "SELECT * FROM `band` WHERE `registration_key` LIKE '$key'")) {
 			$row = mysql_fetch_assoc($result);
 			if ($result->num_rows == 0) 
 				$delete = true;
 		}
 	}
-    $db->close();
     header("Location: ../../reports.php");
 ?>
