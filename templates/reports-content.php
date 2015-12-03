@@ -493,7 +493,7 @@
           else {
             // table headers
                   echo '<thead><tr>';
-                  echo '<th><div class="text-center"><a href="edit-class-form.php?class=','new','">
+                  echo '<th><div class="text-center"><a href="add-student-to-class.php?class=','new','">
                          <img class="table-icon" src="./res/image/add-user.png"></a></div></th>
                         <th><div class="text-center"></div></th>
                         <th><div class="text-center">Student Last Name</div></th>
