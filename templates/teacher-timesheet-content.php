@@ -50,14 +50,12 @@
 				$columns = array(
 					1 => "Student", 
 					2 => "Total Lessons",
-					3 => "Pay Rate",
 					4 => "Payout Now",
 					5 => "Total");
 					
 				$fields = array(
 					1 => "student_name", 
-					2 => "total_lessons",
-					3 => "pay_rate");
+					2 => "total_lessons_formatted");
 
 				$pay_fields = array(
 					1 => "student_first_name", 
