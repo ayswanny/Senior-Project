@@ -37,6 +37,14 @@
 
 	<div id="timesheet" class="table-responsive">  
 		<h3>Timesheet</h3>
+		<h4>
+		<?php
+			$temp = get_teacher_name($teacher);
+
+			$temp = mysql_fetch_assoc($temp);
+
+			echo $temp['first_name']," ", $temp['last_name'];
+		?></h4>
 		<table class="table table-striped">
 
 			<?php
