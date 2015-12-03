@@ -37,7 +37,7 @@
     echo mysql_errno($link) . ": " . mysql_error($link). "\n";
    }
    else {
-    header("Location:../../reports.php");
+    header("Location:../../reports.php?tab=lessons");
    }
 
 
