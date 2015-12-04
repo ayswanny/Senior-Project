@@ -1,28 +1,37 @@
 <?php
-  if(isset($_GET['lesson'])) {
-    $lesson = clean_up($_GET['lesson']);
-  }
-  else {
-  }
-  
-  $addnew = false;
+
+	if(isset($_GET['class'])) {
+		$class_id = clean_up($_GET['class']);
+	}
+	else {
+
+	}
+	
+	$addnew = false;
   $link = connectDB();
-  $result = mysql_db_query("rowanprep", "SELECT * FROM lessons WHERE lesson_key LIKE '$lesson'");
+  $result = mysql_db_query("rowanprep", "SELECT * FROM class_link WHERE class_ref LIKE '$class_id'");
   $num_rows = mysql_num_rows($result);
   if ($num_rows === 0) {
     $addnew = true;
   } else {
     $row = mysql_fetch_assoc($result);
   }
+
 ?>
 
 <form action="core/database/add-edit-lessons.php?lesson=<?php echo $row['lesson_key']?>" class="form-horizontal" method="post" onsubmit="validate()">
 <fieldset>
 
-  <!-- Form Name -->
-  <legend><div class="row text-center"><?php echo (($addnew)?"Add":"Edit"); ?> Lesson</div></legend>
-  <!-- Text input-->
-  <form class="form-horizontal">
+	<!-- Form Name -->
+	<legend><?php echo (($addnew)?"Add":"Edit"); ?> Lesson
+  <input type="submit" class="btn btn-primary" value="Save" />
+  <a type="button" class="btn btn-primary" href="reports.php?tab=lessons" value="Back">Back</a>
+  </legend>
+
+	
+
+	<!-- Text input-->
+	<form class="form-horizontal">
   <fieldset>
 
   <!-- Select Basic -->
@@ -99,7 +108,7 @@
         <option value="Wednesday">Wednesday</option>
         <option value="Thursday">Thursday</option>
         <option value="Friday">Friday</option>
-        <option value="Saturday">Saturday</option>
+        <option value="Saturday">Fall</option>
       <?php } else { ?>
         <option value="Sunday"<?php echo (($row['day']=='Sunday')?"selected>":">");?>Sunday</option>
         <option value="Monday"<?php echo (($row['day']=='Monday')?"selected>":">");?>Monday</option>
@@ -120,7 +129,6 @@
       <select id="selectbasic" name="semester" class="form-control">
         <option value="Fall">Fall</option>
         <option value="Spring">Spring</option>
-        <option value="Summer">Summer</option>
       </select>
     </div>
   </div>
@@ -136,7 +144,7 @@
                   echo '<option value="', $int_year,'" selected>', $int_year, '</option>';
                 }
                 else {
-                  echo '<option value="', $int_year,'">', $int_year, '</option>';
+                echo '<option value="', $int_year,'">', $int_year, '</option>';
                 }
                 $int_year++;
              }
@@ -148,7 +156,8 @@
   <div class="form-group">
     <label class="col-md-4 control-label" for="textinput">Instrument</label>
     <div class="col-md-5">
-    <input id="textinput" name="instrument" type="text" value="<?php echo $row['instrument']; ?>" class="form-control input-md" required="">
+    <input id="textinput" name="instrument" type="text" value="<?php echo $row['instrument']?>" class="form-control input-md" required="">
+
     </div>
   </div>
 
@@ -186,16 +195,10 @@
   <div class="form-group">
     <label class="col-md-4 control-label" for="textinput">Teacher Pay Rate</label>
     <div class="col-md-5">
-    <input id="textinput" name="pay_rate" type="text" value="<?php echo (($addnew)?"\"placeholder=\"Amount\"":$row['pay_rate'])?>" class="form-control input-md" required="">
+    <input id="textinput" name="pay_rate" type="text" value="<?php echo (($addnew)?"\"placeholder=\"Amount\"":$row['tuition_due'])?>" class="form-control input-md" required="">
 
     </div>
   </div>
-
-  <div class="row text-center">
-    <input type="submit" class="btn btn-primary" value="Save" />
-     <a type="button" class="btn btn-primary" href="reports.php?tab=lessons" value="Back">Back</a>
-  </div>
-
 
 </fieldset>
 </form>

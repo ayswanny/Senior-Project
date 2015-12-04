@@ -73,6 +73,9 @@
 			case '4':
 				return $results = mysql_db_query("rowanprep", "SELECT * FROM students ORDER BY instrument");
 			break;
+			case '5':
+				return $results = mysql_db_query("rowanprep", "SELECT * FROM students ORDER BY photo_release");
+			break;
 
 			default:
 				return $results = mysql_db_query("rowanprep","SELECT * FROM students");

@@ -20,7 +20,7 @@
 
 ?>
 
-<form action="core/database/add-class.php?class=<?php echo $row['class_id']?>" class="form-horizontal" method="post" onsubmit="validate()">
+<form action="core/database/add-edit-class.php?class=<?php echo $row['class_id']?>" class="form-horizontal" method="post" onsubmit="validate()">
 <fieldset>
 
 	<legend><div class="row text-center">Add a New Class</div></legend>
@@ -54,6 +54,18 @@
             }
           }
         ?>
+      </select>
+    </div>
+  </div>
+
+
+  <div class="form-group">
+    <label class="col-md-4 control-label" for="selectbasic">Semester</label>
+    <div class="col-md-5">
+      <select id="selectbasic" name="semester" class="form-control">
+        <option value="Fall">Fall</option>
+        <option value="Spring">Spring</option>
+        <option value="Summer">Summer</option>
       </select>
     </div>
   </div>

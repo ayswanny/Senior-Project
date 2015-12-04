@@ -37,6 +37,7 @@
       <li><a href="reports.php?tab=students&sortby=2">First Name</a></li>
       <li><a href="reports.php?tab=students&sortby=3">Teacher</a></li>
       <li><a href="reports.php?tab=students&sortby=4">Instrument</a></li>
+      <li><a href="reports.php?tab=students&sortby=5">Photo Release</a></li>
     </ul>
     </div>
 
