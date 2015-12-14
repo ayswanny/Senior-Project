@@ -5,23 +5,22 @@
 
 	$username = clean_up($_POST["username"]);
 	$email = clean_up($_POST["email"]);
-	$admin = clean_up($_POST["admin"]);
 	$password = random_password(10);
 	/* Prepared statement, stage 1: prepare */
 	$link = connectDB();
-	if($result = mysql_db_query("rowanprep", "INSERT INTO users (username, password, email, admin) VALUES ('$username', '$password', '$email', '$admin')")) 
+	if($result = mysql_db_query("rowanprep", "UPDATE users (password) VALUES ('$password') WHERE username = '$username' AND email = '$email' ")) 
 	{
-		$msg = "An account has been registered with this email address at elvis.rowan.edu/rowanprep.";
+		$msg = "your password has been reset for the site: elvis.rowan.edu/rowanprep.";
 		$msg .= "\nPlease sign in using your username.\nAuto-generated password: " . $password;
 		$msg .=	 "\n\n\nContact Anna at Rowan Prep if you have troubles signing in. Thanks,\nRowan Prep";
 		$subj = "Rowan Prep User Information - DO NOT REPLY";
 
 		mail($email, $subj, $msg, "From: Rowan Prep");
-			header("Location: ../../admin.php");
+			header("Location: ../../login.php");
 			die();
 	}
 	else {
-		echo "insert failed.". $db->error;
+		echo "update failed.". $db->error;
 	}
 	
 ?>
