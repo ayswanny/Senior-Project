@@ -4,9 +4,14 @@
 		header("Location: index.php");
 	if(!isAdmin())
 		header("Location: index.php");
-	echo $_SESSION['id'];
+	
 	include 'templates/header.php';	
-    include 'templates/navbar-logged-in.php';
-    include 'templates/admin-content.php';
-    include 'templates/footer.php';
+	if (!isset($_GET['tab'])) {
+    	header('Location: admin.php?tab=users');
+    } else {
+        $tab = clean_up($_GET['tab']);
+	}
+	include 'templates/navbar-logged-in.php';
+	include 'templates/admin-content.php';
+	include 'templates/footer.php';
 ?>
