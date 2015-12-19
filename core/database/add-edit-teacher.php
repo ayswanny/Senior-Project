@@ -13,22 +13,22 @@
 		}
 	}
 
-	//var_dump($_POST);
+	//var_dumpclean_up($_POST);
 
-	$first_name = ($_POST["first_name"]);
-	$last_name = ($_POST["last_name"]);
-	$street_address = ($_POST["street_address"]);
-	$city = ($_POST["city"]);
-	$state = ($_POST["state"]);
-	$zip_code = ($_POST["zip_code"]);
-	$email = ($_POST["email"]);
-	$banner_id = ($_POST["banner_id"]);
-	$home_phone = store_phone($_POST["home_phone"]);
-	$mobile_phone = store_phone($_POST["mobile_phone"]);
-	$alternate_email = ($_POST["alternate_email"]);
-	$faculty_status = ($_POST["faculty_status"]);
-	$instrument = $_POST["instrument"];
-	$background_check = $_POST["background_check"];
+	$first_name = clean_up($_POST["first_name"]);
+	$last_name = clean_up($_POST["last_name"]);
+	$street_address = clean_up($_POST["street_address"]);
+	$city = clean_up($_POST["city"]);
+	$state = clean_up($_POST["state"]);
+	$zip_code = clean_up($_POST["zip_code"]);
+	$email = clean_up($_POST["email"]);
+	$banner_id = clean_up($_POST["banner_id"]);
+	$home_phone = store_phone(clean_up($_POST["home_phone"]));
+	$mobile_phone = store_phone(clean_up($_POST["mobile_phone"]));
+	$alternate_email = clean_up($_POST["alternate_email"]);
+	$faculty_status = clean_up($_POST["faculty_status"]);
+	$instrument = clean_up($_POST["instrument"]);
+	$background_check = clean_up($_POST["background_check"]);
 
 
 	/* Prepared statement, stage 1: prepare */

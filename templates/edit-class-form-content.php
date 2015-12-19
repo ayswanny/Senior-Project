@@ -23,40 +23,25 @@
 <fieldset>
 
 	<!-- Form Name -->
-	<legend><?php echo (($addnew)?"Add":"Edit"); ?> Lesson
+	<legend><?php echo (($addnew)?"Add":"Edit"); ?> Class
   <input type="submit" class="btn btn-primary" value="Save" />
   <a type="button" class="btn btn-primary" href="reports.php?tab=lessons" value="Back">Back</a>
   </legend>
 
 	
-
-	<!-- Text input-->
-	<form class="form-horizontal">
+  <form class="form-horizontal">
   <fieldset>
 
-  <!-- Select Basic -->
+  <!-- Text input-->
   <div class="form-group">
-    <label class="col-md-4 control-label" for="selectbasic">Student</label>
+    <label class="col-md-4 control-label" for="textinput">Class Name</label>
     <div class="col-md-5">
-      <select id="selectbasic" name="student" class="form-control">
-        <?php 
-          if($addnew) {
-            echo '<option value="0"> - Select Student</option>';
-          }
-          $student_list = get_student_list();
-          while($student_identity = mysql_fetch_assoc($student_list)) {
-            if($student_identity['student_key'] === $row['student']) {
-             echo '<option value="', $student_identity['student_key'],'" selected>', $student_identity['last_name'], ', ', $student_identity['first_name'], '</option>';
-            }
-            else {
-             echo '<option value="', $student_identity['student_key'],'">', $student_identity['last_name'], ', ', $student_identity['first_name'], '</option>';
-            }
-          }
-        ?>
-      </select>
+      <input id="textinput" name="class_name" value="<?php echo $row['class_name']?>" class="form-control input-md" required="">
     </div>
   </div>
 
+
+  <!-- Select Basic -->
   <div class="form-group">
     <label class="col-md-4 control-label" for="selectbasic">Teacher</label>
     <div class="col-md-5">
@@ -79,15 +64,6 @@
     </div>
   </div>
 
-  <div class="form-group">
-    <label class="col-md-4 control-label" for="selectbasic">Teacher Type</label>
-    <div class="col-md-5">
-      <select id="selectbasic" name="teacher_type" class="form-control">
-        <option value="Rowan Prep">Rowan Prep</option>
-        <option value="Rowan University">Rowan University</option>
-      </select>
-    </div>
-  </div>
 
   <div class="form-group">
     <label class="col-md-4 control-label" for="textinput">Duration</label>
@@ -108,7 +84,7 @@
         <option value="Wednesday">Wednesday</option>
         <option value="Thursday">Thursday</option>
         <option value="Friday">Friday</option>
-        <option value="Saturday">Fall</option>
+        <option value="Saturday">Saturday</option>
       <?php } else { ?>
         <option value="Sunday"<?php echo (($row['day']=='Sunday')?"selected>":">");?>Sunday</option>
         <option value="Monday"<?php echo (($row['day']=='Monday')?"selected>":">");?>Monday</option>
@@ -195,7 +171,7 @@
   <div class="form-group">
     <label class="col-md-4 control-label" for="textinput">Teacher Pay Rate</label>
     <div class="col-md-5">
-    <input id="textinput" name="pay_rate" type="text" value="<?php echo (($addnew)?"\"placeholder=\"Amount\"":$row['tuition_due'])?>" class="form-control input-md" required="">
+    <input id="textinput" name="pay_rate" type="text" value="<?php echo (($addnew)?"\"placeholder=\"Amount\"":$row['pay_rate'])?>" class="form-control input-md" required="">
 
     </div>
   </div>

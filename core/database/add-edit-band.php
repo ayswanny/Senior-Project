@@ -13,11 +13,12 @@
 		}
 	}
   
-  $student = $_POST["student"];
-  $instrument = ($_POST["instrument"]);
-  $ryo_form = ($_POST["ryo_form"]);
-  $tuition_due = ($_POST["tuition_due"]);
-  $notes = $_POST["notes"];
+  $student = clean_up($_POST["student"]);
+  $instrument = clean_up($_POST["instrument"]);
+  $ryo_form = clean_up($_POST["ryo_form"]);
+  $tuition_due = clean_up($_POST["tuition_due"]);
+  $notes = clean_up($_POST["notes"]);
+  
   $tuition_owed = $tuition_due-$tuition_paid;
 
   if ($addnew) {

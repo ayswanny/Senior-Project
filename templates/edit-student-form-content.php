@@ -113,6 +113,17 @@
 	  </div>
 	</div>
 
+	<div class="form-group">
+    <label class="col-md-4 control-label" for="selectbasic">Photo Release</label>
+      <div class="col-md-5">
+        <select id="selectbasic" name="photo_release" class="form-control" required="">
+          <option value="N">No</option>
+          <option value="Y">Yes</option>
+          <option value="S">See Notes</option>
+        </select>
+      </div>
+  	</div>
+
 	<!-- Progress report date here -->
 
 	<div class="form-group">

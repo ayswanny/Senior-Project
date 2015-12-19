@@ -13,30 +13,30 @@
 		}
 	}
 
-	$first_name = ($_POST["first_name"]);
-	$last_name = ($_POST["last_name"]);
-	$street_address = ($_POST["street_address"]);
-	$city = ($_POST["city"]);
-	$state = ($_POST["state"]);
-	$zip_code = ($_POST["zip_code"]);
-	$student_email = ($_POST["student_email"]);
-	$parent = ($_POST["parent"]);
-	$teacher = ($_POST["teacher"]);
-	$classes = ($_POST["classes"]);
-	$ensembles = ($_POST["ensembles"]);
-	$events = ($_POST["events"]);
-	$progress_report_date = ($_POST["progress_report_date"]);
-	$photo_release = ($_POST["photo_release"]);
-	$home_phone = store_phone($_POST["home_phone"]);
-	$mobile_phone = store_phone($_POST["mobile_phone"]);
-	$work_phone = store_phone($_POST["work_phone"]);
-	$preferred_phone = store_phone($_POST["preferred_phone"]);
-	$parent_email = ($_POST["parent_email"]);
-	$instrument = $_POST["instrument"];
-	$date_of_birth = $_POST["date_of_birth"];
-	$starting_date = $_POST["starting_date"];
-	$enrolled = $_POST['currently_enrolled'];
-	$notes = $_POST["notes"];
+	$first_name = clean_up($_POST["first_name"]);
+	$last_name = clean_up($_POST["last_name"]);
+	$street_address = clean_up($_POST["street_address"]);
+	$city = clean_up($_POST["city"]);
+	$state = clean_up($_POST["state"]);
+	$zip_code = clean_up($_POST["zip_code"]);
+	$student_email = clean_up($_POST["student_email"]);
+	$parent = clean_up($_POST["parent"]);
+	$teacher = clean_up($_POST["teacher"]);
+	$classes = clean_up($_POST["classes"]);
+	$ensembles = clean_up($_POST["ensembles"]);
+	$events = clean_up($_POST["events"]);
+	$progress_report_date = clean_up($_POST["progress_report_date"]);
+	$photo_release = clean_up($_POST["photo_release"]);
+	$home_phone = clean_up(store_phone($_POST["home_phone"]));
+	$mobile_phone = clean_up(store_phone($_POST["mobile_phone"]));
+	$work_phone = clean_up(store_phone($_POST["work_phone"]));
+	$preferred_phone = clean_up(store_phone($_POST["preferred_phone"]));
+	$parent_email = clean_up($_POST["parent_email"]);
+	$instrument = clean_up($_POST["instrument"]);
+	$date_of_birth = clean_up($_POST["date_of_birth"]);
+	$starting_date = clean_up($_POST["starting_date"]);
+	$enrolled = clean_up($_POST['currently_enrolled']);
+	$notes = clean_up($_POST["notes"]);
 
 
 		/* Prepared statement, stage 1: prepare */

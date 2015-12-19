@@ -1,11 +1,11 @@
 <?php
 	require 'connect.php';
 
-	$username = $_POST["username"];
-	$firstname = $_POST["firstname"];
-	$lastname = $_POST["lastname"];
-	$password = $_POST["password"];
-	$email = $_POST["email"];
+	$username = clean_up($_POST["username"]);
+	$firstname = clean_up($_POST["firstname"]);
+	$lastname = clean_up($_POST["lastname"]);
+	$password = clean_up($_POST["password"]);
+	$email = clean_up($_POST["email"]);
 
 	if($insert = $db->query("INSERT INTO users (username, password, first_name, last_name, email)
 							 VALUES ('$username', '$password', '$firstname', '$lastname', '$email')")) {

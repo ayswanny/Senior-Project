@@ -37,6 +37,10 @@ function deleteOrchestra(id){
 function deleteBand(id){
 	location.replace("./core/database/delete-band.php?key=" + id);
 }
+function deleteBand(id){
+	location.replace("./core/database/delete-class.php?key=" + id);
+}
+
 function deleteStudentFromClass(id){
 	location.replace("./core/database/delete-student-from-class.php?key=" + id);
 }
@@ -82,7 +86,10 @@ function CustomConfirm(){
 				break;
 			case "delete_student_from_class":
 				deleteStudentFromClass(id);
-				break;			
+				break;		
+      		case "delete_class":
+        		deleteClass(id);
+        		break;
 		}
 		document.getElementById('dialogbox').style.display = "none";
 		document.getElementById('dialogoverlay').style.display = "none";
