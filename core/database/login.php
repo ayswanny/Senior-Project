@@ -2,6 +2,7 @@
 	include '../init.php';
 	$link = connectDB();
 	if(empty($_POST) == false) {
+		mysql_set_charset ( "utf8" );
 
 		echo $_POST['username'] . " -> ";
 		$username = ($_POST['username']);
