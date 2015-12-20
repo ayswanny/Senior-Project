@@ -63,8 +63,7 @@
                            <td><div class="text-center">', $row['username'],'</div></td>
                            <td><div class="text-center">', $row['email'],'</div></td>
                            <td><div class="text-center">', $row['admin'],'</div></td>
-                          '
-                            ;
+                          ';
                     }
                      echo '</tbody>';
                 }
@@ -90,7 +89,7 @@
             // table headers
                   echo '<thead><tr>';
                   echo '<th><div class="text-center"><a href="edit-class-form.php?class=new"">
-                         <img class="table-icon" src="./res/image/add-user.png"></a></div></th>
+                         <img class="table-icon" src="./res/image/add-record.png"></a></div></th>
                         <th></th>
                         <th><div class="text-center">Class Name</div></th>
                         <th><div class="text-center">Teacher Last Name</div></th>
@@ -107,7 +106,7 @@
                  while($row = mysql_fetch_assoc($results)) {
                       echo '<tr>
                          <td><div class="text-center"><a href="#" onclick="Confirm.render(\'Delete Class?\',\'delete_class\',\'', $row['class'], '\')">
-                           <img class="table-icon" src="./res/image/rm-user.png">
+                           <img class="table-icon" src="./res/image/rm-record.png">
                            </a></div></td>
                         <td><div class="text-center"><a href="edit-class-form.php?class=', $row['class_id'], '">
                          <img class="table-icon" src="./res/image/edit.png"></a></div></td>
