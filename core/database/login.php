@@ -12,16 +12,16 @@
 		if (empty($password)) {
 			$errors[] = 'password is empty before clean_up';
 		}
-		// $username = mysql_real_escape_string($username);
-		// $password = mysql_real_escape_string($password);
+		$username = mysql_real_escape_string($username, $link);
+		$password = mysql_real_escape_string($password, $link);
 
 		echo "-> " . $username . " <br />";
 
 		$test = "QQQQQQ";
 
-		$etest = mysql_real_escape_string($test);
+		$etest = mysql_real_escape_string($test, $link);
 
-		$eetest = mysql_real_escape_string($etest);
+		$eetest = mysql_real_escape_string($etest, $link);
 
 		echo "$test -> $etest -> $eetest <br />";
 
