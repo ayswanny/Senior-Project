@@ -19,7 +19,11 @@
 	function connectI () {
 		$dbi = mysqli_connect('localhost', 'swanson', 'utagydbo4');	
 		// $dbi = mysqli_connect('localhost', 'root', 'utagydbo');
-
+	
+		if(mysqli_connect_errno()) {
+			echo "ERROR";
+			die("Could not connect to database");
+		}
 		return $dbi;
 	}
 
