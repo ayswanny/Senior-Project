@@ -59,7 +59,7 @@
 		return preg_replace('~.*(\d{3})[^\d]{0,7}(\d{3})[^\d]{0,7}(\d{4}).*~', '($1) $2-$3', $data);
 	}
 	function clean_up($data) {
-		return mysqli_real_escape_string($data);
+		return mysql_real_escape_string($data);
 	}
 	function get_student_list($sort) {
 		switch($sort) {
