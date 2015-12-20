@@ -472,7 +472,7 @@
   <div id="class" class="table-responsive">
     <?php 
       if(isset($_GET['class-key']))  {
-        $class_key = $_GET['class-key'];
+        $class_key = clean_up($_GET['class-key']);
         $results = get_student_list($class_key);
       }
 

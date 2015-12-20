@@ -23,8 +23,6 @@ if(empty($_POST) == false) {
 			echo $_SESSION['id'];
 		}
 	}
-	echo "<" . $_POST['username'];
-	echo $_POST['password'] . ">";
 	print_r($errors);
 }
 
