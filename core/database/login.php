@@ -6,7 +6,7 @@
 		echo $_POST['username'] . " -> ";
 		$username = ($_POST['username']);
 		$password = ($_POST['password']);
-		echo $username. '<br />';
+		echo $username;
 
 		if (empty($password)) {
 			$errors[] = 'password is empty before clean_up';
@@ -14,13 +14,9 @@
 		$username = mysql_real_escape_string($username);
 		$password = mysql_real_escape_string($password);
 
-		echo "-> $username";
+		echo "-> $username <br />";
 
-		echo "QQQQQQ ->";
-
-		echo mysql_real_escape_string("QQQQQQ");
-
-		$test = "QQQQQQ <br />";
+		$test = "QQQQQQ";
 
 		$etest = mysql_real_escape_string($test);
 
