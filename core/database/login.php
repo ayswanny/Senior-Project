@@ -2,6 +2,7 @@
 	include '../init.php';
 	$link = connectDB();
 	if(empty($_POST) == false) {
+		echo $_POST;
 		$username = clean_up($_POST['username']);
 		$password = clean_up($_POST['password']);
 		
