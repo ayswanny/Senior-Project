@@ -15,7 +15,7 @@
 		$username = mysql_real_escape_string($username);
 		$password = mysql_real_escape_string($password);
 
-		echo "-> $username <br />";
+		echo "-> " . $username . " <br />";
 
 		$test = "QQQQQQ";
 
@@ -47,8 +47,8 @@
 				echo $_SESSION['id'];
 			}
 		}
-		print_r($errors);
 	}
 
 
+	print_r($errors);
 ?>
