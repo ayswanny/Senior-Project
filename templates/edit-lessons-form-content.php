@@ -11,9 +11,8 @@
   $num_rows = mysql_num_rows($result);
   if ($num_rows === 0) {
     $addnew = true;
-  } else {
+  } 
     $row = mysql_fetch_assoc($result);
-  }
 ?>
 
 <form action="core/database/add-edit-lessons.php?lesson=<?php echo $row['lesson_key']?>" class="form-horizontal" method="post" onsubmit="validate()">

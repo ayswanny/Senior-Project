@@ -9,14 +9,15 @@
 	}
 
 	$addnew = false;
-        $link = connectDB();
-        $result = mysql_db_query("rowanprep", "SELECT * FROM teachers WHERE teacher_key LIKE '$teacher'");
-        $num_rows = mysql_num_rows($result);
-        if ($num_rows === 0) {
-                $addnew = true;
-        } else {
-	  $row = mysql_fetch_assoc($result);
-        } 
+    $link = connectDB();
+    $result = mysql_db_query("rowanprep", "SELECT * FROM teachers WHERE teacher_key LIKE '$teacher'");
+    $num_rows = mysql_num_rows($result);
+    if ($num_rows === 0) {
+    	$addnew = true;
+    }
+    // Note: we still want to do this regardless of new or edit
+	$row = mysql_fetch_assoc($result);
+         
 
 ?>
 

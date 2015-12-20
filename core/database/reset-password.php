@@ -16,12 +16,15 @@
 		$subj = "Rowan Prep User Information - DO NOT REPLY";
 
 		mail($email, $subj, $msg, "From: Rowan Prep");
-			header("Location: ../../login.php");
-			die();
+		header("Location: ../../login.php");
+		die();
 	}
-	else {
-		echo "update failed.". $db->error;
+	else if($result = mysql_db_query("rowanprep", "SELECT * in users WHERE username = '$username' OR email = '$email' ")) {
+		
+	} else {
+		// No indication of whether an attacker picked the right username and email if possible. 		
 	}
+	header("Location: ../../login.php"):	
 	
 ?>
 
