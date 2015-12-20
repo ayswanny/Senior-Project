@@ -11,8 +11,8 @@
 		if (empty($password)) {
 			$errors[] = 'password is empty before clean_up';
 		}
-		$username = clean_up($username);
-		$password = clean_up("$password");
+		$username = mysqli_real_escape_string($username);
+		$password = mysqli_real_escape_string($password);
 
 		echo "-> $username";
 
