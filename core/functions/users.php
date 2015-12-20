@@ -59,7 +59,8 @@
 		return preg_replace('~.*(\d{3})[^\d]{0,7}(\d{3})[^\d]{0,7}(\d{4}).*~', '($1) $2-$3', $data);
 	}
 	function clean_up($data) {
-		$dbi = connectI();
+		global $dbi;
+		// $dbi = connectI();
 		return mysqli_real_escape_string($dbi, $data);
 	}
 	function get_student_list($sort) {
@@ -77,7 +78,7 @@
 				return $results = mysql_db_query("rowanprep", "SELECT * FROM students ORDER BY instrument");
 			break;
 			case '5':
-				return $results = mysql_db_query("rowanprep", "SELECT * FROM students ORDER BY photo_release");
+				return $results = mysql_db_query("rowanprep", "SELECT * FROM students ORDER BY photo_release DESC");
 			break;
 
 			default:
@@ -164,8 +165,34 @@
 		return $results = mysql_db_query("rowanprep", "SELECT class_name FROM classes WHERE class_id = '$class_id' ");
 	}
 	
-	function get_class_student_list($key) {
-		return $results = mysql_db_query("rowanprep", "SELECT * FROM class_link JOIN students ON student_key = student WHERE class_ref = '$key'");
+	function get_class_student_list($key,$sort_num = '0') {
+		switch($sort_num) {
+			case '1';
+				$sort_by = "last_name";
+			break;
+			case '2':
+				$sort_by = "first_name";
+			break;
+			case '3';
+				$sort_by = "instrument";
+			break;
+			// case '4':
+			// 	$sort_by = "tuition_due-tuition_paid";	// can we sort by calculated values?
+			// break;
+			case '5':
+				$sort_by = "tuition_paid";
+			break;
+
+			default:
+				$sort_by = "";
+			break;
+		}
+		if ( empty($sort_by) ) {
+			return $results = mysql_db_query("rowanprep", "SELECT * FROM class_link JOIN students ON student_key = student WHERE class_ref = '$key' ");			
+		} 
+		else {
+			return $results = mysql_db_query("rowanprep", "SELECT * FROM class_link JOIN students ON student_key = student WHERE class_ref = '$key' ORDER BY $sort_by");
+		}
 	}
 	function get_student_name($key){
 		return $results = mysql_db_query("rowanprep", "SELECT last_name, first_name FROM students WHERE student_key =  '$key'");

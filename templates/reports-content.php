@@ -481,10 +481,12 @@
       echo "<h3>" . $row['class_name'] . " Class</h3>";
     ?>
     <ul class="list-inline">
-      <li><a href="reports.php?tab=class&class-key="<?php echo $class_key ?>"&sortby=1">Last Name</a></li>
-      <li><a href="reports.php?tab=class&class-key="<?php echo $class_key ?>"&sortby=2">First name</a></li>
-      <li><a href="reports.php?tab=class&class-key="<?php echo $class_key ?>"&sortby=3">Instrument</a></li>
-      <li><a href="reports.php?tab=class&class-key="<?php echo $class_key ?>"&sortby=4">Tuition Owed</a></li>
+      <li><a href="reports.php?tab=class&class-key=<?php echo $class_key ?>&sortby=1">Last Name</a></li>
+      <li><a href="reports.php?tab=class&class-key=<?php echo $class_key ?>&sortby=2">First name</a></li>
+      <li><a href="reports.php?tab=class&class-key=<?php echo $class_key ?>&sortby=3">Instrument</a></li>
+      <!-- <li><a href="reports.php?tab=class&class-key=<?php echo $class_key ?>&sortby=4">Tuition Owed</a></li> -->
+      <!-- // doesn't work right now -->
+      <li><a href="reports.php?tab=class&class-key=<?php echo $class_key ?>&sortby=5">Tuition Paid</a></li>
     </ul>
     <div class="text-center">
       <table class="table table-striped">
@@ -494,7 +496,7 @@
         // $link = connectDB();
          if(isset($_GET['sortby']))  {
             $sort = $_GET['sortby'];
-            $results = get_class_student_list($class_key);
+            $results = get_class_student_list($class_key,$sort);
           }
           else {
             $sort = 0;
