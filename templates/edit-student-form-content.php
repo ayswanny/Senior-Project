@@ -12,9 +12,8 @@
 	$num_rows = mysql_num_rows($result);
 	if ($num_rows === 0) {
 		$addnew = true;
-	} else {
-		$row = mysql_fetch_assoc($result);
 	}
+	$row = mysql_fetch_assoc($result);
 	 
 ?>
 
