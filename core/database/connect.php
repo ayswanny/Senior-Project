@@ -6,7 +6,7 @@
 
 	function connectDB(){
 
-		$link = mysql_connect('localhost', 'swanson', 'utagydbo4');
+		$link = mysql_connect('localhost', 'swanso52', 'utagydbo4');
 	
 		// $link = mysql_connect('localhost', 'root', 'utagydbo');
 	
@@ -17,7 +17,7 @@
 	}
 
 	function connectI () {
-		$dbi = mysqli_connect('localhost', 'swanson', 'utagydbo4');	
+		$dbi = mysqli_connect('localhost', 'swanso52', 'utagydbo4');	
 		// $dbi = mysqli_connect('localhost', 'root', 'utagydbo');
 	
 		if(mysqli_connect_errno()) {
