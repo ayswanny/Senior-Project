@@ -2,9 +2,10 @@
 	include '../init.php';
 	$link = connectDB();
 	if(empty($_POST) == false) {
-		echo $_POST['username'];
+		echo $_POST['username'] . " -> ";
 		$username = clean_up($_POST['username']);
 		$password = clean_up($_POST['password']);
+		echo $username;
 		
 		if(empty($username) == true || empty($password) == true) {
 			$errors[] = 'Enter a username and password';
