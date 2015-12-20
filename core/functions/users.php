@@ -42,6 +42,8 @@
 	}
 
 	function login($username, $password) {
+		$username = clean_up("$username");
+		$password = clean_up("$password");
 		$user_key = get_user_id($username);
 		$results = mysql_db_query("rowanprep", "SELECT user_key FROM users WHERE username = '$username' AND password = '$password'");
 		if(empty($results))

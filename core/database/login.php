@@ -3,8 +3,8 @@
 	$link = connectDB();
 	if(empty($_POST) == false) {
 		echo $_POST['username'] . " -> ";
-		$username = clean_up($_POST['username']);
-		$password = clean_up($_POST['password']);
+		$username = ($_POST['username']);
+		$password = ($_POST['password']);
 		echo $username;
 		
 		if(empty($username) == true || empty($password) == true) {
