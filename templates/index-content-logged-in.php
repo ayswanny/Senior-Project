@@ -1,6 +1,7 @@
-<div class="text-center">
+<h3 class="text-center">
 	<?php 
-		echo "<h3>Welcome, ". get_name($_SESSION['id']) ." </h3><br />";
+		echo "Welcome, ". get_name($_SESSION['id']);
 
 	?>
-</div>
+</h3>
+<br />

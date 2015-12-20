@@ -1,3 +1,8 @@
+<?php
+  // connect right at the start. 
+  $link = connectDB();  
+?>
+
 
 <div style="margin-top:10px;" class="mainbox col-md-12 text-center">
 
@@ -14,17 +19,16 @@
         <button class="drop-down-btn dropdown-toggle" data-toggle="dropdown">Classes <span class="caret"></span></button>
          <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
             <?php
-              $link = connectDB();
               $result = get_class_list();
-              while ($class_id = mysql_fetch_assoc($result)) {
-                echo '<li role="presentation"><a role="menuitem" href="reports.php?tab=class&class-key=', $class_id['class_id'],'">', $class_id['class_name'] ,'</a></li>';
+              while ($class_info = mysql_fetch_assoc($result)) {
+                echo '<li role="presentation"><a role="menuitem" href="reports.php?tab=class&class-key=', $class_info['class_id'],'">', $class_info['class_name'] ,'</a></li>';
               }
             ?>
           </ul>
       </span>
 
   </div>
-  <br>
+  <br />
   
 
   
@@ -43,7 +47,6 @@
 
       <table class="table table-striped text-center">
         <?php
-	        $link = connectDB();
           //output student table.
           if(isset($_GET['sortby']))  {
             $sort = $_GET['sortby'];
@@ -467,7 +470,16 @@
   </div>
   <?php } else if($tab == 'class') { ?>
   <div id="class" class="table-responsive">
-    <h3>Class</h3>
+    <?php 
+      if(isset($_GET['class-key']))  {
+        $class_key = $_GET['class-key'];
+        $results = get_student_list($class_key);
+      }
+
+      $results = get_class_name($class_key);
+      $row = mysql_fetch_assoc($results);
+      echo "<h3>" . $row['class_name'] . " Class</h3>";
+    ?>
     <ul class="list-inline">
       <li><a href="reports.php?tab=class&class-key="<?php echo $class_key ?>"&sortby=1">Last Name</a></li>
       <li><a href="reports.php?tab=class&class-key="<?php echo $class_key ?>"&sortby=2">First name</a></li>
@@ -479,7 +491,7 @@
         <?php
 
           //out lessons table
-        $link = connectDB();
+        // $link = connectDB();
          if(isset($_GET['sortby']))  {
             $sort = $_GET['sortby'];
             $results = get_class_student_list($class_key);

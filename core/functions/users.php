@@ -157,6 +157,10 @@
 		return $results = mysql_db_query("rowanprep", "SELECT * FROM classes JOIN teachers ON teacher = teacher_key");
 
 	}
+	function get_class_name($class_id) {
+		return $results = mysql_db_query("rowanprep", "SELECT class_name FROM classes WHERE class_id = '$class_id' ");
+	}
+	
 	function get_class_student_list($key) {
 		return $results = mysql_db_query("rowanprep", "SELECT * FROM class_link JOIN students ON student_key = student WHERE class_ref = '$key'");
 	}
