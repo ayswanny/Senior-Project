@@ -1,0 +1,10 @@
+<?php
+	include 'core/init.php';
+	if(!logged_in()){
+		header("Location: elvis.rowan.edu/rowanprep");
+	}
+	include 'core/templates/header.php';
+	include 'core/templates/navbar-logged-in.php';
+	include 'core/templates/help-content.php';
+	include 'core/templates/footer.php';
+?>
