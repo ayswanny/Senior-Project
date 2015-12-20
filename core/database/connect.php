@@ -1,4 +1,8 @@
 <?php
+
+	class DBi {
+	    public static $link;
+	}
 	
 	//	This will provide initial connection to the database
 	// 	Using WAMP and phpmyadmin, you must provide your own
@@ -18,13 +22,15 @@
 	function connectI () {
 		// $dbi = mysqli_connect('localhost', 'swanso52', 'utagydbo4');	
 		$dbi = mysqli_connect('localhost', 'root', 'utagydbo');
-	
+		DBi::$link = $dbi;	
 		if(mysqli_connect_errno()) {
 			
 			die("Could not connect to database: mysqli_connect()");
 		}
 		return $dbi;
 	}
+
+
 
 	$link = connectDB();
 

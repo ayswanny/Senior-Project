@@ -1,4 +1,6 @@
 <?php
+
+	$dbi = connectI();
 	function logged_in() {
 		return(isset($_SESSION['id'])) ? true : false;
 	}
@@ -59,9 +61,7 @@
 		return preg_replace('~.*(\d{3})[^\d]{0,7}(\d{3})[^\d]{0,7}(\d{4}).*~', '($1) $2-$3', $data);
 	}
 	function clean_up($data) {
-		global $dbi;
-		// $dbi = connectI();
-		return mysqli_real_escape_string($dbi, $data);
+		return mysqli_real_escape_string(DBi::$link, $data);
 	}
 	function get_student_list($sort) {
 		switch($sort) {
