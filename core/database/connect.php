@@ -10,8 +10,8 @@
 	
 		// $link = mysql_connect('localhost', 'root', 'utagydbo');
 	
-		if(mysqli_connect_errno()) {
-			die("Could not connect to database");
+		if(mysql_errno()) {
+			die("Could not connect to database: mysql_connect()");
 		}//utagydbo
 		 return $link;
 	}
@@ -21,8 +21,8 @@
 		// $dbi = mysqli_connect('localhost', 'root', 'utagydbo');
 	
 		if(mysqli_connect_errno()) {
-			echo "ERROR";
-			die("Could not connect to database");
+			
+			die("Could not connect to database: mysqli_connect()");
 		}
 		return $dbi;
 	}
