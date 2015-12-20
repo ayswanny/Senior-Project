@@ -486,7 +486,7 @@
       <li><a href="reports.php?tab=class&class-key=<?php echo $class_key ?>&sortby=3">Instrument</a></li>
       <!-- <li><a href="reports.php?tab=class&class-key=<?php echo $class_key ?>&sortby=4">Tuition Owed</a></li> -->
       <!-- // doesn't work right now -->
-      <li><a href="reports.php?tab=class&class-key=<?php echo $class_key ?>&sortby=5">Tuition Paid</a></li>
+      <!-- <li><a href="reports.php?tab=class&class-key=<?php echo $class_key ?>&sortby=5">Tuition Paid</a></li> -->
     </ul>
     <div class="text-center">
       <table class="table table-striped">
