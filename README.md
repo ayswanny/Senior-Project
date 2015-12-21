@@ -1,6 +1,8 @@
 Software written for Rowan Prep by Austen Swanson and Paul Kohler. To expand on development please read the README.dev.txt for developer documentation. For users, read the manual posted here:
 
 Rowan Prep Database Management System
+
+
     Welcome to the help section of the website. This pages will discuss all of the features of the website and how to use them. Hopefully by reading this, you will be on your way to using the system. Further questions or concerns of bugs may be emailed to Austen Swanson or Paul Kohler (torswan7@gmail.com | PaulPCKohler@gmail.com). 
 
  
