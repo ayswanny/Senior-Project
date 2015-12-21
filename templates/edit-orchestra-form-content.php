@@ -62,44 +62,42 @@
   <div class="form-group">
     <label class="col-md-4 control-label" for="textinput">RYO Form</label>
     <div class="col-md-5">
-     <select id="selectbasic" name="ryo_form" class="form-control">
-      <?php 
-        if($addnew) {
-          echo '<option value="Y">Yes</option>';
-          echo '<option value="N">No</option>';
-        }
-        else if($row['ryo_form'] == 'Y') {
-          echo '<option value="Y" selected>Yes</option>';
-          echo '<option value="N">No</option>';
-        }
-        else {
-          echo '<option value="Y">Yes</option>';
-          echo '<option value="N" selected>No</option>';
-        }
-      ?>
-        </select>
+      <select id="selectbasic" name="ryo_form" class="form-control">
+        <?php 
+          if($addnew) {
+            echo '<option value="Y">Yes</option>';
+            echo '<option value="N">No</option>';
+          }
+          else if($row['ryo_form'] == 'Y') {
+            echo '<option value="Y" selected>Yes</option>';
+            echo '<option value="N">No</option>';
+          }
+          else {
+            echo '<option value="Y">Yes</option>';
+            echo '<option value="N" selected>No</option>';
+          }
+        ?>
+      </select>
     </div>
   </div>
 
   <div class="form-group">
     <label class="col-md-4 control-label" for="textinput">Tuition Due</label>
     <div class="col-md-5">
-    <input id="textinput" name="tuition_due" type="text" value="<?php echo (($addnew)?"\" placeholder=\"Amount\"":$row['tuition_due'])?>" class="form-control input-md" required="">
-
+      <input id="textinput" name="tuition_due" type="text" value="<?php echo (($addnew)?"\" placeholder=\"Amount\"":$row['tuition_due'])?>" class="form-control input-md" required="">
     </div>
   </div>
 
   <div class="form-group">
     <label class="col-md-4 control-label" for="textinput">Notes</label>
     <div class="col-md-5">
-    <input id="textinput" name="notes" type="text" value="<?php echo $row['notes']?>" class="form-control input-md" required="">
-
+      <input id="textinput" name="notes" type="text" value="<?php echo $row['notes']?>" class="form-control input-md" required="">
     </div>
   </div>
 
-<div class="row text-center">
+  <div class="row text-center">
     <input type="submit" class="btn btn-primary" value="Save" />
-     <a type="button" class="btn btn-primary" href="reports.php?tab=lessons" value="Back">Back</a>
+    <a type="button" class="btn btn-primary" href="reports.php?tab=lessons" value="Back">Back</a>
   </div>
  
 

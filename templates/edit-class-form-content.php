@@ -9,7 +9,7 @@
 	
 	$addnew = false;
   $link = connectDB();
-  $result = mysql_db_query("rowanprep", "SELECT * FROM class_link WHERE class_ref LIKE '$class_id'");
+  $result = mysql_db_query("rowanprep", "SELECT * FROM classes WHERE class_id LIKE '$class_id'");
   $num_rows = mysql_num_rows($result);
   if ($num_rows === 0) {
     $addnew = true;
@@ -22,9 +22,7 @@
 <fieldset>
 
 	<!-- Form Name -->
-	<legend><?php echo (($addnew)?"Add":"Edit"); ?> Class
-  <input type="submit" class="btn btn-primary" value="Save" />
-  <a type="button" class="btn btn-primary" href="reports.php?tab=lessons" value="Back">Back</a>
+	<legend><h3 class="text-center"><?php echo (($addnew)?"Add":"Edit"); ?> Class</h3>
   </legend>
 
 	
@@ -128,21 +126,12 @@
     </div>
   </div>
 
-  <div class="form-group">
-    <label class="col-md-4 control-label" for="textinput">Instrument</label>
-    <div class="col-md-5">
-    <input id="textinput" name="instrument" type="text" value="<?php echo $row['instrument']?>" class="form-control input-md" required="">
-
-    </div>
-  </div>
-
-  <div class="form-group">
+<!--   <div class="form-group">
     <label class="col-md-4 control-label" for="textinput">Tuition Due</label>
     <div class="col-md-5">
     <input id="textinput" name="tuition_due" type="text" value="<?php echo (($addnew)?"\"placeholder=\"Amount\"":$row['tuition_due'])?>" class="form-control input-md" required="">
-
     </div>
-  </div>
+  </div> -->
 
   <div class="form-group">
     <label class="col-md-4 control-label" for="selectbasic">Number of Lessons</label>
@@ -173,6 +162,11 @@
     <input id="textinput" name="pay_rate" type="text" value="<?php echo (($addnew)?"\"placeholder=\"Amount\"":$row['pay_rate'])?>" class="form-control input-md" required="">
 
     </div>
+  </div>
+
+  <div class="row text-center">
+    <input type="submit" class="btn btn-primary" value="Save" />
+    <a type="button" class="btn btn-primary" href="reports.php?tab=lessons" value="Back">Back</a>
   </div>
 
 </fieldset>

@@ -60,7 +60,7 @@
   </div>
 
   <div class="form-group">
-    <label class="col-md-4 control-label" for="textinput">RYO Form</label>
+    <label class="col-md-4 control-label" for="textinput">Form</label>
     <div class="col-md-5">
      <select id="selectbasic" name="ryo_form" class="form-control">
       <?php 
