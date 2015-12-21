@@ -48,7 +48,7 @@
 		$password = clean_up("$password");
 		$user_key = get_user_id($username);
 		$results = mysql_db_query("rowanprep", "SELECT user_key FROM users WHERE username = '$username' AND password = '$password'");
-		if(empty($results))
+		if(mysql_num_rows($results) === 0)
 			return false;
 		else
 			return $user_key;
