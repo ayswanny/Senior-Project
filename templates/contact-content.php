@@ -59,10 +59,9 @@
             <legend><span class="glyphicon glyphicon-globe"></span> Our office</legend>
             <address>
                 <strong><h3>Wilson at Rowan-Glassboro Campus</h3></strong>
-		<br>2nd Floor, Room 208
-		<br>Anna Skrumpky, Rowan Prep Director
-		<br>Phone:
-            	<br>Email:
+        		<br>2nd Floor, Room 208
+        		<br>Anna Skrumpky, Rowan Prep Director
+        		<!-- <br>Phone:  -->
             </address>
             </form>
         </div>

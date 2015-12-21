@@ -2,7 +2,7 @@
     <div class="panel panel-info" >
         <div class="panel-heading">
             <div class="panel-title">Reset Password</div>
-            </div>     
+        </div>     
 
         <div style="padding-top:30px" class="panel-body" >
 
@@ -22,7 +22,6 @@
                 <div style="margin-top:10px" class="form-group">
                     <div class="col-sm-12 controls">
                       <input id="submit" name="submit" type="submit" value="Submit" class"btn btn-primary"></a>
-
                     </div>
                 </div>
                 </form>     
