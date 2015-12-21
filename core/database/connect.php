@@ -10,8 +10,8 @@
 
 	function connectDB(){
 
-		// $link = mysql_connect('localhost', 'swanso52', 'utagydbo4');
-		$link = mysql_connect('localhost', 'root', 'utagydbo');
+		$link = mysql_connect('localhost', 'swanso52', 'utagydbo4');
+		//$link = mysql_connect('localhost', 'root', 'utagydbo');
 	
 		if(mysql_errno()) {
 			die("Could not connect to database: mysql_connect()");
@@ -20,8 +20,8 @@
 	}
 
 	function connectI () {
-		// $dbi = mysqli_connect('localhost', 'swanso52', 'utagydbo4');	
-		$dbi = mysqli_connect('localhost', 'root', 'utagydbo');
+		$dbi = mysqli_connect('localhost', 'swanso52', 'utagydbo4');	
+		// $dbi = mysqli_connect('localhost', 'root', 'utagydbo');
 		DBi::$link = $dbi;	
 		if(mysqli_connect_errno()) {
 			
@@ -31,8 +31,5 @@
 	}
 
 	$link = connectDB();
-
-	global $dbi;
-	$dbi = connectI();
 	
 ?>
