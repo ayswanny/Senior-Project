@@ -20,8 +20,8 @@
 	}
 
 	function connectI () {
-		// $dbi = mysqli_connect('localhost', 'swanso52', 'utagydbo4');	
-		$dbi = mysqli_connect('localhost', 'root', 'utagydbo');
+		$dbi = mysqli_connect('localhost', 'swanso52', 'utagydbo4');	
+		// $dbi = mysqli_connect('localhost', 'root', 'utagydbo');
 		DBi::$link = $dbi;	
 		if(mysqli_connect_errno()) {
 			
