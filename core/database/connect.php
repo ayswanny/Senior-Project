@@ -31,5 +31,6 @@
 	}
 
 	$link = connectDB();
+	$dbi = connectI();
 	
 ?>
